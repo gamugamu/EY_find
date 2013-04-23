@@ -16,8 +16,7 @@
 
 #import "FPSCalculator.h"
 
-@interface GLESImageView()
-{
+@interface GLESImageView(){
   // The OpenGL ES names for the framebuffer and renderbuffer used to render to this view.
   GLuint defaultFramebuffer, colorRenderbuffer;
   GLuint backgroundTextureId;
@@ -36,16 +35,12 @@
 @synthesize fpsCalculator;
 
 // You must implement this method
-+ (Class)layerClass
-{
++ (Class)layerClass{
   return [CAEAGLLayer class];
 }
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self)
-    {
+- (id)initWithFrame:(CGRect)frame{
+    if (self = [super initWithFrame:frame]){
       CAEAGLLayer *eaglLayer = (CAEAGLLayer *)self.layer;
       
       eaglLayer.opaque = TRUE;
@@ -54,9 +49,8 @@
                                       kEAGLColorFormatRGBA8, kEAGLDrawablePropertyColorFormat,
                                       nil];
       
-      self.fpsCalculator = [[FPSCalculator alloc] init];
-      
-      self.fpsLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, 100, 100)];
+      self.fpsCalculator            = [[FPSCalculator alloc] init];
+      self.fpsLabel                 = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, 100, 100)];
       self.fpsLabel.text            = @"XXX FPS";
       self.fpsLabel.textColor       = [UIColor greenColor];
       self.fpsLabel.backgroundColor = [UIColor clearColor];
@@ -64,8 +58,7 @@
       
       [self.fpsLabel sizeToFit];
       
-      [self addSubview:self.fpsLabel];
-            
+      [self addSubview: self.fpsLabel];
       [self initContext];
     }
     return self;
@@ -80,23 +73,17 @@
     [super dealloc];
 }
 
-- (void)setContext:(EAGLContext *)newContext
-{
-  if (context != newContext)
-  {
+- (void)setContext:(EAGLContext *)newContext{
+  if (context != newContext){
     [self deleteFramebuffer];
-    
     context = newContext;
-    
     [EAGLContext setCurrentContext:nil];
   }
 }
 
-- (void)createFramebuffer
-{
-  if (context && !defaultFramebuffer)
-  {
-    [EAGLContext setCurrentContext:context];
+- (void)createFramebuffer{
+  if (context && !defaultFramebuffer){
+    [EAGLContext setCurrentContext: context];
     
     // Create default framebuffer object.
     glGenFramebuffers(1, &defaultFramebuffer);
@@ -119,8 +106,7 @@
   }
 }
 
-- (void)deleteFramebuffer
-{
+- (void)deleteFramebuffer{
   if (context)
   {
     [EAGLContext setCurrentContext:context];
@@ -140,8 +126,7 @@
   }
 }
 
-- (void)setFramebuffer
-{
+- (void)setFramebuffer{
   if (context) {
     [EAGLContext setCurrentContext:context];
     
@@ -156,31 +141,25 @@
   }
 }
 
-- (BOOL)presentFramebuffer
-{
+- (BOOL)presentFramebuffer{
   BOOL success = FALSE;
   
   if (context) {
     [EAGLContext setCurrentContext:context];
-    
     glBindRenderbuffer(GL_RENDERBUFFER, colorRenderbuffer);
-    
     success = [context presentRenderbuffer:GL_RENDERBUFFER];
   }
   
   return success;
 }
 
-- (void)layoutSubviews
-{
+- (void)layoutSubviews{
   [super layoutSubviews];
-  
   // The framebuffer will be re-created at the beginning of the next setFramebuffer method call.
   [self deleteFramebuffer];
 }
 
-- (void)initContext
-{
+- (void)initContext{
   EAGLContext *aContext = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES1];
   
   if (!aContext)
@@ -212,8 +191,7 @@
   return (UIViewController *)responder;
 }
 
-- (void)drawFrame:(const cv::Mat&) bgraFrame
-{
+- (void)drawFrame:(const cv::Mat&) bgraFrame{
   [self setFramebuffer];  
   [self.fpsCalculator putTimeMark];
   
@@ -271,14 +249,12 @@
       break;
   };
   
-  static const GLfloat squareVertices[] =
-  {
+  static const GLfloat squareVertices[] ={
     -1, -1,
     +1, -1,
     -1, +1,
     +1, +1
   };
-  
   
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
@@ -304,7 +280,8 @@
   glDisableClientState(GL_TEXTURE_COORD_ARRAY);
   glDisable(GL_TEXTURE_2D);
   
-  bool ok = [self presentFramebuffer];
+    bool ok = [self presentFramebuffer];
+#warning  à enlever en prod
   assert(ok);
 }
 

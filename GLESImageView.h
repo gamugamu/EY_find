@@ -9,8 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface GLESImageView : UIView
-
 - (void)drawFrame:(const cv::Mat&) bgraFrame;
-
-
 @end

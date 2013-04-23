@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "VideoSource.h"
 #import "GLESImageView.h"
+#import "ImageRecognizer.h"
 
 @interface ViewController ()<VideoSourceDelegate>{
     VideoSource*    _videoSource;
