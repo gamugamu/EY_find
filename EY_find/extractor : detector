@@ -1,0 +1,84 @@
+14 down vote accepted
+	
+
+Feature detection
+
+    In computer vision and image processing the concept of feature detection refers to methods that aim at computing abstractions of image information and making local decisions at every image point whether there is an image feature of a given type at that point or not. The resulting features will be subsets of the image domain, often in the form of isolated points, continuous curves or connected regions.
+
+    Feature detection = how to find some interesting points (features) in the image.(Ex: find a corner, find a template and so on...)
+
+Feature extraction
+
+    In pattern recognition and in image processing, feature extraction is a special form of dimensionality reduction. When the input data to an algorithm is too large to be processed and it is suspected to be notoriously redundant (much data, but not much information) then the input data will be transformed into a reduced representation set of features (also named features vector). Transforming the input data into the set of features is called feature extraction. If the features extracted are carefully chosen it is expected that the features set will extract the relevant information from the input data in order to perform the desired task using this reduced representation instead of the full size input.
+
+    Feature extraction = how to represent the interesting points we found to compare them with other interesting points (features) in the image. (Ex, the local area intensity of this point? The local orientation of the area around the point? and so on...)
+
+Practical example : You can find a corner with the harris corner method, but you can describe it with any method you want (Histograms , HOG, Local Orientation in the 8th adjacency for instance)
+
+You can see here some more informations, Wikipedia link
+
+
+This will only be a brief answer but I hope that it helps somehow or that someone can write a more detailed answer.
+
+    I understand how FAST, SIFT, SURF work but can't seem to figure out which ones of the above are only detectors and which are extractors.
+
+Basically, from that list of feature detectors/extractors (FAST, GFTT, SIFT, SURF, MSER, STAR, ORB, BRISK, FREAK, BRIEF ), some of them are only feature detectors (FAST, GFTT) others are both feature detectors and descriptor extractors (SIFT, SURF, ORB, FREAK).
+
+If I remember correctly, BRIEF is only a descriptor extractor, so it needs features detected by some other algorithm like FAST or ORB.
+
+To be sure which is which, you have to either browse the article related to the algorithm or browse opencv documentation to see which was implemented for the FeatureDetector class or with was for the DescriptorExtractor class.
+
+(1, 2) To classify them as float and uchar, the link you already posted is the best reference I know, maybe someone will be able to complete it.
+
+Answering (3), OpenCV made the code to use the various types quite the same - mainly you have to choose one feature detector. Most of the difference is in choosing the type of matcher and you already mentioned the 3 ones that OpenCV has. Your best bet here is to read the documentation, code samples, and related stack questions.
+
+Matchers are used to find if a descriptor is similar to another descriptor from a list. You can either compare your query descriptor with all other descriptors from the list (BruteForce) or you use a better heuristic (FlannBased, knnMatch). The problem is that the heuristics do not work for all types of descriptors. For example, FlannBased implementation used to work only with float descriptors but not with uchar's (But since 2.4.0, FlannBased with LSH index can be applied to uchar descriptors).
+
+Some of the more popular combinations are:
+
+Feature Detectors / Decriptor Extractors / Matchers types
+
+    (FAST, SURF) / SURF / FlannBased
+
+    (FAST, SIFT) / SIFT / FlannBased
+
+    (FAST, ORB) / ORB / Bruteforce
+
+    (FAST, ORB) / BRIEF / Bruteforce
+
+    (FAST, SURF) / FREAK / Bruteforce
+
+Final note: Beware that this might have some mistakes so don't follow it blindly.
+
+
+This will only be a brief answer but I hope that it helps somehow or that someone can write a more detailed answer.
+
+    I understand how FAST, SIFT, SURF work but can't seem to figure out which ones of the above are only detectors and which are extractors.
+
+Basically, from that list of feature detectors/extractors (FAST, GFTT, SIFT, SURF, MSER, STAR, ORB, BRISK, FREAK, BRIEF ), some of them are only feature detectors (FAST, GFTT) others are both feature detectors and descriptor extractors (SIFT, SURF, ORB, FREAK).
+
+If I remember correctly, BRIEF is only a descriptor extractor, so it needs features detected by some other algorithm like FAST or ORB.
+
+To be sure which is which, you have to either browse the article related to the algorithm or browse opencv documentation to see which was implemented for the FeatureDetector class or with was for the DescriptorExtractor class.
+
+(1, 2) To classify them as float and uchar, the link you already posted is the best reference I know, maybe someone will be able to complete it.
+
+Answering (3), OpenCV made the code to use the various types quite the same - mainly you have to choose one feature detector. Most of the difference is in choosing the type of matcher and you already mentioned the 3 ones that OpenCV has. Your best bet here is to read the documentation, code samples, and related stack questions.
+
+Matchers are used to find if a descriptor is similar to another descriptor from a list. You can either compare your query descriptor with all other descriptors from the list (BruteForce) or you use a better heuristic (FlannBased, knnMatch). The problem is that the heuristics do not work for all types of descriptors. For example, FlannBased implementation used to work only with float descriptors but not with uchar's (But since 2.4.0, FlannBased with LSH index can be applied to uchar descriptors).
+
+Some of the more popular combinations are:
+
+Feature Detectors / Decriptor Extractors / Matchers types
+
+    (FAST, SURF) / SURF / FlannBased
+
+    (FAST, SIFT) / SIFT / FlannBased
+
+    (FAST, ORB) / ORB / Bruteforce
+
+    (FAST, ORB) / BRIEF / Bruteforce
+
+    (FAST, SURF) / FREAK / Bruteforce
+
+Final note: Beware that this might have some mistakes so don't follow it blindly.
