@@ -17,13 +17,18 @@
 		EB2315001726BF98004850AE /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB2314FF1726BF98004850AE /* Default@2x.png */; };
 		EB2315021726BF98004850AE /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB2315011726BF98004850AE /* Default-568h@2x.png */; };
 		EB2315051726BF98004850AE /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = EB2315041726BF98004850AE /* ViewController.mm */; };
-		EB2315081726BF98004850AE /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB2315061726BF98004850AE /* ViewController.xib */; };
 		EB2315131726C3ED004850AE /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB2315121726C3ED004850AE /* opencv2.framework */; };
 		EB659B971726C6A2002F34D2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB659B951726C69B002F34D2 /* AVFoundation.framework */; };
 		EB659B9A1726C73D002F34D2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB659B981726C736002F34D2 /* QuartzCore.framework */; };
 		EB659BA01726C7A4002F34D2 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB659B9E1726C79F002F34D2 /* CoreVideo.framework */; };
 		EB659BA31726C7D7002F34D2 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB659BA11726C7CC002F34D2 /* CoreMedia.framework */; };
 		EB659BA61726C803002F34D2 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB659BA41726C7FC002F34D2 /* AssetsLibrary.framework */; };
+		EB659BA91726D5CA002F34D2 /* GLESImageView.mm in Sources */ = {isa = PBXBuildFile; fileRef = EB659BA81726D5CA002F34D2 /* GLESImageView.mm */; };
+		EB659BAC1726D5DF002F34D2 /* FPSCalculator.mm in Sources */ = {isa = PBXBuildFile; fileRef = EB659BAB1726D5DF002F34D2 /* FPSCalculator.mm */; };
+		EB659BAF1726D5F9002F34D2 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB659BAD1726D5F0002F34D2 /* OpenGLES.framework */; };
+		EB659BB41726D738002F34D2 /* VideoSource.mm in Sources */ = {isa = PBXBuildFile; fileRef = EB659BB31726D738002F34D2 /* VideoSource.mm */; };
+		EB659BB71726DB23002F34D2 /* sun@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB659BB61726DB23002F34D2 /* sun@2x.png */; };
+		EB659BB91726DB25002F34D2 /* sun.png in Resources */ = {isa = PBXBuildFile; fileRef = EB659BB81726DB25002F34D2 /* sun.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,13 +47,21 @@
 		EB2315011726BF98004850AE /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		EB2315031726BF98004850AE /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		EB2315041726BF98004850AE /* ViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
-		EB2315071726BF98004850AE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
 		EB2315121726C3ED004850AE /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
 		EB659B951726C69B002F34D2 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		EB659B981726C736002F34D2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		EB659B9E1726C79F002F34D2 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		EB659BA11726C7CC002F34D2 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		EB659BA41726C7FC002F34D2 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		EB659BA71726D5CA002F34D2 /* GLESImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLESImageView.h; sourceTree = "<group>"; };
+		EB659BA81726D5CA002F34D2 /* GLESImageView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GLESImageView.mm; sourceTree = "<group>"; };
+		EB659BAA1726D5DF002F34D2 /* FPSCalculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPSCalculator.h; sourceTree = "<group>"; };
+		EB659BAB1726D5DF002F34D2 /* FPSCalculator.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FPSCalculator.mm; sourceTree = "<group>"; };
+		EB659BAD1726D5F0002F34D2 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		EB659BB21726D738002F34D2 /* VideoSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoSource.h; sourceTree = "<group>"; };
+		EB659BB31726D738002F34D2 /* VideoSource.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = VideoSource.mm; sourceTree = "<group>"; };
+		EB659BB61726DB23002F34D2 /* sun@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "sun@2x.png"; path = "../sun@2x.png"; sourceTree = "<group>"; };
+		EB659BB81726DB25002F34D2 /* sun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sun.png; path = ../sun.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +70,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB2315131726C3ED004850AE /* opencv2.framework in Frameworks */,
+				EB659BAF1726D5F9002F34D2 /* OpenGLES.framework in Frameworks */,
 				EB659BA31726C7D7002F34D2 /* CoreMedia.framework in Frameworks */,
 				EB659BA61726C803002F34D2 /* AssetsLibrary.framework in Frameworks */,
 				EB659BA01726C7A4002F34D2 /* CoreVideo.framework in Frameworks */,
@@ -92,12 +106,13 @@
 		EB2314EA1726BF98004850AE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EB2315121726C3ED004850AE /* opencv2.framework */,
+				EB659BAD1726D5F0002F34D2 /* OpenGLES.framework */,
 				EB659BA41726C7FC002F34D2 /* AssetsLibrary.framework */,
 				EB659BA11726C7CC002F34D2 /* CoreMedia.framework */,
 				EB659B9E1726C79F002F34D2 /* CoreVideo.framework */,
 				EB659B981726C736002F34D2 /* QuartzCore.framework */,
 				EB659B951726C69B002F34D2 /* AVFoundation.framework */,
-				EB2315121726C3ED004850AE /* opencv2.framework */,
 				EB2314EB1726BF98004850AE /* UIKit.framework */,
 				EB2314ED1726BF98004850AE /* Foundation.framework */,
 				EB2314EF1726BF98004850AE /* CoreGraphics.framework */,
@@ -108,11 +123,8 @@
 		EB2314F11726BF98004850AE /* EY_find */ = {
 			isa = PBXGroup;
 			children = (
-				EB2314FA1726BF98004850AE /* AppDelegate.h */,
-				EB2314FB1726BF98004850AE /* AppDelegate.m */,
-				EB2315031726BF98004850AE /* ViewController.h */,
-				EB2315041726BF98004850AE /* ViewController.mm */,
-				EB2315061726BF98004850AE /* ViewController.xib */,
+				EB659BB11726D717002F34D2 /* controllers */,
+				EB659BB01726D709002F34D2 /* models */,
 				EB2314F21726BF98004850AE /* Supporting Files */,
 			);
 			path = EY_find;
@@ -121,6 +133,8 @@
 		EB2314F21726BF98004850AE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EB659BB81726DB25002F34D2 /* sun.png */,
+				EB659BB61726DB23002F34D2 /* sun@2x.png */,
 				EB2314F31726BF98004850AE /* EY_find-Info.plist */,
 				EB2314F41726BF98004850AE /* InfoPlist.strings */,
 				EB2314F71726BF98004850AE /* main.m */,
@@ -135,8 +149,41 @@
 		EB23150E1726C2A2004850AE /* OpenGL_support */ = {
 			isa = PBXGroup;
 			children = (
+				EB659BAA1726D5DF002F34D2 /* FPSCalculator.h */,
+				EB659BAB1726D5DF002F34D2 /* FPSCalculator.mm */,
+				EB659BA71726D5CA002F34D2 /* GLESImageView.h */,
+				EB659BA81726D5CA002F34D2 /* GLESImageView.mm */,
 			);
 			name = OpenGL_support;
+			sourceTree = "<group>";
+		};
+		EB659BB01726D709002F34D2 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				EB659BB51726D7A7002F34D2 /* VideoSource */,
+			);
+			name = models;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		EB659BB11726D717002F34D2 /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				EB2314FA1726BF98004850AE /* AppDelegate.h */,
+				EB2314FB1726BF98004850AE /* AppDelegate.m */,
+				EB2315031726BF98004850AE /* ViewController.h */,
+				EB2315041726BF98004850AE /* ViewController.mm */,
+			);
+			name = controllers;
+			sourceTree = "<group>";
+		};
+		EB659BB51726D7A7002F34D2 /* VideoSource */ = {
+			isa = PBXGroup;
+			children = (
+				EB659BB21726D738002F34D2 /* VideoSource.h */,
+				EB659BB31726D738002F34D2 /* VideoSource.mm */,
+			);
+			name = VideoSource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,7 +241,8 @@
 				EB2314FE1726BF98004850AE /* Default.png in Resources */,
 				EB2315001726BF98004850AE /* Default@2x.png in Resources */,
 				EB2315021726BF98004850AE /* Default-568h@2x.png in Resources */,
-				EB2315081726BF98004850AE /* ViewController.xib in Resources */,
+				EB659BB71726DB23002F34D2 /* sun@2x.png in Resources */,
+				EB659BB91726DB25002F34D2 /* sun.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,6 +256,9 @@
 				EB2314F81726BF98004850AE /* main.m in Sources */,
 				EB2314FC1726BF98004850AE /* AppDelegate.m in Sources */,
 				EB2315051726BF98004850AE /* ViewController.mm in Sources */,
+				EB659BA91726D5CA002F34D2 /* GLESImageView.mm in Sources */,
+				EB659BAC1726D5DF002F34D2 /* FPSCalculator.mm in Sources */,
+				EB659BB41726D738002F34D2 /* VideoSource.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,14 +271,6 @@
 				EB2314F51726BF98004850AE /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		EB2315061726BF98004850AE /* ViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EB2315071726BF98004850AE /* en */,
-			);
-			name = ViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -297,7 +340,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EY_find/EY_find-Prefix.pch";
 				INFOPLIST_FILE = "EY_find/EY_find-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -312,7 +357,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EY_find/EY_find-Prefix.pch";
 				INFOPLIST_FILE = "EY_find/EY_find-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -7,12 +7,12 @@
 //
 
 #import "ViewController.h"
-#import <opencv2/highgui/cap_ios.h>
-using namespace cv;
+#import "VideoSource.h"
+#import "GLESImageView.h"
 
-@interface ViewController (){
-    CvVideoCamera*  _videoCamera;
-    UIImageView*    _videoDisplayer;
+@interface ViewController ()<VideoSourceDelegate>{
+    VideoSource*    _videoSource;
+    GLESImageView*  _GLView;
 }
 @end
 
@@ -21,10 +21,39 @@ using namespace cv;
 #pragma mark -------------------------- public ---------------------------------
 #pragma mark -------------------------------------------------------------------
 
+#pragma mark - videoSource Delegate
+
+- (void)frameCaptured:(cv::Mat)frame{
+    [_GLView drawFrame: frame];
+}
+
 #pragma mark - lifeCycle
+
+- (void)viewWillAppear:(BOOL)animated{
+    [_videoSource startRunning];
+}
+
+- (void)viewDidDisappear:(BOOL)animated{
+    [_videoSource stopRunning];
+}
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+}
+
+#pragma mark - alloc / dealloc
+
+- (id)init{
+    if(self = [super init]){
+        [self setUpAll];
+    }
+    return self;
+}
+
+- (void)dealloc{
+    [_videoSource   release];
+    [_GLView        release];
+    [super dealloc];
 }
 
 #pragma mark -------------------------- private --------------------------------
@@ -32,12 +61,19 @@ using namespace cv;
 
 #pragma mark - setup
 
-- (void)setUpVideoCamera:(CvVideoCamera*)videoCamera withParentView:(UIView*)view{
-    videoCamera = [[CvVideoCamera alloc] initWithParentView: view];
-    videoCamera.defaultAVCaptureDevicePosition      = AVCaptureDevicePositionFront;
-    videoCamera.defaultAVCaptureSessionPreset       = AVCaptureSessionPreset352x288;
-    videoCamera.defaultAVCaptureVideoOrientation    = AVCaptureVideoOrientationPortrait;
-    videoCamera.defaultFPS      = 30;
-    videoCamera.grayscaleMode   = NO;
+- (void)setUpAll{
+    [self setUpOpenGlView];
+    [self setUpVideoSource];
+    self.view = _GLView;
+}
+
+- (void)setUpVideoSource{
+    _videoSource            = [[VideoSource alloc] init];
+    _videoSource.delegate    = self;
+}
+
+- (void)setUpOpenGlView{
+    CGRect frame    = [UIScreen mainScreen].applicationFrame;
+    _GLView         = [[GLESImageView alloc] initWithFrame: frame];
 }
 @end
