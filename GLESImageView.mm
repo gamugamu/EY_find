@@ -195,8 +195,10 @@
   [self setFramebuffer];  
   [self.fpsCalculator putTimeMark];
   
-  self.fpsLabel.text = [self.fpsCalculator getFPSAsText];
+  self.fpsLabel.text = @"fdg";
   
+    NSLog(@"---> %@", [self.fpsCalculator getFPSAsText]);
+    
   glPixelStorei(GL_PACK_ALIGNMENT, 1);
   //glPixelStorei(GL_PACK_ROW_LENGTH, (size_t)bgraFrame.step);
   glBindTexture(GL_TEXTURE_2D, backgroundTextureId);
@@ -223,62 +225,60 @@
     1, 1,   0, 1
   };  
   
-  static GLfloat textureVerticesLandscapeRight[] =
-  {
+  static GLfloat textureVerticesLandscapeRight[] ={
     0, 1,   1, 1,
     0, 0,   1, 0
   }; 
   
-  switch (uiOrientation)
-  {
-    case UIInterfaceOrientationPortrait:
-      textureVertices = textureVerticesPortrait;
-      break;
+  switch (uiOrientation){
+      case UIInterfaceOrientationPortrait:
+          textureVertices = textureVerticesPortrait;
+          break;
 
-    case UIInterfaceOrientationPortraitUpsideDown:
-      textureVertices = textureVerticesPortraitUpsideDown;
-      break;
+      case UIInterfaceOrientationPortraitUpsideDown:
+          textureVertices = textureVerticesPortraitUpsideDown;
+          break;
 
-    case UIInterfaceOrientationLandscapeLeft:
-      textureVertices = textureVerticesLandscapeLeft;
-      break;
+      case UIInterfaceOrientationLandscapeLeft:
+          textureVertices = textureVerticesLandscapeLeft;
+          break;
 
-    case UIInterfaceOrientationLandscapeRight:
-    default:
-      textureVertices = textureVerticesLandscapeRight;
-      break;
-  };
+      case UIInterfaceOrientationLandscapeRight:
+      default:
+          textureVertices = textureVerticesLandscapeRight;
+          break;
+    };
   
-  static const GLfloat squareVertices[] ={
-    -1, -1,
-    +1, -1,
-    -1, +1,
-    +1, +1
-  };
+    static const GLfloat squareVertices[] ={
+      -1, -1,
+      +1, -1,
+      -1, +1,
+      +1, +1
+    };
   
-  glMatrixMode(GL_PROJECTION);
-  glLoadIdentity();
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
   
-  glMatrixMode(GL_MODELVIEW);
-  glLoadIdentity();
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
   
-  glDisable(GL_COLOR_MATERIAL);
+    glDisable(GL_COLOR_MATERIAL);
   
-  glEnable(GL_TEXTURE_2D);
-  glBindTexture(GL_TEXTURE_2D, backgroundTextureId);
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, backgroundTextureId);
   
-  // Update attribute values.
-  glVertexPointer(2, GL_FLOAT, 0, squareVertices);
-  glEnableClientState(GL_VERTEX_ARRAY);
-  glTexCoordPointer(2, GL_FLOAT, 0, textureVertices);
-  glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+    // Update attribute values.
+    glVertexPointer(2, GL_FLOAT, 0, squareVertices);
+    glEnableClientState(GL_VERTEX_ARRAY);
+    glTexCoordPointer(2, GL_FLOAT, 0, textureVertices);
+    glEnableClientState(GL_TEXTURE_COORD_ARRAY);
   
-  glColor4f(1,1,1,1);
-  glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+    glColor4f(1,1,1,1);
+    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
   
-  glDisableClientState(GL_VERTEX_ARRAY);
-  glDisableClientState(GL_TEXTURE_COORD_ARRAY);
-  glDisable(GL_TEXTURE_2D);
+    glDisableClientState(GL_VERTEX_ARRAY);
+    glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+    glDisable(GL_TEXTURE_2D);
   
     bool ok = [self presentFramebuffer];
 #warning  à enlever en prod

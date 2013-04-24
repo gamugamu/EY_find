@@ -26,7 +26,7 @@
 #pragma mark - videoSource Delegate
 
 - (void)frameCaptured:(frameCaptured*)captureDescription{
-    //[_GLView drawFrame: imageFromAVRepresentation(captureDescription)];
+    [_GLView drawFrame: imageFromAVRepresentation(captureDescription)];
 }
 
 #pragma mark - lifeCycle
