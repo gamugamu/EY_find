@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Abadie, Loïc. All rights reserved.
 //
 
-#include "AVtoCVImageWrapper.h"
+#include "IR_AVtoCVImageWrapper.h"
 
 const cv::Mat imageFromAVRepresentation(const frameCaptured* rep){
     cv::Mat frame(rep->height, rep->width, CV_8UC4, (void*)rep->baseAddress, rep->stride);

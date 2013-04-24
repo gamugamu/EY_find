@@ -9,7 +9,7 @@
 #ifndef __EY_find__AVtoCVImageWrapper__
 #define __EY_find__AVtoCVImageWrapper__
 
-#include "AVFrameRep.h"
+#include "IR_AVFrameRep.h"
 
 const cv::Mat imageFromAVRepresentation(const frameCaptured* rep);
 #endif

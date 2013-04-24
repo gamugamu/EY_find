@@ -59,6 +59,11 @@
       [self.fpsLabel sizeToFit];
       
       [self addSubview: self.fpsLabel];
+        
+#warning test, à elnever
+        UIView* redColor = [[UIView alloc] initWithFrame: CGRectMake(0, 0, 10, 10)];
+        redColor.backgroundColor = [UIColor redColor];
+        [self addSubview: redColor];
       [self initContext];
     }
     return self;
@@ -195,10 +200,8 @@
   [self setFramebuffer];  
   [self.fpsCalculator putTimeMark];
   
-  self.fpsLabel.text = @"fdg";
-  
-    NSLog(@"---> %@", [self.fpsCalculator getFPSAsText]);
-    
+  self.fpsLabel.text = [self.fpsCalculator getFPSAsText];
+      
   glPixelStorei(GL_PACK_ALIGNMENT, 1);
   //glPixelStorei(GL_PACK_ROW_LENGTH, (size_t)bgraFrame.step);
   glBindTexture(GL_TEXTURE_2D, backgroundTextureId);

@@ -28,13 +28,18 @@
 		EB659BB41726D738002F34D2 /* VideoSource.mm in Sources */ = {isa = PBXBuildFile; fileRef = EB659BB31726D738002F34D2 /* VideoSource.mm */; };
 		EB659BB71726DB23002F34D2 /* sun@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB659BB61726DB23002F34D2 /* sun@2x.png */; };
 		EB659BB91726DB25002F34D2 /* sun.png in Resources */ = {isa = PBXBuildFile; fileRef = EB659BB81726DB25002F34D2 /* sun.png */; };
-		EB659BC71726DDA7002F34D2 /* ImageRecognizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB659BBB1726DD05002F34D2 /* ImageRecognizer.cpp */; };
-		EBD86A721727B6DB00C0DBC3 /* ImageRecognizer.h in Headers */ = {isa = PBXBuildFile; fileRef = EB659BBC1726DD05002F34D2 /* ImageRecognizer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EB659BC71726DDA7002F34D2 /* IR_Detector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB659BBB1726DD05002F34D2 /* IR_Detector.cpp */; };
+		EBD86A721727B6DB00C0DBC3 /* IR_Detector.h in Headers */ = {isa = PBXBuildFile; fileRef = EB659BBC1726DD05002F34D2 /* IR_Detector.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EBD86A731727B89100C0DBC3 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB2315121726C3ED004850AE /* opencv2.framework */; settings = {ATTRIBUTES = (Required, ); }; };
-		EBD86A761727BD6800C0DBC3 /* AVtoCVImageWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EBD86A741727BD6800C0DBC3 /* AVtoCVImageWrapper.cpp */; };
-		EBD86A771727BD6800C0DBC3 /* AVtoCVImageWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = EBD86A751727BD6800C0DBC3 /* AVtoCVImageWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EBD86A791727BDC600C0DBC3 /* AVFrameRep.h in Headers */ = {isa = PBXBuildFile; fileRef = EBD86A781727BDC600C0DBC3 /* AVFrameRep.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EBD86A811727CE5200C0DBC3 /* libIR_lib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB659BC11726DD8F002F34D2 /* libIR_lib.a */; settings = {ATTRIBUTES = (Weak, ); }; };
+		EBD86A761727BD6800C0DBC3 /* IR_AVtoCVImageWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EBD86A741727BD6800C0DBC3 /* IR_AVtoCVImageWrapper.cpp */; };
+		EBD86A771727BD6800C0DBC3 /* IR_AVtoCVImageWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = EBD86A751727BD6800C0DBC3 /* IR_AVtoCVImageWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EBD86A791727BDC600C0DBC3 /* IR_AVFrameRep.h in Headers */ = {isa = PBXBuildFile; fileRef = EBD86A781727BDC600C0DBC3 /* IR_AVFrameRep.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EBD86A811727CE5200C0DBC3 /* libIR_lib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB659BC11726DD8F002F34D2 /* libIR_lib.a */; settings = {ATTRIBUTES = (Required, ); }; };
+		EBD86AA21727FDC300C0DBC3 /* IR_Config.h in Headers */ = {isa = PBXBuildFile; fileRef = EBD86AA11727FDC300C0DBC3 /* IR_Config.h */; };
+		EBD86AA6172818D300C0DBC3 /* IR_CVHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EBD86AA4172818D200C0DBC3 /* IR_CVHelper.cpp */; };
+		EBD86AA7172818D300C0DBC3 /* IR_CVHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = EBD86AA5172818D200C0DBC3 /* IR_CVHelper.h */; };
+		EBD86AAA172818FC00C0DBC3 /* cvneon.h in Headers */ = {isa = PBXBuildFile; fileRef = EBD86AA8172818FC00C0DBC3 /* cvneon.h */; };
+		EBD86AAB172818FC00C0DBC3 /* cvneon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EBD86AA9172818FC00C0DBC3 /* cvneon.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,13 +73,18 @@
 		EB659BB31726D738002F34D2 /* VideoSource.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = VideoSource.mm; sourceTree = "<group>"; };
 		EB659BB61726DB23002F34D2 /* sun@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "sun@2x.png"; path = "../sun@2x.png"; sourceTree = "<group>"; };
 		EB659BB81726DB25002F34D2 /* sun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sun.png; path = ../sun.png; sourceTree = "<group>"; };
-		EB659BBB1726DD05002F34D2 /* ImageRecognizer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = ImageRecognizer.cpp; path = ImageRecognizer/ImageRecognizer.cpp; sourceTree = "<group>"; };
-		EB659BBC1726DD05002F34D2 /* ImageRecognizer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ImageRecognizer.h; path = ImageRecognizer/ImageRecognizer.h; sourceTree = "<group>"; };
+		EB659BBB1726DD05002F34D2 /* IR_Detector.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = IR_Detector.cpp; path = ImageRecognizer/IR_Detector.cpp; sourceTree = "<group>"; };
+		EB659BBC1726DD05002F34D2 /* IR_Detector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IR_Detector.h; path = ImageRecognizer/IR_Detector.h; sourceTree = "<group>"; };
 		EB659BC11726DD8F002F34D2 /* libIR_lib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libIR_lib.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		EBD86A741727BD6800C0DBC3 /* AVtoCVImageWrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AVtoCVImageWrapper.cpp; path = ImageRecognizer/AVtoCVImageWrapper.cpp; sourceTree = "<group>"; };
-		EBD86A751727BD6800C0DBC3 /* AVtoCVImageWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AVtoCVImageWrapper.h; path = ImageRecognizer/AVtoCVImageWrapper.h; sourceTree = "<group>"; };
-		EBD86A781727BDC600C0DBC3 /* AVFrameRep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVFrameRep.h; sourceTree = "<group>"; };
+		EBD86A741727BD6800C0DBC3 /* IR_AVtoCVImageWrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IR_AVtoCVImageWrapper.cpp; path = ImageRecognizer/IR_AVtoCVImageWrapper.cpp; sourceTree = "<group>"; };
+		EBD86A751727BD6800C0DBC3 /* IR_AVtoCVImageWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IR_AVtoCVImageWrapper.h; path = ImageRecognizer/IR_AVtoCVImageWrapper.h; sourceTree = "<group>"; };
+		EBD86A781727BDC600C0DBC3 /* IR_AVFrameRep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IR_AVFrameRep.h; sourceTree = "<group>"; };
 		EBD86A7A1727BEF700C0DBC3 /* IR_Lib.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IR_Lib.pch; path = ImageRecognizer/IR_Lib.pch; sourceTree = "<group>"; };
+		EBD86AA11727FDC300C0DBC3 /* IR_Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IR_Config.h; path = ImageRecognizer/IR_Config.h; sourceTree = "<group>"; };
+		EBD86AA4172818D200C0DBC3 /* IR_CVHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IR_CVHelper.cpp; sourceTree = "<group>"; };
+		EBD86AA5172818D200C0DBC3 /* IR_CVHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IR_CVHelper.h; sourceTree = "<group>"; };
+		EBD86AA8172818FC00C0DBC3 /* cvneon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cvneon.h; sourceTree = "<group>"; };
+		EBD86AA9172818FC00C0DBC3 /* cvneon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cvneon.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,15 +221,36 @@
 		EB659BBA1726DC9B002F34D2 /* IR_lib */ = {
 			isa = PBXGroup;
 			children = (
-				EB2315121726C3ED004850AE /* opencv2.framework */,
-				EB659BBC1726DD05002F34D2 /* ImageRecognizer.h */,
-				EB659BBB1726DD05002F34D2 /* ImageRecognizer.cpp */,
-				EBD86A751727BD6800C0DBC3 /* AVtoCVImageWrapper.h */,
-				EBD86A741727BD6800C0DBC3 /* AVtoCVImageWrapper.cpp */,
-				EBD86A781727BDC600C0DBC3 /* AVFrameRep.h */,
+				EB659BBC1726DD05002F34D2 /* IR_Detector.h */,
+				EB659BBB1726DD05002F34D2 /* IR_Detector.cpp */,
+				EBD86A751727BD6800C0DBC3 /* IR_AVtoCVImageWrapper.h */,
+				EBD86A741727BD6800C0DBC3 /* IR_AVtoCVImageWrapper.cpp */,
+				EBD86A781727BDC600C0DBC3 /* IR_AVFrameRep.h */,
+				EBD86AA5172818D200C0DBC3 /* IR_CVHelper.h */,
+				EBD86AA4172818D200C0DBC3 /* IR_CVHelper.cpp */,
 				EBD86A7A1727BEF700C0DBC3 /* IR_Lib.pch */,
+				EBD86AA11727FDC300C0DBC3 /* IR_Config.h */,
+				EBD86AAD1728191100C0DBC3 /* framework */,
+				EBD86AAC1728190600C0DBC3 /* neon */,
 			);
 			name = IR_lib;
+			sourceTree = "<group>";
+		};
+		EBD86AAC1728190600C0DBC3 /* neon */ = {
+			isa = PBXGroup;
+			children = (
+				EBD86AA8172818FC00C0DBC3 /* cvneon.h */,
+				EBD86AA9172818FC00C0DBC3 /* cvneon.cpp */,
+			);
+			name = neon;
+			sourceTree = "<group>";
+		};
+		EBD86AAD1728191100C0DBC3 /* framework */ = {
+			isa = PBXGroup;
+			children = (
+				EB2315121726C3ED004850AE /* opencv2.framework */,
+			);
+			name = framework;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,9 +260,12 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EBD86A791727BDC600C0DBC3 /* AVFrameRep.h in Headers */,
-				EBD86A721727B6DB00C0DBC3 /* ImageRecognizer.h in Headers */,
-				EBD86A771727BD6800C0DBC3 /* AVtoCVImageWrapper.h in Headers */,
+				EBD86A791727BDC600C0DBC3 /* IR_AVFrameRep.h in Headers */,
+				EBD86A721727B6DB00C0DBC3 /* IR_Detector.h in Headers */,
+				EBD86A771727BD6800C0DBC3 /* IR_AVtoCVImageWrapper.h in Headers */,
+				EBD86AA21727FDC300C0DBC3 /* IR_Config.h in Headers */,
+				EBD86AA7172818D300C0DBC3 /* IR_CVHelper.h in Headers */,
+				EBD86AAA172818FC00C0DBC3 /* cvneon.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,8 +384,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB659BC71726DDA7002F34D2 /* ImageRecognizer.cpp in Sources */,
-				EBD86A761727BD6800C0DBC3 /* AVtoCVImageWrapper.cpp in Sources */,
+				EB659BC71726DDA7002F34D2 /* IR_Detector.cpp in Sources */,
+				EBD86A761727BD6800C0DBC3 /* IR_AVtoCVImageWrapper.cpp in Sources */,
+				EBD86AA6172818D300C0DBC3 /* IR_CVHelper.cpp in Sources */,
+				EBD86AAB172818FC00C0DBC3 /* cvneon.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
