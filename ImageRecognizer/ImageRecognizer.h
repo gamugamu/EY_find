@@ -9,7 +9,11 @@
 #ifndef __EY_find__ImageRecognizer__
 #define __EY_find__ImageRecognizer__
 
-#include <iostream>
+class ImageRecognizer{
+    public:
+    virtual bool processFrame(const cv::Mat& inputFrame, cv::Mat& outputFrame);
 
-void printHello();
+    private:
+};
+
 #endif /* defined(__EY_find__ImageRecognizer__) */

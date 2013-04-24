@@ -10,6 +10,7 @@
 #import "VideoSource.h"
 #import "GLESImageView.h"
 #import "ImageRecognizer.h"
+#import "AVtoCVImageWrapper.h"
 
 @interface ViewController ()<VideoSourceDelegate>{
     VideoSource*    _videoSource;
@@ -24,8 +25,8 @@
 
 #pragma mark - videoSource Delegate
 
-- (void)frameCaptured:(cv::Mat)frame{
-    [_GLView drawFrame: frame];
+- (void)frameCaptured:(frameCaptured*)captureDescription{
+    //[_GLView drawFrame: imageFromAVRepresentation(captureDescription)];
 }
 
 #pragma mark - lifeCycle
@@ -70,7 +71,7 @@
 
 - (void)setUpVideoSource{
     _videoSource            = [[VideoSource alloc] init];
-    _videoSource.delegate    = self;
+    _videoSource.delegate   = self;
 }
 
 - (void)setUpOpenGlView{

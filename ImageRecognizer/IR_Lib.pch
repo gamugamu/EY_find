@@ -1,0 +1,13 @@
+//
+//  IR_Lib.h
+//  EY_find
+//
+//  Created by Abadie, Loïc on 24/04/13.
+//  Copyright (c) 2013 Abadie, Loïc. All rights reserved.
+//
+
+#ifdef __cplusplus
+#include <iostream>
+#include <opencv2/opencv.hpp>
+#include <opencv2/nonfree/nonfree.hpp>
+#endif
