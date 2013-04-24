@@ -1,0 +1,13 @@
+//
+// Prefix header for all source files of the 'UIImageToOpenCV' target in the 'UIImageToOpenCV' project
+//
+
+#ifdef __cplusplus
+#include <iostream>
+#include <opencv2/opencv.hpp>
+#include <opencv2/nonfree/nonfree.hpp>
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+#endif

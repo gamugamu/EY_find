@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "ImageRecognizer.h"
 #import "ViewController.h"
 
 @implementation AppDelegate

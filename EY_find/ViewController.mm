@@ -9,12 +9,14 @@
 #import "ViewController.h"
 #import "VideoSource.h"
 #import "GLESImageView.h"
-#import "ImageRecognizer.h"
-#import "AVtoCVImageWrapper.h"
+#import "IR_AVtoCVImageWrapper.h"
+#import "IR_Detector.h"
+#import "UIImage+OpenCV.h"
 
 @interface ViewController ()<VideoSourceDelegate>{
     VideoSource*    _videoSource;
     GLESImageView*  _GLView;
+    IR_Detector*    _detector;
 }
 @end
 
@@ -26,7 +28,9 @@
 #pragma mark - videoSource Delegate
 
 - (void)frameCaptured:(frameCaptured*)captureDescription{
-    [_GLView drawFrame: imageFromAVRepresentation(captureDescription)];
+    cv::Mat image = imageFromAVRepresentation(captureDescription);
+    _detector->processFrame(image);
+    [_GLView drawFrame: image];
 }
 
 #pragma mark - lifeCycle
@@ -55,6 +59,7 @@
 - (void)dealloc{
     [_videoSource   release];
     [_GLView        release];
+    delete _detector;
     [super dealloc];
 }
 
@@ -66,6 +71,7 @@
 - (void)setUpAll{
     [self setUpOpenGlView];
     [self setUpVideoSource];
+    [self setUpDetector];
     self.view = _GLView;
 }
 
@@ -78,4 +84,13 @@
     CGRect frame    = [UIScreen mainScreen].applicationFrame;
     _GLView         = [[GLESImageView alloc] initWithFrame: frame];
 }
+
+- (void)setUpDetector{
+    _detector = new IR_Detector(480, 640);
+    
+    // note: 
+    UIImage* referer     = [UIImage imageNamed: @"referer_2.jpg"];
+    _detector->testPonyDetectCreateDescriptor([referer toMat]);
+}
+
 @end

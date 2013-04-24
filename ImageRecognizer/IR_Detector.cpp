@@ -9,8 +9,15 @@
 #include "IR_Detector.h"
 #include "IR_CVHelper.h"
 
+const int IR_ImageNotFound = -1;
+
 // retourne seulement les points de similarités les plus proches.
 cv::vector<cv::DMatch> neirestNeighboor(cv::vector<cv::vector<cv::DMatch> > matches);
+
+// retourne si oui on non, on  a retrouver une similitude dans la banque d'images.
+// match - les points calculés par neirestNeighboor();
+// idx - renvoie l'idx de l'image, IR_ImageNotFound si rien n'a été trouvé.
+static void didFoundReferer(cv::vector<cv::DMatch > &match, unsigned* idx);
 
 // tri les similarités et enlève les similarités dupliquées. (certains "matches"
 // pointent sur les mêmes données. Ca ne nous interesse pas.
@@ -19,76 +26,113 @@ static void sortMatch(cv::vector<cv::DMatch > &match);
 // helper pour le tri du tableau des similarités.
 static bool sortImgByIdx(const cv::DMatch& d1, const cv::DMatch& d2);
 
+// helper pour calucler la région d'intérêt (ROI). Lors du calcul des images.
+cv::Rect computeROI(unsigned width, unsigned height);
+
 #pragma mark -------------------------- public ---------------------------------
 #pragma mark -------------------------------------------------------------------
 
-IR_Detector::IR_Detector(){
+IR_Detector::IR_Detector(unsigned width, unsigned height){
     matcher         = new cv::BFMatcher(cv::NORM_L2, false);
     detector        = new cv::OrbFeatureDetector(KMax_feature);
     extractor       = new cv::OrbDescriptorExtractor;
+    roi             = computeROI(width, height);
+    shouldProcess   = true;
 }
 
-bool IR_Detector::processFrame(const cv::Mat& inputFrame, cv::Mat& outputFrame){
+bool IR_Detector::processFrame(const cv::Mat& inputFrame){
     if(!shouldProcess)
         return false;
     
     shouldProcess   = false;
-        
-    // convert input frame to gray scale
-    float ratio         = KRATIO;
-    float Ww            = 640 / ratio;
-    float Wh            = 480 / ratio;
-    cv::Rect roi        = cv::Rect(640 / 2 - Ww / 2, 480 / 2 - Wh / 2, Ww, Wh);
     
+    // pour la detection, l'image doit être en noir et blanc
+    // on réduit l'image afin de réduir les calculs. Les bords et
+    // côtés ne nous interessent pas.
+    //grayImage = grayImage(roi);
     getGray(inputFrame, grayImage);
-    
-    grayImage = grayImage(roi);
     
     detector->detect(grayImage, objectKeypoints);
     
-    // patch
+    // on récupère la description de l'image cliente.
     cv::Mat descriptors_1;
-    
     extractor->compute(grayImage, objectKeypoints, descriptors_1);
     
+    // l'image doit être en 32 bit, sinon l'algorythme plante
     if(descriptors_1.type() != CV_32F)
         descriptors_1.convertTo(descriptors_1, CV_32F);
     
+    // on récupère les couples.
+    cv::vector<cv::vector<cv::DMatch> > matches;
+    matcher->knnMatch(descriptors_1, matches, 2);
+    
+    // mais cette detection ne suffit pas, on ne récupère que les bons couples.
     cv::vector< cv::DMatch > good_matches;
-    
-    if(descriptors_1.type() != 0){
-        std::map<unsigned, unsigned>map;
-        cv::vector<cv::vector<cv::DMatch> > matches;
-        matcher->knnMatch( descriptors_1, matches, 2);
-        good_matches = neirestNeighboor(matches);
-    }
+    good_matches = neirestNeighboor(matches);
         
-    cv::Mat t;
-    cv::cvtColor(inputFrame, t, CV_BGRA2BGR);
-    cv::drawKeypoints(t, objectKeypoints, t, cv::Scalar::all(-1), cv::DrawMatchesFlags::DRAW_RICH_KEYPOINTS);
-    cv::cvtColor(t, outputFrame, CV_BGR2BGRA);
-    
-    sortMatch(good_matches);
-    bool didRefererFound;
     uint idx;
-    /*
-    didFoundReferer(good_matches, &didRefererFound, &idx);
+
+    // cette fonciotn me permet de determiner si oui ou non, on a retrouvé une
+    // image, et son id.
+    didFoundReferer(good_matches, &idx);
     
-    if(didRefererFound){
-        std::ostringstream str;
-        str << "Detected: " << idx << " | " << cummulationD;
-        cv::putText(outputFrame, str.str(), cv::Point(30,50), CV_FONT_HERSHEY_TRIPLEX, 1.f, CV_RGB(0,250,0));
-    }
-    */
+    printf("---> %i\n", idx);
     shouldProcess = true;
 
     return true;
 }
 
+bool IR_Detector::canProceed(){
+    return shouldProcess;
+}
+
+#warning à enlever
+
+void IR_Detector::testPonyDetectCreateDescriptor(const cv::Mat& inputFrame){
+    cv::Mat grayReferer;
+    cv::Mat descriptors_referer;
+    printf("---- calcul d'image\n");
+    
+    std::vector<cv::KeyPoint> refererKeypoints;
+    
+    getGray(inputFrame, grayReferer);
+    
+    cv::Mat mask        = cv::Mat::zeros(grayImage.size(), CV_8UC1);
+    cv::Size size       = grayReferer.size();
+    cv::Size smallSize;
+    smallSize.width     = size.width/2;
+    smallSize.height    = size.height/2;
+    
+    cv::resize(grayReferer, grayReferer, smallSize);
+    
+    // 1 detection
+    detector->detect(grayReferer, refererKeypoints);
+    
+    // 2
+    extractor->compute(grayReferer, refererKeypoints, descriptors_referer);
+    
+    if(descriptors_referer.type() != CV_32F)
+        descriptors_referer.convertTo(descriptors_referer, CV_32F);
+    
+    std::vector<cv::Mat> descriptor;
+    descriptor.push_back(descriptors_referer);
+    
+    //train with descriptors from your db
+    dbDescriptors.push_back(descriptor);
+    
+    matcher->add(descriptor);
+}
+
+void IR_Detector::testTrain(){
+    matcher->train();
+}
+
 #pragma mark -------------------------- private --------------------------------
 #pragma mark -------------------------------------------------------------------
 
-static void didFoundReferer(cv::vector<cv::DMatch > &match, bool* isReferrerFound, unsigned* idx){
+static void didFoundReferer(cv::vector<cv::DMatch > &match, unsigned* idx){
+    sortMatch(match);
+
     static unsigned cummulationD;
     static unsigned idxFound;
     
@@ -110,7 +154,7 @@ static void didFoundReferer(cv::vector<cv::DMatch > &match, bool* isReferrerFoun
         counter++;
     }
     
-    // on récupère l'index d'image qui a récolté le plus de point.
+    // on récupère l'index d'image qui a récoltée le plus de point.
     if(cmpctr < counter){
         cmpctr = counter;
         cmpIdx = idxRef;
@@ -118,20 +162,18 @@ static void didFoundReferer(cv::vector<cv::DMatch > &match, bool* isReferrerFoun
     
     // si on retrouve X bonnes réponses identiques alors l'image "est" retrouvée.
     // mais on pousse le test plus loin afin de ne plus trouver de false-positive.
-    *isReferrerFound    = cmpctr >= NBOFVALIDMATCH /* X */;
-    *idx                = cmpIdx;
+    cmpctr >= NBOFVALIDMATCH? ++cummulationD : cummulationD = 0;
     
-    if(*isReferrerFound)
-        cummulationD++;
-    else
-        cummulationD = 0;
+    printf("found? %u - %u\n", cmpctr >= NBOFVALIDMATCH, cummulationD);
     
     // si on trouve 2 similarité à la suite, alors on est sur d'avoir reconnue
     // une image. Ce test permet d'ignorer les "bruits" des "false-positives".
     // 2 falses-positives à la suite est presque improbable. 
-    *isReferrerFound = cummulationD > 1 && idxFound == *idx;
+    int result = ((cummulationD > 1) && (idxFound == cmpIdx))? cmpIdx : IR_ImageNotFound;
+    printf("eval same? %u || is greater %u  -- cmpIdx: %u -- %i\n", idxFound == cmpIdx, cummulationD > 1, (cummulationD > 1 && idxFound == result)? 10 : 15, result);
     
-    idxFound = *idx;
+    *idx        = result;
+    idxFound    = cmpIdx;
 }
 
 static void sortMatch(cv::vector<cv::DMatch > &match){
@@ -145,7 +187,6 @@ static void sortMatch(cv::vector<cv::DMatch > &match){
     if(match.size())
         for(i = match.begin(); i != match.end() - 1; ++i){
             if((*i).imgIdx == (*(i + 1)).imgIdx && (*i).trainIdx == (*(i + 1)).trainIdx ){
-                printf("erase %u\n", i->imgIdx);
                 i = match.erase(i);
                 i--;
             }
@@ -174,4 +215,11 @@ cv::vector<cv::DMatch> neirestNeighboor(cv::vector<cv::vector<cv::DMatch> > matc
     }
     
     return good_matches;
+}
+
+cv::Rect computeROI(unsigned width, unsigned height){
+    float ratio         = KRATIO;
+    float Ww            = width / ratio;
+    float Wh            = height / ratio;
+    return cv::Rect(640 / 2 - Ww / 2, 480 / 2 - Wh / 2, Ww, Wh);
 }

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreMedia/CoreMedia.h>
 #import <AVFoundation/AVFoundation.h>
-#import "AVFrameRep.h"
+#import "IR_AVFrameRep.h"
 
 @protocol VideoSourceDelegate <NSObject>
 - (void)frameCaptured:(frameCaptured*)captureDescription;

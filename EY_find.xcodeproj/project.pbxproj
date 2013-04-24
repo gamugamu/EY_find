@@ -40,7 +40,34 @@
 		EBD86AA7172818D300C0DBC3 /* IR_CVHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = EBD86AA5172818D200C0DBC3 /* IR_CVHelper.h */; };
 		EBD86AAA172818FC00C0DBC3 /* cvneon.h in Headers */ = {isa = PBXBuildFile; fileRef = EBD86AA8172818FC00C0DBC3 /* cvneon.h */; };
 		EBD86AAB172818FC00C0DBC3 /* cvneon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EBD86AA9172818FC00C0DBC3 /* cvneon.cpp */; };
+		EBD86AB3172825F200C0DBC3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB2314ED1726BF98004850AE /* Foundation.framework */; };
+		EBD86AC31728267700C0DBC3 /* UIImage+OpenCV.mm in Sources */ = {isa = PBXBuildFile; fileRef = EBD86AC21728267700C0DBC3 /* UIImage+OpenCV.mm */; };
+		EBD86AC61728275C00C0DBC3 /* UIImage+OpenCV.h in Headers */ = {isa = PBXBuildFile; fileRef = EBD86AC11728267700C0DBC3 /* UIImage+OpenCV.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EBD86AC9172829B600C0DBC3 /* referer_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EBD86AC8172829B600C0DBC3 /* referer_2.jpg */; };
+		EBD86ACA17282E1B00C0DBC3 /* libUIImageToOpenCV.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EBD86AB2172825F200C0DBC3 /* libUIImageToOpenCV.a */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EBD86ACB17282F2B00C0DBC3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EB2314E01726BF98004850AE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EB659BC01726DD8F002F34D2;
+			remoteInfo = IR_lib;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		EBD86AB0172825F200C0DBC3 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/${PRODUCT_NAME}";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		EB2314E81726BF98004850AE /* EY_find.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EY_find.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,6 +112,11 @@
 		EBD86AA5172818D200C0DBC3 /* IR_CVHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IR_CVHelper.h; sourceTree = "<group>"; };
 		EBD86AA8172818FC00C0DBC3 /* cvneon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cvneon.h; sourceTree = "<group>"; };
 		EBD86AA9172818FC00C0DBC3 /* cvneon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cvneon.cpp; sourceTree = "<group>"; };
+		EBD86AB2172825F200C0DBC3 /* libUIImageToOpenCV.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libUIImageToOpenCV.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBD86AB6172825F200C0DBC3 /* UIImageToOpenCV-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImageToOpenCV-Prefix.pch"; sourceTree = "<group>"; };
+		EBD86AC11728267700C0DBC3 /* UIImage+OpenCV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+OpenCV.h"; sourceTree = "<group>"; };
+		EBD86AC21728267700C0DBC3 /* UIImage+OpenCV.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "UIImage+OpenCV.mm"; sourceTree = "<group>"; };
+		EBD86AC8172829B600C0DBC3 /* referer_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = referer_2.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +133,7 @@
 				EB659B971726C6A2002F34D2 /* AVFoundation.framework in Frameworks */,
 				EB2314EC1726BF98004850AE /* UIKit.framework in Frameworks */,
 				EB2314EE1726BF98004850AE /* Foundation.framework in Frameworks */,
+				EBD86ACA17282E1B00C0DBC3 /* libUIImageToOpenCV.a in Frameworks */,
 				EBD86A811727CE5200C0DBC3 /* libIR_lib.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -113,6 +146,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EBD86AAF172825F200C0DBC3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EBD86AB3172825F200C0DBC3 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -120,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				EB659BBA1726DC9B002F34D2 /* IR_lib */,
+				EBD86AB4172825F200C0DBC3 /* UIImageToOpenCV */,
 				EB23150E1726C2A2004850AE /* OpenGL_support */,
 				EB2314F11726BF98004850AE /* EY_find */,
 				EB2314EA1726BF98004850AE /* Frameworks */,
@@ -132,6 +174,7 @@
 			children = (
 				EB2314E81726BF98004850AE /* EY_find.app */,
 				EB659BC11726DD8F002F34D2 /* libIR_lib.a */,
+				EBD86AB2172825F200C0DBC3 /* libUIImageToOpenCV.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -167,6 +210,7 @@
 			children = (
 				EB659BB81726DB25002F34D2 /* sun.png */,
 				EB659BB61726DB23002F34D2 /* sun@2x.png */,
+				EBD86AC8172829B600C0DBC3 /* referer_2.jpg */,
 				EB2314F31726BF98004850AE /* EY_find-Info.plist */,
 				EB2314F41726BF98004850AE /* InfoPlist.strings */,
 				EB2314F71726BF98004850AE /* main.m */,
@@ -253,6 +297,24 @@
 			name = framework;
 			sourceTree = "<group>";
 		};
+		EBD86AB4172825F200C0DBC3 /* UIImageToOpenCV */ = {
+			isa = PBXGroup;
+			children = (
+				EBD86AC11728267700C0DBC3 /* UIImage+OpenCV.h */,
+				EBD86AC21728267700C0DBC3 /* UIImage+OpenCV.mm */,
+				EBD86AB5172825F200C0DBC3 /* Supporting Files */,
+			);
+			path = UIImageToOpenCV;
+			sourceTree = "<group>";
+		};
+		EBD86AB5172825F200C0DBC3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EBD86AB6172825F200C0DBC3 /* UIImageToOpenCV-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -266,6 +328,14 @@
 				EBD86AA21727FDC300C0DBC3 /* IR_Config.h in Headers */,
 				EBD86AA7172818D300C0DBC3 /* IR_CVHelper.h in Headers */,
 				EBD86AAA172818FC00C0DBC3 /* cvneon.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EBD86AC51728275800C0DBC3 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EBD86AC61728275C00C0DBC3 /* UIImage+OpenCV.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +353,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				EBD86ACC17282F2B00C0DBC3 /* PBXTargetDependency */,
 			);
 			name = EY_find;
 			productName = EY_find;
@@ -307,6 +378,24 @@
 			productReference = EB659BC11726DD8F002F34D2 /* libIR_lib.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		EBD86AB1172825F200C0DBC3 /* UIImageToOpenCV */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EBD86ABB172825F200C0DBC3 /* Build configuration list for PBXNativeTarget "UIImageToOpenCV" */;
+			buildPhases = (
+				EBD86AAE172825F200C0DBC3 /* Sources */,
+				EBD86AAF172825F200C0DBC3 /* Frameworks */,
+				EBD86AB0172825F200C0DBC3 /* CopyFiles */,
+				EBD86AC51728275800C0DBC3 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = UIImageToOpenCV;
+			productName = UIImageToOpenCV;
+			productReference = EBD86AB2172825F200C0DBC3 /* libUIImageToOpenCV.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -329,6 +418,7 @@
 			projectRoot = "";
 			targets = (
 				EB659BC01726DD8F002F34D2 /* IR_lib */,
+				EBD86AB1172825F200C0DBC3 /* UIImageToOpenCV */,
 				EB2314E71726BF98004850AE /* EY_find */,
 			);
 		};
@@ -345,6 +435,7 @@
 				EB2315021726BF98004850AE /* Default-568h@2x.png in Resources */,
 				EB659BB71726DB23002F34D2 /* sun@2x.png in Resources */,
 				EB659BB91726DB25002F34D2 /* sun.png in Resources */,
+				EBD86AC9172829B600C0DBC3 /* referer_2.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,7 +482,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EBD86AAE172825F200C0DBC3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EBD86AC31728267700C0DBC3 /* UIImage+OpenCV.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EBD86ACC17282F2B00C0DBC3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EB659BC01726DD8F002F34D2 /* IR_lib */;
+			targetProxy = EBD86ACB17282F2B00C0DBC3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		EB2314F41726BF98004850AE /* InfoPlist.strings */ = {
@@ -474,6 +581,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../Desktop\"",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
@@ -495,6 +603,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../Desktop\"",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
@@ -540,6 +649,38 @@
 			};
 			name = Release;
 		};
+		EBD86ABC172825F200C0DBC3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/UIImageToOpenCV.dst;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "UIImageToOpenCV/UIImageToOpenCV-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		EBD86ABD172825F200C0DBC3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/UIImageToOpenCV.dst;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "UIImageToOpenCV/UIImageToOpenCV-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -569,6 +710,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		EBD86ABB172825F200C0DBC3 /* Build configuration list for PBXNativeTarget "UIImageToOpenCV" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EBD86ABC172825F200C0DBC3 /* Debug */,
+				EBD86ABD172825F200C0DBC3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

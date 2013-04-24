@@ -13,10 +13,10 @@
 
 class IR_Detector{
     public:
-    IR_Detector();
+    IR_Detector(unsigned width, unsigned height);
     
     // à refactoriser
-    virtual bool processFrame(const cv::Mat& inputFrame, cv::Mat& outputFrame);
+    virtual bool processFrame(const cv::Mat& inputFrame);
     
     // à enlever
     void testPonyDetectCreateDescriptor(const cv::Mat& inputFrame);
@@ -37,6 +37,9 @@ class IR_Detector{
     std::vector<cv::KeyPoint> objectKeypoints;
     std::vector<std::vector<cv::Mat> > dbDescriptors;
     
+    // permet de ne calculer qu'une zone specifique de l'image.
+    cv::Rect roi;
+
     bool shouldProcess;
 };
 
