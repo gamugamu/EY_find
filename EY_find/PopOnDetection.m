@@ -20,6 +20,7 @@
 
 - (void)imageFound:(unsigned)index intoView:(UIView*)cameRaView{
     [cameRaView addSubview: self.view];
+    [self displayIndex: index];
 }
 
 - (IBAction)closeTapped:(UIButton *)sender{
@@ -27,13 +28,30 @@
     [self.view removeFromSuperview];
 }
 
+#pragma mark - lifeCycle
+
+- (void)viewDidLoad{
+    [super viewDidLoad];
+}
+
+- (void)viewDidUnload{
+    [self setIndex:nil];
+    [super viewDidUnload];
+}
+
 #pragma mark - alloc / dealloc
 
 - (void)dealloc{
     [_eyDetector release];
+    [_index release];
     [super dealloc];
 }
 
 #pragma mark -------------------------- private --------------------------------
 #pragma mark -------------------------------------------------------------------
+
+- (void)displayIndex:(unsigned)idx{
+    _index.text = [NSString stringWithFormat: @"%u", idx];
+}
+   
 @end

@@ -51,6 +51,7 @@
 		EBF91D3F17296276004152F6 /* EYCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF91D3E17296276004152F6 /* EYCameraViewController.m */; };
 		EBF91D4417296815004152F6 /* PopOnDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF91D4217296815004152F6 /* PopOnDetection.m */; };
 		EBF91D4517296815004152F6 /* PopOnDetection.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBF91D4317296815004152F6 /* PopOnDetection.xib */; };
+		EBF91D4717296CC8004152F6 /* buble.png in Resources */ = {isa = PBXBuildFile; fileRef = EBF91D4617296CC8004152F6 /* buble.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -124,6 +125,7 @@
 		EBF91D4117296815004152F6 /* PopOnDetection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopOnDetection.h; sourceTree = "<group>"; };
 		EBF91D4217296815004152F6 /* PopOnDetection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopOnDetection.m; sourceTree = "<group>"; };
 		EBF91D4317296815004152F6 /* PopOnDetection.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopOnDetection.xib; sourceTree = "<group>"; };
+		EBF91D4617296CC8004152F6 /* buble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buble.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +218,7 @@
 		EB2314F21726BF98004850AE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EBF91D4617296CC8004152F6 /* buble.png */,
 				EBD61DEC1729107B006C95AE /* ramen.jpg */,
 				EBD61DEA17290C60006C95AE /* eclipse.jpg */,
 				EB659BB81726DB25002F34D2 /* sun.png */,
@@ -488,6 +491,7 @@
 				EBD61DEB17290C60006C95AE /* eclipse.jpg in Resources */,
 				EBD61DED1729107B006C95AE /* ramen.jpg in Resources */,
 				EBF91D4517296815004152F6 /* PopOnDetection.xib in Resources */,
+				EBF91D4717296CC8004152F6 /* buble.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

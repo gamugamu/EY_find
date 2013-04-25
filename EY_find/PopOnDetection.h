@@ -12,4 +12,5 @@
 @interface PopOnDetection : UIViewController<EYRecognizerDelegate>
 @property(nonatomic, retain)id<EYDetector> eyDetector;
 - (IBAction)closeTapped:(UIButton *)sender;
+@property (retain, nonatomic) IBOutlet UILabel *index;
 @end
