@@ -29,6 +29,8 @@
 		EB659BB71726DB23002F34D2 /* sun@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB659BB61726DB23002F34D2 /* sun@2x.png */; };
 		EB659BB91726DB25002F34D2 /* sun.png in Resources */ = {isa = PBXBuildFile; fileRef = EB659BB81726DB25002F34D2 /* sun.png */; };
 		EB659BC71726DDA7002F34D2 /* IR_Detector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB659BBB1726DD05002F34D2 /* IR_Detector.cpp */; };
+		EBD61DEB17290C60006C95AE /* eclipse.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EBD61DEA17290C60006C95AE /* eclipse.jpg */; };
+		EBD61DED1729107B006C95AE /* ramen.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EBD61DEC1729107B006C95AE /* ramen.jpg */; };
 		EBD86A721727B6DB00C0DBC3 /* IR_Detector.h in Headers */ = {isa = PBXBuildFile; fileRef = EB659BBC1726DD05002F34D2 /* IR_Detector.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EBD86A731727B89100C0DBC3 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB2315121726C3ED004850AE /* opencv2.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		EBD86A761727BD6800C0DBC3 /* IR_AVtoCVImageWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EBD86A741727BD6800C0DBC3 /* IR_AVtoCVImageWrapper.cpp */; };
@@ -103,6 +105,8 @@
 		EB659BBB1726DD05002F34D2 /* IR_Detector.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = IR_Detector.cpp; path = ImageRecognizer/IR_Detector.cpp; sourceTree = "<group>"; };
 		EB659BBC1726DD05002F34D2 /* IR_Detector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IR_Detector.h; path = ImageRecognizer/IR_Detector.h; sourceTree = "<group>"; };
 		EB659BC11726DD8F002F34D2 /* libIR_lib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libIR_lib.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBD61DEA17290C60006C95AE /* eclipse.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = eclipse.jpg; sourceTree = "<group>"; };
+		EBD61DEC1729107B006C95AE /* ramen.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ramen.jpg; sourceTree = "<group>"; };
 		EBD86A741727BD6800C0DBC3 /* IR_AVtoCVImageWrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IR_AVtoCVImageWrapper.cpp; path = ImageRecognizer/IR_AVtoCVImageWrapper.cpp; sourceTree = "<group>"; };
 		EBD86A751727BD6800C0DBC3 /* IR_AVtoCVImageWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IR_AVtoCVImageWrapper.h; path = ImageRecognizer/IR_AVtoCVImageWrapper.h; sourceTree = "<group>"; };
 		EBD86A781727BDC600C0DBC3 /* IR_AVFrameRep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IR_AVFrameRep.h; sourceTree = "<group>"; };
@@ -208,6 +212,8 @@
 		EB2314F21726BF98004850AE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EBD61DEC1729107B006C95AE /* ramen.jpg */,
+				EBD61DEA17290C60006C95AE /* eclipse.jpg */,
 				EB659BB81726DB25002F34D2 /* sun.png */,
 				EB659BB61726DB23002F34D2 /* sun@2x.png */,
 				EBD86AC8172829B600C0DBC3 /* referer_2.jpg */,
@@ -436,6 +442,8 @@
 				EB659BB71726DB23002F34D2 /* sun@2x.png in Resources */,
 				EB659BB91726DB25002F34D2 /* sun.png in Resources */,
 				EBD86AC9172829B600C0DBC3 /* referer_2.jpg in Resources */,
+				EBD61DEB17290C60006C95AE /* eclipse.jpg in Resources */,
+				EBD61DED1729107B006C95AE /* ramen.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -718,6 +726,7 @@
 				EBD86ABD172825F200C0DBC3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

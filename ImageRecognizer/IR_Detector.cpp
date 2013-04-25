@@ -14,30 +14,33 @@ const int IR_ImageNotFound = -1;
 // retourne seulement les points de similarités les plus proches.
 cv::vector<cv::DMatch> neirestNeighboor(cv::vector<cv::vector<cv::DMatch> > matches);
 
-// retourne si oui on non, on  a retrouver une similitude dans la banque d'images.
+// retourne si oui on non, on  a retrouvé une similitude dans la banque d'images.
 // match - les points calculés par neirestNeighboor();
 // idx - renvoie l'idx de l'image, IR_ImageNotFound si rien n'a été trouvé.
 static void didFoundReferer(cv::vector<cv::DMatch > &match, unsigned* idx);
 
-// tri les similarités et enlève les similarités dupliquées. (certains "matches"
+// trie les similarités et enlève les similarités dupliquées. (certains "matches"
 // pointent sur les mêmes données. Ca ne nous interesse pas.
 static void sortMatch(cv::vector<cv::DMatch > &match);
 
-// helper pour le tri du tableau des similarités.
+// aide pour le tri du tableau des similarités.
 static bool sortImgByIdx(const cv::DMatch& d1, const cv::DMatch& d2);
 
-// helper pour calucler la région d'intérêt (ROI). Lors du calcul des images.
+// aide pour calculer la région d'intérêt (ROI) lors du calcul des images.
 cv::Rect computeROI(unsigned width, unsigned height);
 
 #pragma mark -------------------------- public ---------------------------------
 #pragma mark -------------------------------------------------------------------
 
-IR_Detector::IR_Detector(unsigned width, unsigned height){
+IR_Detector::IR_Detector(unsigned width, unsigned height, IR_CallBack imageFound){
+    // le callBack doit absolument être implémenté.
+    assert(imageFound);
     matcher         = new cv::BFMatcher(cv::NORM_L2, false);
     detector        = new cv::OrbFeatureDetector(KMax_feature);
     extractor       = new cv::OrbDescriptorExtractor;
     roi             = computeROI(width, height);
     shouldProcess   = true;
+    _imageFound     = imageFound;
 }
 
 bool IR_Detector::processFrame(const cv::Mat& inputFrame){
@@ -46,19 +49,19 @@ bool IR_Detector::processFrame(const cv::Mat& inputFrame){
     
     shouldProcess   = false;
     
-    // pour la detection, l'image doit être en noir et blanc
-    // on réduit l'image afin de réduir les calculs. Les bords et
-    // côtés ne nous interessent pas.
-    //grayImage = grayImage(roi);
+    // pour la détection, l'image doit être en noir et blanc
+    // on rétrécit la zone de l'image afin de réduire les calculs.
+    // Les bords et les côtés ne nous interessent pas.
     getGray(inputFrame, grayImage);
-    
+    grayImage = grayImage(roi);
+
     detector->detect(grayImage, objectKeypoints);
     
     // on récupère la description de l'image cliente.
     cv::Mat descriptors_1;
     extractor->compute(grayImage, objectKeypoints, descriptors_1);
     
-    // l'image doit être en 32 bit, sinon l'algorythme plante
+    // l'image doit être en 32 bit, sinon l'algorythme plante.
     if(descriptors_1.type() != CV_32F)
         descriptors_1.convertTo(descriptors_1, CV_32F);
     
@@ -72,11 +75,15 @@ bool IR_Detector::processFrame(const cv::Mat& inputFrame){
         
     uint idx;
 
-    // cette fonciotn me permet de determiner si oui ou non, on a retrouvé une
-    // image, et son id.
+    // cette fonction me permet de determiner si oui ou non, on a retrouvé une
+    // image. Nous renvoie l'id de l'image, en cas de réussite.
     didFoundReferer(good_matches, &idx);
     
-    printf("---> %i\n", idx);
+    if(idx != IR_ImageNotFound)
+        // note: je ne teste pas si le pointer de la fonction est à NULL ou pas.
+        // quoi qu'il arrive, ce callBack doit être implémenté.
+        _imageFound(idx);
+    
     shouldProcess = true;
 
     return true;
@@ -138,11 +145,12 @@ static void didFoundReferer(cv::vector<cv::DMatch > &match, unsigned* idx){
     
     unsigned counter    = 0;
     int idxRef          = -1;
-    unsigned cmpIdx     = 0;
+    int cmpIdx          = -1;
     unsigned cmpctr     = 0;
-    
+
+   // printf("-------\n");
     for (int i = 0; i < match.size(); i++) {
-        // printf("-----R [distance %f], Image: %u Query: %u Train: %u\n", match[i].distance, match[i].imgIdx, match[i].queryIdx, match[i].trainIdx);
+    //    printf("-----R [distance %f], Image: %u Query: %u Train: %u\n", match[i].distance, match[i].imgIdx, match[i].queryIdx, match[i].trainIdx);
         if(idxRef != match[i].imgIdx){
             if(cmpctr < counter){
                 cmpctr = counter;
@@ -163,14 +171,11 @@ static void didFoundReferer(cv::vector<cv::DMatch > &match, unsigned* idx){
     // si on retrouve X bonnes réponses identiques alors l'image "est" retrouvée.
     // mais on pousse le test plus loin afin de ne plus trouver de false-positive.
     cmpctr >= NBOFVALIDMATCH? ++cummulationD : cummulationD = 0;
-    
-    printf("found? %u - %u\n", cmpctr >= NBOFVALIDMATCH, cummulationD);
-    
+
     // si on trouve 2 similarité à la suite, alors on est sur d'avoir reconnue
     // une image. Ce test permet d'ignorer les "bruits" des "false-positives".
     // 2 falses-positives à la suite est presque improbable. 
     int result = ((cummulationD > 1) && (idxFound == cmpIdx))? cmpIdx : IR_ImageNotFound;
-    printf("eval same? %u || is greater %u  -- cmpIdx: %u -- %i\n", idxFound == cmpIdx, cummulationD > 1, (cummulationD > 1 && idxFound == result)? 10 : 15, result);
     
     *idx        = result;
     idxFound    = cmpIdx;
@@ -221,5 +226,5 @@ cv::Rect computeROI(unsigned width, unsigned height){
     float ratio         = KRATIO;
     float Ww            = width / ratio;
     float Wh            = height / ratio;
-    return cv::Rect(640 / 2 - Ww / 2, 480 / 2 - Wh / 2, Ww, Wh);
+    return cv::Rect(width / 2 - Ww / 2, height / 2 - Wh / 2, Ww, Wh);
 }

@@ -11,9 +11,11 @@
 
 #include "IR_Config.h"
 
+typedef void (*IR_CallBack)(unsigned idx);
+
 class IR_Detector{
     public:
-    IR_Detector(unsigned width, unsigned height);
+    IR_Detector(unsigned width, unsigned height, IR_CallBack imageFound);
     
     // à refactoriser
     virtual bool processFrame(const cv::Mat& inputFrame);
@@ -39,7 +41,10 @@ class IR_Detector{
     
     // permet de ne calculer qu'une zone specifique de l'image.
     cv::Rect roi;
-
+    
+    // callBack lorsqu'une image est retrouvée. Renvoie son id.
+    IR_CallBack _imageFound = NULL;
+    
     bool shouldProcess;
 };
 

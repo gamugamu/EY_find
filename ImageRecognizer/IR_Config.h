@@ -16,10 +16,12 @@
 // proches de 0 c'est qu'il y a forte possibilité de reconnaissance
 // d'image.
 
-#define NBOFVALIDMATCH  4       
+#define NBOFVALIDMATCH  6       
 // le nombre minimum de correspondance valides, avant de
 // conclure que c'est une image reconnue. Si le nombre de correspondances
 // acceptées est trop bas, il y aura plus de risque de fausses reconnaissances.
+// En dessous de 4 c'est quasiment impossible, 5 c'est limite. Je pense qu'à
+// 6 on a toujours des résultats valides.
 
 #define ISOIDXDIFF      80      
 // J'ai remarqué que plus les images sont voisines, plus

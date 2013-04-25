@@ -28,6 +28,9 @@
 #pragma mark - videoSource Delegate
 
 - (void)frameCaptured:(frameCaptured*)captureDescription{
+    // Note: Nous ne somme pas dans la thread principale. Ceci
+    // est du à AVFoundation.
+    
     cv::Mat image = imageFromAVRepresentation(captureDescription);
     _detector->processFrame(image);
     [_GLView drawFrame: image];
@@ -66,6 +69,13 @@
 #pragma mark -------------------------- private --------------------------------
 #pragma mark -------------------------------------------------------------------
 
+#pragma mark - IR_DetectorCallBack
+
+void ir_imageFound(unsigned idx){
+    printf("ffffound %u\n", idx);
+
+}
+
 #pragma mark - setup
 
 - (void)setUpAll{
@@ -86,11 +96,17 @@
 }
 
 - (void)setUpDetector{
-    _detector = new IR_Detector(480, 640);
+    _detector = new IR_Detector(640, 480, ir_imageFound);
     
-    // note: 
-    UIImage* referer     = [UIImage imageNamed: @"referer_2.jpg"];
+    // note: test seulement
+    UIImage* referer    = [UIImage imageNamed: @"referer_2.jpg"];
+    UIImage* referer2   = [UIImage imageNamed: @"eclipse.jpg"];
+    UIImage* ramen      = [UIImage imageNamed: @"ramen.jpg"];
+
     _detector->testPonyDetectCreateDescriptor([referer toMat]);
+    _detector->testPonyDetectCreateDescriptor([referer2 toMat]);
+    _detector->testPonyDetectCreateDescriptor([ramen toMat]);
+
 }
 
 @end
