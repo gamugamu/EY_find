@@ -103,7 +103,7 @@ void IR_Detector::testPonyDetectCreateDescriptor(const cv::Mat& inputFrame){
     std::vector<cv::KeyPoint> refererKeypoints;
     
     getGray(inputFrame, grayReferer);
-    
+    /*
     cv::Mat mask        = cv::Mat::zeros(grayImage.size(), CV_8UC1);
     cv::Size size       = grayReferer.size();
     cv::Size smallSize;
@@ -111,7 +111,7 @@ void IR_Detector::testPonyDetectCreateDescriptor(const cv::Mat& inputFrame){
     smallSize.height    = size.height/2;
     
     cv::resize(grayReferer, grayReferer, smallSize);
-    
+    */
     // 1 detection
     detector->detect(grayReferer, refererKeypoints);
     

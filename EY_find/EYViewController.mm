@@ -33,6 +33,8 @@
     // est du à AVFoundation.
     cv::Mat image = imageFromAVRepresentation(captureDescription);
 
+    [_GLView drawFrame: image.clone()];
+    
     if([_detectorNotifier canDetect]){
         cv::Mat outputImage = image.clone();
         
@@ -40,7 +42,6 @@
             [_detectorNotifier detectOnImage: outputImage];
         });
     }
-    [_GLView drawFrame: image];
 }
 
 #pragma mark - lifeCycle
@@ -83,8 +84,13 @@
     [self setUpDetectorQueue];
     [self setUpOpenGlView];
     [self setUpVideoSource];
-    [self setUpDetector: _GLView];
-    self.view = _GLView;
+    // Note: La vue openGL est dessinée dans une autre thread, nottament à cause
+    // de AVCapture. Comme le client va disposer d'une vue afin d'afficher des
+    // layers, on utilisera donc une view qui servira de container. Comme ça
+    // la vue OpenGL et la vue principale peuvent être utilisée sur des threads
+    // différentes (côté client forcement sur la thread principale).
+    [self setUpMainView_withGLView: _GLView];
+    [self setUpDetector_withCameraView: self.view];
 }
 
 - (void)setUpVideoSource{
@@ -94,17 +100,26 @@
 
 - (void)setUpOpenGlView{
     CGRect frame    = [UIScreen mainScreen].applicationFrame;
+    frame.origin    = CGPointZero;
     _GLView         = [[GLESImageView alloc] initWithFrame: frame];
 }
 
-- (void)setUpDetector:(UIView*)GLView{
+- (void)setUpDetector_withCameraView:(UIView*)view{
     _detectorNotifier               = [EYDetectorNotifier new];
     _detectorNotifier.shouldDetect  = YES;
-    [_detectorNotifier setCameraView: GLView];
+    [_detectorNotifier setCameraView: view];
 }
 
 - (void)setUpDetectorQueue{
     _detectorQueue = dispatch_queue_create("com.EY_find.IR_Lib.detectorQueue", NULL);  
 }
 
+- (void)setUpMainView_withGLView:(UIView*)GLESView{
+    CGRect frame        = [UIScreen mainScreen].applicationFrame;
+    UIView* mainView    = [[UIView alloc] initWithFrame: frame];
+    self.view           = mainView;
+    [mainView addSubview: _GLView];
+    NSLog(@"getView %@ %@", mainView, _GLView);
+    [mainView release];
+}
 @end

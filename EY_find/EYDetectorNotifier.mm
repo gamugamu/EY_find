@@ -74,7 +74,7 @@ static const char ivar_cameraView[]             = "_cameraView";
 
 #pragma mark - IR_DetectorCallBack
 
-// c'est un callback en c, donc on utilise le runtime d'objc.
+// c'est un callback en c, donc on utilise le runtime d'obj-c.
 void ir_imageFound(unsigned idx){
     int value;
     object_getInstanceVariable(DETECTOR_SINGLETON, ivar_currentImageDetected, (void**)&value);
@@ -112,14 +112,26 @@ void ir_imageFound(unsigned idx){
 - (void)setUpDetector{
     _detector = new IR_Detector(640, 480, ir_imageFound);
     
+#warning test à enlever
     // note: test seulement
-    UIImage* referer    = [UIImage imageNamed: @"referer_2.jpg"];
-    UIImage* referer2   = [UIImage imageNamed: @"eclipse.jpg"];
-    UIImage* ramen      = [UIImage imageNamed: @"ramen.jpg"];
+#define TOTAL 10
+    NSString* image[TOTAL] = {
+        @"car_0.jpg",
+        @"drill_0.jpg",
+        @"drill_1.jpg",
+        @"key_0.jpg",
+        @"key_1.jpg",
+        @"lion_0.jpg",
+        @"lion_1.jpg",
+        @"lo_0.jpg",
+        @"lo_1.jpg",
+        @"lo_2.jpg"
+    };
     
-    _detector->testPonyDetectCreateDescriptor([referer toMat]);
-    _detector->testPonyDetectCreateDescriptor([referer2 toMat]);
-    _detector->testPonyDetectCreateDescriptor([ramen toMat]);
+    for (int i = 0; i < TOTAL; i++) {
+        UIImage* img_0  = [UIImage imageNamed: image[i]];
+        _detector->testPonyDetectCreateDescriptor([img_0 toMat]);
+    }
 }
 
 @end
