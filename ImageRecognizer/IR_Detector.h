@@ -13,6 +13,9 @@
 
 typedef void (*IR_CallBack)(unsigned idx);
 
+// valeur lorsqu'une image n'a pas été trouvée.
+extern const int IR_ImageNotFound;
+
 class IR_Detector{
     public:
     IR_Detector(unsigned width, unsigned height, IR_CallBack imageFound);

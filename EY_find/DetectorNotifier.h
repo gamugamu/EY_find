@@ -18,10 +18,9 @@
 @interface DetectorNotifier : NSObject
 @property(nonatomic, assign)id<DetectorNotifierDelegate>delegate;
 
-// commence la detection d'image.
-- (void)startObserving;
-// arrête d'être informé des detections d'images.
-- (void)stopOberving;
+// commence ou arrête la detection d'image.
+@property(nonatomic, assign)BOOL shouldDetect;
+
 // DetectorNotifier n'informe qu'une seule fois le delegate lorsqu'il a detecté une
 // image. Parce que la caméra peut pointer plusieurs secondes sur la même image, et afin
 // d'éviter de recevoir plusieurs callBack similaires tant que la camera pointe sur
