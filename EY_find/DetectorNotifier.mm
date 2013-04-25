@@ -18,15 +18,19 @@
     IR_Detector* _detector;
 }
 @property(nonatomic, readonly)int currentImageDetected;
+@property(nonatomic, retain)UIView* cameraView;
 @end
 
 static id DETECTOR_SINGLETON;
-static const char ivar_currentImageDetected[] = "_currentImageDetected";
+static const char ivar_currentImageDetected[]   = "_currentImageDetected";
+static const char ivar_delegate[]               = "_delegate";
+static const char ivar_cameraView[]             = "_cameraView";
 
 @implementation DetectorNotifier
 @synthesize delegate                = _delegate,
             shouldDetect            = _shouldDetect,
-            currentImageDetected    = _currentImageDetected;
+            currentImageDetected    = _currentImageDetected,
+            cameraView              = _cameraView;
 
 #pragma mark -------------------------- public ---------------------------------
 #pragma mark -------------------------------------------------------------------
@@ -39,6 +43,12 @@ static const char ivar_currentImageDetected[] = "_currentImageDetected";
 - (void)detectOnImage:(cv::Mat)image{
     if(_shouldDetect)
         _detector->processFrame(image);
+}
+
+#pragma mark - hidden category
+
+- (BOOL)canDetect{
+    return _detector->canProceed();
 }
 
 #pragma mark - alloc / dealloc
@@ -71,7 +81,7 @@ void ir_imageFound(unsigned idx){
     if(value != idx){
         id delegate;
         // récupère le delegate et plus haut la valeur de l'index de l'image courrante.
-        object_getInstanceVariable(DETECTOR_SINGLETON, "_delegate", (void**)&delegate);
+        object_getInstanceVariable(DETECTOR_SINGLETON, ivar_delegate, (void**)&delegate);
         SEL SEL_imageFound  = @selector(imageFound:intoView:);
         bool canRespond     = class_respondsToSelector(object_getClass(delegate), SEL_imageFound);
         
@@ -79,11 +89,12 @@ void ir_imageFound(unsigned idx){
         /* *(int**)& on renvoie l'adresse de la variable, et on la type en pointeur de pointeur de int + déréférence */
         object_setInstanceVariable(DETECTOR_SINGLETON, ivar_currentImageDetected, (int*)idx);
         
-        int value;
-        object_getInstanceVariable(DETECTOR_SINGLETON, ivar_currentImageDetected, (void**)&value);
-        
         if(canRespond){
-            objc_msgSend(delegate, SEL_imageFound, idx, NULL);
+            // cameraView appartient au controlleur qui manipule les images et le Detector.
+            id cameraView;
+            object_getInstanceVariable(DETECTOR_SINGLETON, ivar_cameraView, (void**)&cameraView);
+            
+            objc_msgSend(delegate, SEL_imageFound, idx, cameraView);
         }
     }
 }
@@ -92,7 +103,6 @@ void ir_imageFound(unsigned idx){
 
 - (void)setUpDefault{
     [self reset];
-    printf("test %i\n", _currentImageDetected);
 }
 
 - (void)setUpDetector{

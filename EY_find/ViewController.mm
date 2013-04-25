@@ -17,6 +17,7 @@
     VideoSource*        _videoSource;
     GLESImageView*      _GLView;
     DetectorNotifier*   _detectorNotifier;
+    dispatch_queue_t    _detectorQueue;
 }
 @end
 
@@ -31,14 +32,25 @@
     // Note: Nous ne somme pas dans la thread principale. Ceci
     // est du à AVFoundation.
     cv::Mat image = imageFromAVRepresentation(captureDescription);
-    [_detectorNotifier detectOnImage: image];
+
+    if([_detectorNotifier canDetect]){
+        cv::Mat outputImage = image.clone();
+        
+        dispatch_async(_detectorQueue, ^(void){
+            printf("-");
+            [_detectorNotifier detectOnImage: outputImage];
+        });
+    }
     [_GLView drawFrame: image];
 }
 
 #pragma mark - DetectorNotifierDelegate
 
 - (void)imageFound:(unsigned)index intoView:(UIView*)cameRaView{
-    NSLog(@"called------------------------------- %u %p", index, cameRaView);
+    NSLog(@"found %u %p", index, cameRaView);
+    UIView* dumbView = [[UIView alloc] initWithFrame: CGRectMake(0,0,30,30)];
+    dumbView.backgroundColor = [UIColor blueColor];
+    [cameRaView addSubview: dumbView];
 }
 
 #pragma mark - lifeCycle
@@ -68,6 +80,7 @@
     [_videoSource       release];
     [_GLView            release];
     [_detectorNotifier  release];
+    dispatch_release(_detectorQueue);
     [super dealloc];
 }
 
@@ -77,9 +90,10 @@
 #pragma mark - setup
 
 - (void)setUpAll{
+    [self setUpDetectorQueue];
     [self setUpOpenGlView];
     [self setUpVideoSource];
-    [self setUpDetector];
+    [self setUpDetector: _GLView];
     self.view = _GLView;
 }
 
@@ -93,10 +107,15 @@
     _GLView         = [[GLESImageView alloc] initWithFrame: frame];
 }
 
-- (void)setUpDetector{
+- (void)setUpDetector:(UIView*)GLView{
     _detectorNotifier               = [DetectorNotifier new];
     _detectorNotifier.shouldDetect  = YES;
     _detectorNotifier.delegate      = self;
+    [_detectorNotifier setCameraView: GLView];
+}
+
+- (void)setUpDetectorQueue{
+    _detectorQueue = dispatch_queue_create("com.EY_find.IR_Lib.detectorQueue", NULL);  
 }
 
 @end

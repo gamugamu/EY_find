@@ -32,14 +32,15 @@ class IR_Detector{
     bool canProceed();
     
     private:
+    // l'image pour le traitement de la reconnaissance, objectKeypoints
     cv::Mat grayImage;
-    
+    std::vector<cv::KeyPoint> objectKeypoints;
+
     // extractor / descriptor
     cv::BFMatcher* matcher;
     cv::OrbDescriptorExtractor* detector;
     cv::OrbFeatureDetector* extractor;
     
-    std::vector<cv::KeyPoint> objectKeypoints;
     std::vector<std::vector<cv::Mat> > dbDescriptors;
     
     // permet de ne calculer qu'une zone specifique de l'image.

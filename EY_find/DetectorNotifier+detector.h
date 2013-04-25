@@ -10,4 +10,7 @@
 
 @interface DetectorNotifier (detector)
 - (void)detectOnImage:(cv::Mat)image;
+- (void)setCameraView:(UIView*)view;
+// detector wrapper (IR_Detector->canProceed())
+- (BOOL)canDetect;
 @end

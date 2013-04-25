@@ -7,14 +7,18 @@
 //
 
 #import "GLESImageView.h"
-
 #import <OpenGLES/ES1/gl.h>
 #import <OpenGLES/ES1/glext.h>
 #import <OpenGLES/ES2/gl.h>
 #import <OpenGLES/ES2/glext.h>
 #import <QuartzCore/QuartzCore.h>
-
 #import "FPSCalculator.h"
+
+#if defined GLESLOG
+#	define GLESLOG(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
+#else
+#   define GLESLOG(...)
+#endif
 
 @interface GLESImageView(){
   // The OpenGL ES names for the framebuffer and renderbuffer used to render to this view.
@@ -104,10 +108,10 @@
     glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, colorRenderbuffer);
     
     if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
-      NSLog(@"Failed to make complete framebuffer object %x", glCheckFramebufferStatus(GL_FRAMEBUFFER));
+      GLESLOG(@"Failed to make complete framebuffer object %x", glCheckFramebufferStatus(GL_FRAMEBUFFER));
     
     //glClearColor(0, 0, 0, 0);
-    NSLog(@"Framebuffer created %d x %d", framebufferWidth, framebufferHeight);
+    GLESLOG(@"Framebuffer created %d x %d", framebufferWidth, framebufferHeight);
   }
 }
 
@@ -126,7 +130,7 @@
       colorRenderbuffer = 0;
     }
     
-    NSLog(@"Framebuffer deleted");
+    GLESLOG(@"Framebuffer deleted");
     
   }
 }
@@ -168,9 +172,9 @@
   EAGLContext *aContext = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES1];
   
   if (!aContext)
-    NSLog(@"Failed to create ES context");
+    GLESLOG(@"Failed to create ES context");
   else if (![EAGLContext setCurrentContext:aContext])
-    NSLog(@"Failed to set ES context current");
+    GLESLOG(@"Failed to set ES context current");
   
   [self setContext:aContext];
   [self setFramebuffer];
@@ -284,8 +288,8 @@
     glDisable(GL_TEXTURE_2D);
   
     bool ok = [self presentFramebuffer];
-#warning  à enlever en prod
-  assert(ok);
+
+    assert(ok);
 }
 
 @end

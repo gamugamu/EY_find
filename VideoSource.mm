@@ -125,7 +125,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
         
         /*We create a serial queue to handle the processing of our frames*/
         dispatch_queue_t queue;
-        queue = dispatch_queue_create("com.computer-vision-talks.cameraQueue", NULL);
+        queue = dispatch_queue_create("com.EY_find.cameraQueue", NULL);
         [captureOutput setSampleBufferDelegate:self queue:queue];
         dispatch_release(queue);
         
