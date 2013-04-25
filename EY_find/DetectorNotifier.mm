@@ -6,7 +6,9 @@
 //  Copyright (c) 2013 Abadie, Loïc. All rights reserved.
 //
 
-#import <objc/runtime.h>
+#import <objc/runtime.h> // pour la reflexivité en c
+#import <objc/message.h> // pour les messages en c.
+
 #import "DetectorNotifier.h"
 #import "IR_Detector.h"
 #import "IR_AVtoCVImageWrapper.h"
@@ -18,7 +20,7 @@
 @property(nonatomic, readonly)int currentImageDetected;
 @end
 
-static id SELF;
+static id DETECTOR_SINGLETON;
 static const char ivar_currentImageDetected[] = "_currentImageDetected";
 
 @implementation DetectorNotifier
@@ -45,7 +47,8 @@ static const char ivar_currentImageDetected[] = "_currentImageDetected";
     if(self = [super init]){
         [self setUpDefault];
         [self setUpDetector];
-        SELF = self;
+        // note ça sera un singleton, donc ok.
+        DETECTOR_SINGLETON = self;
     }
     return self;
 }
@@ -60,16 +63,29 @@ static const char ivar_currentImageDetected[] = "_currentImageDetected";
 
 #pragma mark - IR_DetectorCallBack
 
+// c'est un callback en c, donc on utilise le runtime d'objc.
 void ir_imageFound(unsigned idx){
     int value;
-    object_getInstanceVariable(SELF, ivar_currentImageDetected, (void**)&value);
+    object_getInstanceVariable(DETECTOR_SINGLETON, ivar_currentImageDetected, (void**)&value);
     
-    printf("--value %i %p\n", value, SELF);
-   /* if(value != idx)
-        if(0){
-            printf("ffffound %u\n", idx);
+    if(value != idx){
+        id delegate;
+        // récupère le delegate et plus haut la valeur de l'index de l'image courrante.
+        object_getInstanceVariable(DETECTOR_SINGLETON, "_delegate", (void**)&delegate);
+        SEL SEL_imageFound  = @selector(imageFound:intoView:);
+        bool canRespond     = class_respondsToSelector(object_getClass(delegate), SEL_imageFound);
+        
+        // assigne la nouvelle valeure.
+        /* *(int**)& on renvoie l'adresse de la variable, et on la type en pointeur de pointeur de int + déréférence */
+        object_setInstanceVariable(DETECTOR_SINGLETON, ivar_currentImageDetected, (int*)idx);
+        
+        int value;
+        object_getInstanceVariable(DETECTOR_SINGLETON, ivar_currentImageDetected, (void**)&value);
+        
+        if(canRespond){
+            objc_msgSend(delegate, SEL_imageFound, idx, NULL);
         }
-    */
+    }
 }
 
 #pragma mark - global

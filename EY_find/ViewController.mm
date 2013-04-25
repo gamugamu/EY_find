@@ -13,7 +13,7 @@
 #import "DetectorNotifier.h"
 #import "DetectorNotifier+detector.h"
 
-@interface ViewController ()<VideoSourceDelegate>{
+@interface ViewController ()<VideoSourceDelegate, DetectorNotifierDelegate>{
     VideoSource*        _videoSource;
     GLESImageView*      _GLView;
     DetectorNotifier*   _detectorNotifier;
@@ -33,6 +33,12 @@
     cv::Mat image = imageFromAVRepresentation(captureDescription);
     [_detectorNotifier detectOnImage: image];
     [_GLView drawFrame: image];
+}
+
+#pragma mark - DetectorNotifierDelegate
+
+- (void)imageFound:(unsigned)index intoView:(UIView*)cameRaView{
+    NSLog(@"called------------------------------- %u %p", index, cameRaView);
 }
 
 #pragma mark - lifeCycle
@@ -88,8 +94,9 @@
 }
 
 - (void)setUpDetector{
-    _detectorNotifier   = [DetectorNotifier new];
-    _detectorNotifier.shouldDetect = YES;
+    _detectorNotifier               = [DetectorNotifier new];
+    _detectorNotifier.shouldDetect  = YES;
+    _detectorNotifier.delegate      = self;
 }
 
 @end
