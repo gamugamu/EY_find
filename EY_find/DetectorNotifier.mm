@@ -19,6 +19,7 @@
 @end
 
 static id SELF;
+static const char ivar_currentImageDetected[] = "_currentImageDetected";
 
 @implementation DetectorNotifier
 @synthesize delegate                = _delegate,
@@ -61,19 +62,21 @@ static id SELF;
 
 void ir_imageFound(unsigned idx){
     int value;
-    object_getInstanceVariable(SELF, "currentImageDetected", (void**)(&value));
+    object_getInstanceVariable(SELF, ivar_currentImageDetected, (void**)&value);
     
-    printf("--value %i\n", value);
-    if(value != idx)
+    printf("--value %i %p\n", value, SELF);
+   /* if(value != idx)
         if(0){
             printf("ffffound %u\n", idx);
         }
+    */
 }
 
 #pragma mark - global
 
 - (void)setUpDefault{
     [self reset];
+    printf("test %i\n", _currentImageDetected);
 }
 
 - (void)setUpDetector{

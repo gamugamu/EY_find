@@ -10,10 +10,13 @@
 #import "VideoSource.h"
 #import "GLESImageView.h"
 #import "IR_AVtoCVImageWrapper.h"
+#import "DetectorNotifier.h"
+#import "DetectorNotifier+detector.h"
 
 @interface ViewController ()<VideoSourceDelegate>{
-    VideoSource*    _videoSource;
-    GLESImageView*  _GLView;
+    VideoSource*        _videoSource;
+    GLESImageView*      _GLView;
+    DetectorNotifier*   _detectorNotifier;
 }
 @end
 
@@ -28,7 +31,7 @@
     // Note: Nous ne somme pas dans la thread principale. Ceci
     // est du à AVFoundation.
     cv::Mat image = imageFromAVRepresentation(captureDescription);
-
+    [_detectorNotifier detectOnImage: image];
     [_GLView drawFrame: image];
 }
 
@@ -56,8 +59,9 @@
 }
 
 - (void)dealloc{
-    [_videoSource   release];
-    [_GLView        release];
+    [_videoSource       release];
+    [_GLView            release];
+    [_detectorNotifier  release];
     [super dealloc];
 }
 
@@ -69,6 +73,7 @@
 - (void)setUpAll{
     [self setUpOpenGlView];
     [self setUpVideoSource];
+    [self setUpDetector];
     self.view = _GLView;
 }
 
@@ -80,6 +85,11 @@
 - (void)setUpOpenGlView{
     CGRect frame    = [UIScreen mainScreen].applicationFrame;
     _GLView         = [[GLESImageView alloc] initWithFrame: frame];
+}
+
+- (void)setUpDetector{
+    _detectorNotifier   = [DetectorNotifier new];
+    _detectorNotifier.shouldDetect = YES;
 }
 
 @end
