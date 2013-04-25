@@ -48,6 +48,7 @@
 		EBD86AC9172829B600C0DBC3 /* referer_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EBD86AC8172829B600C0DBC3 /* referer_2.jpg */; };
 		EBD86ACA17282E1B00C0DBC3 /* libUIImageToOpenCV.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EBD86AB2172825F200C0DBC3 /* libUIImageToOpenCV.a */; };
 		EBF91D3117291373004152F6 /* EYDetectorNotifier.mm in Sources */ = {isa = PBXBuildFile; fileRef = EBF91D3017291373004152F6 /* EYDetectorNotifier.mm */; };
+		EBF91D3B17295FC5004152F6 /* DummyClient.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF91D3A17295FC5004152F6 /* DummyClient.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -116,6 +117,8 @@
 		EBF91D3017291373004152F6 /* EYDetectorNotifier.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = EYDetectorNotifier.mm; sourceTree = "<group>"; };
 		EBF91D341729297B004152F6 /* EYDetectorNotifier+detector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EYDetectorNotifier+detector.h"; sourceTree = "<group>"; };
 		EBF91D3717295D1E004152F6 /* EYRecognizerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EYRecognizerDelegate.h; sourceTree = "<group>"; };
+		EBF91D3917295FC5004152F6 /* DummyClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DummyClient.h; sourceTree = "<group>"; };
+		EBF91D3A17295FC5004152F6 /* DummyClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DummyClient.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +200,7 @@
 		EB2314F11726BF98004850AE /* EY_find */ = {
 			isa = PBXGroup;
 			children = (
+				EBF91D3817295FAE004152F6 /* dummyClient */,
 				EB659BB11726D717002F34D2 /* controllers */,
 				EB659BB01726D709002F34D2 /* models */,
 				EB2314F21726BF98004850AE /* Supporting Files */,
@@ -334,6 +338,15 @@
 				EBF91D341729297B004152F6 /* EYDetectorNotifier+detector.h */,
 			);
 			name = detectorWrapper;
+			sourceTree = "<group>";
+		};
+		EBF91D3817295FAE004152F6 /* dummyClient */ = {
+			isa = PBXGroup;
+			children = (
+				EBF91D3917295FC5004152F6 /* DummyClient.h */,
+				EBF91D3A17295FC5004152F6 /* DummyClient.m */,
+			);
+			name = dummyClient;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -491,6 +504,7 @@
 				EB659BAC1726D5DF002F34D2 /* FPSCalculator.mm in Sources */,
 				EB659BB41726D738002F34D2 /* VideoSource.mm in Sources */,
 				EBF91D3117291373004152F6 /* EYDetectorNotifier.mm in Sources */,
+				EBF91D3B17295FC5004152F6 /* DummyClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

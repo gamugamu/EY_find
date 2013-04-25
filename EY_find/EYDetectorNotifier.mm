@@ -41,7 +41,8 @@ static const char ivar_cameraView[]             = "_cameraView";
 
 // categorie
 - (void)detectOnImage:(cv::Mat)image{
-    if(_shouldDetect)
+    // pas de delegate, pas de chocolats!
+    if(_shouldDetect || !_delegate)
         _detector->processFrame(image);
 }
 

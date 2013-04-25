@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "EYViewController.h"
+#import "DummyClient.h"
 
 @implementation AppDelegate
 
@@ -20,6 +21,13 @@
     self.viewController = [[EYViewController new] autorelease];
     self.window.rootViewController  = self.viewController;
     [self.window makeKeyAndVisible];
+    
+    
+    
+    // test
+    
+    DummyClient* dummy = [DummyClient new];
+    _viewController.delegate = dummy;
     return YES;
 }
 
