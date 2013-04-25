@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@class EYViewController;
+@class EYCameraViewController;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (strong, nonatomic) EYViewController *viewController;
+@property (strong, nonatomic) EYCameraViewController *viewController;
 
 @end

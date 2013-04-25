@@ -7,9 +7,13 @@
 //
 
 #import "AppDelegate.h"
-#import "EYViewController.h"
-#import "DummyClient.h"
+#import "EYCameraViewController.h"
+#import "PopOnDetection.h"
 
+@interface AppDelegate(){
+    PopOnDetection* pop;
+}
+@end
 @implementation AppDelegate
 
 #pragma mark -------------------------- public ---------------------------------
@@ -18,22 +22,21 @@
 - (BOOL)application:(UIApplication *)application
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
     self.window         = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-    self.viewController = [[EYViewController new] autorelease];
+    self.viewController = [[EYCameraViewController new] autorelease];
     self.window.rootViewController  = self.viewController;
     [self.window makeKeyAndVisible];
     
-    
-    
     // test
-    
-    DummyClient* dummy = [DummyClient new];
-    _viewController.delegate = dummy;
+    pop                         = [[PopOnDetection alloc] initWithNibName: @"PopOnDetection" bundle: nil];
+    _viewController.delegate    = pop;
+    pop.eyDetector              = _viewController;
     return YES;
 }
 
 #pragma mark - lifeCycle
 
 - (void)dealloc{
+    [pop                release];
     [_window            release];
     [_viewController    release];
     [super dealloc];

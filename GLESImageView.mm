@@ -53,22 +53,17 @@
                                       kEAGLColorFormatRGBA8, kEAGLDrawablePropertyColorFormat,
                                       nil];
       
+#ifdef DISPLAYFPS
       self.fpsCalculator            = [[FPSCalculator alloc] init];
       self.fpsLabel                 = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, 100, 100)];
       self.fpsLabel.text            = @"XXX FPS";
       self.fpsLabel.textColor       = [UIColor greenColor];
       self.fpsLabel.backgroundColor = [UIColor clearColor];
       self.fpsLabel.numberOfLines   = 1;
-      
       [self.fpsLabel sizeToFit];
-      
       [self addSubview: self.fpsLabel];
-        
-#warning test, à elnever
-        UIView* redColor = [[UIView alloc] initWithFrame: CGRectMake(0, 0, 10, 10)];
-        redColor.backgroundColor = [UIColor redColor];
-        [self addSubview: redColor];
-      [self initContext];
+#endif
+        [self initContext];
     }
     return self;
 }
@@ -201,11 +196,13 @@
 }
 
 - (void)drawFrame:(const cv::Mat&) bgraFrame{
-  [self setFramebuffer];  
+  [self setFramebuffer];
+    
+#ifdef DISPLAYFPS
   [self.fpsCalculator putTimeMark];
-  
   self.fpsLabel.text = [self.fpsCalculator getFPSAsText];
-      
+#endif
+    
   glPixelStorei(GL_PACK_ALIGNMENT, 1);
   //glPixelStorei(GL_PACK_ROW_LENGTH, (size_t)bgraFrame.step);
   glBindTexture(GL_TEXTURE_2D, backgroundTextureId);

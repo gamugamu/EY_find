@@ -16,34 +16,15 @@
 @interface EYViewController ()<VideoSourceDelegate>{
     VideoSource*            _videoSource;
     GLESImageView*          _GLView;
-    EYDetectorNotifier*     _detectorNotifier;
     dispatch_queue_t        _detectorQueue;
 }
 @end
 
 @implementation EYViewController
+@synthesize detectorNotifier = _detectorNotifier;
 
 #pragma mark -------------------------- public ---------------------------------
 #pragma mark -------------------------------------------------------------------
-
-#pragma mark - facade
-
-// TODO: à encapsuler dans un facad.
-- (void)setDelegate:(id<EYRecognizerDelegate>)delegate{
-    _detectorNotifier.delegate = delegate;
-}
-
-- (BOOL)shouldDetect{
-    return _detectorNotifier.shouldDetect;
-}
-
-- (void)setShouldDetect:(BOOL)shouldDetect{
-    _detectorNotifier.shouldDetect = shouldDetect;
-}
-
-- (void)reset{
-    [_detectorNotifier reset];
-}
 
 #pragma mark - videoSource Delegate
 
@@ -56,7 +37,6 @@
         cv::Mat outputImage = image.clone();
         
         dispatch_async(_detectorQueue, ^(void){
-            printf("-");
             [_detectorNotifier detectOnImage: outputImage];
         });
     }
