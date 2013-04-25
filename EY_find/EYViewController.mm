@@ -6,22 +6,22 @@
 //  Copyright (c) 2013 Abadie, Loïc. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "EYViewController.h"
 #import "VideoSource.h"
 #import "GLESImageView.h"
 #import "IR_AVtoCVImageWrapper.h"
-#import "DetectorNotifier.h"
-#import "DetectorNotifier+detector.h"
+#import "EYDetectorNotifier.h"
+#import "EYDetectorNotifier+detector.h"
 
-@interface ViewController ()<VideoSourceDelegate, DetectorNotifierDelegate>{
-    VideoSource*        _videoSource;
-    GLESImageView*      _GLView;
-    DetectorNotifier*   _detectorNotifier;
-    dispatch_queue_t    _detectorQueue;
+@interface EYViewController ()<VideoSourceDelegate>{
+    VideoSource*            _videoSource;
+    GLESImageView*          _GLView;
+    EYDetectorNotifier*     _detectorNotifier;
+    dispatch_queue_t        _detectorQueue;
 }
 @end
 
-@implementation ViewController
+@implementation EYViewController
 
 #pragma mark -------------------------- public ---------------------------------
 #pragma mark -------------------------------------------------------------------
@@ -49,7 +49,7 @@
 - (void)imageFound:(unsigned)index intoView:(UIView*)cameRaView{
     NSLog(@"found %u %p", index, cameRaView);
     UIView* dumbView = [[UIView alloc] initWithFrame: CGRectMake(0,0,30,30)];
-    dumbView.backgroundColor = [UIColor blueColor];
+    dumbView.backgroundColor = [UIColor yellowColor];
     [cameRaView addSubview: dumbView];
 }
 
@@ -108,9 +108,9 @@
 }
 
 - (void)setUpDetector:(UIView*)GLView{
-    _detectorNotifier               = [DetectorNotifier new];
+    _detectorNotifier               = [EYDetectorNotifier new];
     _detectorNotifier.shouldDetect  = YES;
-    _detectorNotifier.delegate      = self;
+    //_detectorNotifier.delegate      = self;
     [_detectorNotifier setCameraView: GLView];
 }
 

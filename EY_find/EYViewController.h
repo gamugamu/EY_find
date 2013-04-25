@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EYRecognizerDelegate.h"
 
-@interface ViewController : UIViewController
-
+@interface EYViewController : UIViewController
+@property(nonatomic, assign)id<EYRecognizerDelegate> delegate;
 @end

@@ -7,16 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "EYRecognizerDelegate.h"
 
-@protocol DetectorNotifierDelegate <NSObject>
-- (void)imageFound:(unsigned)index intoView:(UIView*)cameRaView;
-@end
-
-// Informe le client lorsqu'une image a été detectée. Permet également de controller
-// si le client désire encore être informé ou non. Wrapper entre la vue OpenGL
-// et la librairie libIR.
-@interface DetectorNotifier : NSObject
-@property(nonatomic, assign)id<DetectorNotifierDelegate>delegate;
+@interface EYDetectorNotifier : NSObject
+@property(nonatomic, assign)id<EYRecognizerDelegate>delegate;
 
 // commence ou arrête la detection d'image.
 @property(nonatomic, assign)BOOL shouldDetect;

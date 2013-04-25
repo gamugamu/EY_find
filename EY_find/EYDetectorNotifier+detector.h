@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Abadie, Loïc. All rights reserved.
 //
 
-#import "DetectorNotifier.h"
+#import "EYDetectorNotifier.h"
 
-@interface DetectorNotifier (detector)
+@interface EYDetectorNotifier (detector)
 - (void)detectOnImage:(cv::Mat)image;
 - (void)setCameraView:(UIView*)view;
 // detector wrapper (IR_Detector->canProceed())

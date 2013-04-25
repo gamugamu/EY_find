@@ -16,7 +16,7 @@
 		EB2314FE1726BF98004850AE /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = EB2314FD1726BF98004850AE /* Default.png */; };
 		EB2315001726BF98004850AE /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB2314FF1726BF98004850AE /* Default@2x.png */; };
 		EB2315021726BF98004850AE /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB2315011726BF98004850AE /* Default-568h@2x.png */; };
-		EB2315051726BF98004850AE /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = EB2315041726BF98004850AE /* ViewController.mm */; };
+		EB2315051726BF98004850AE /* EYViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = EB2315041726BF98004850AE /* EYViewController.mm */; };
 		EB659B971726C6A2002F34D2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB659B951726C69B002F34D2 /* AVFoundation.framework */; };
 		EB659B9A1726C73D002F34D2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB659B981726C736002F34D2 /* QuartzCore.framework */; };
 		EB659BA01726C7A4002F34D2 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB659B9E1726C79F002F34D2 /* CoreVideo.framework */; };
@@ -47,7 +47,7 @@
 		EBD86AC61728275C00C0DBC3 /* UIImage+OpenCV.h in Headers */ = {isa = PBXBuildFile; fileRef = EBD86AC11728267700C0DBC3 /* UIImage+OpenCV.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EBD86AC9172829B600C0DBC3 /* referer_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EBD86AC8172829B600C0DBC3 /* referer_2.jpg */; };
 		EBD86ACA17282E1B00C0DBC3 /* libUIImageToOpenCV.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EBD86AB2172825F200C0DBC3 /* libUIImageToOpenCV.a */; };
-		EBF91D3117291373004152F6 /* DetectorNotifier.mm in Sources */ = {isa = PBXBuildFile; fileRef = EBF91D3017291373004152F6 /* DetectorNotifier.mm */; };
+		EBF91D3117291373004152F6 /* EYDetectorNotifier.mm in Sources */ = {isa = PBXBuildFile; fileRef = EBF91D3017291373004152F6 /* EYDetectorNotifier.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -76,8 +76,8 @@
 		EB2314FD1726BF98004850AE /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		EB2314FF1726BF98004850AE /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		EB2315011726BF98004850AE /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		EB2315031726BF98004850AE /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		EB2315041726BF98004850AE /* ViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
+		EB2315031726BF98004850AE /* EYViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EYViewController.h; sourceTree = "<group>"; };
+		EB2315041726BF98004850AE /* EYViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = EYViewController.mm; sourceTree = "<group>"; };
 		EB2315121726C3ED004850AE /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
 		EB659B951726C69B002F34D2 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		EB659B981726C736002F34D2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -112,9 +112,10 @@
 		EBD86AC11728267700C0DBC3 /* UIImage+OpenCV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+OpenCV.h"; sourceTree = "<group>"; };
 		EBD86AC21728267700C0DBC3 /* UIImage+OpenCV.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "UIImage+OpenCV.mm"; sourceTree = "<group>"; };
 		EBD86AC8172829B600C0DBC3 /* referer_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = referer_2.jpg; sourceTree = "<group>"; };
-		EBF91D2F17291373004152F6 /* DetectorNotifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetectorNotifier.h; sourceTree = "<group>"; };
-		EBF91D3017291373004152F6 /* DetectorNotifier.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DetectorNotifier.mm; sourceTree = "<group>"; };
-		EBF91D341729297B004152F6 /* DetectorNotifier+detector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DetectorNotifier+detector.h"; sourceTree = "<group>"; };
+		EBF91D2F17291373004152F6 /* EYDetectorNotifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EYDetectorNotifier.h; sourceTree = "<group>"; };
+		EBF91D3017291373004152F6 /* EYDetectorNotifier.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = EYDetectorNotifier.mm; sourceTree = "<group>"; };
+		EBF91D341729297B004152F6 /* EYDetectorNotifier+detector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EYDetectorNotifier+detector.h"; sourceTree = "<group>"; };
+		EBF91D3717295D1E004152F6 /* EYRecognizerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EYRecognizerDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -245,13 +246,10 @@
 		EB659BB11726D717002F34D2 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
+				EBF91D3617295CCD004152F6 /* detectorWrapper */,
+				EBF91D3517295CC0004152F6 /* cameraController */,
 				EB2314FA1726BF98004850AE /* AppDelegate.h */,
 				EB2314FB1726BF98004850AE /* AppDelegate.m */,
-				EB2315031726BF98004850AE /* ViewController.h */,
-				EB2315041726BF98004850AE /* ViewController.mm */,
-				EBF91D341729297B004152F6 /* DetectorNotifier+detector.h */,
-				EBF91D2F17291373004152F6 /* DetectorNotifier.h */,
-				EBF91D3017291373004152F6 /* DetectorNotifier.mm */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -316,6 +314,26 @@
 				EBD86AB6172825F200C0DBC3 /* UIImageToOpenCV-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EBF91D3517295CC0004152F6 /* cameraController */ = {
+			isa = PBXGroup;
+			children = (
+				EB2315031726BF98004850AE /* EYViewController.h */,
+				EB2315041726BF98004850AE /* EYViewController.mm */,
+			);
+			name = cameraController;
+			sourceTree = "<group>";
+		};
+		EBF91D3617295CCD004152F6 /* detectorWrapper */ = {
+			isa = PBXGroup;
+			children = (
+				EBF91D3717295D1E004152F6 /* EYRecognizerDelegate.h */,
+				EBF91D2F17291373004152F6 /* EYDetectorNotifier.h */,
+				EBF91D3017291373004152F6 /* EYDetectorNotifier.mm */,
+				EBF91D341729297B004152F6 /* EYDetectorNotifier+detector.h */,
+			);
+			name = detectorWrapper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -468,11 +486,11 @@
 			files = (
 				EB2314F81726BF98004850AE /* main.m in Sources */,
 				EB2314FC1726BF98004850AE /* AppDelegate.m in Sources */,
-				EB2315051726BF98004850AE /* ViewController.mm in Sources */,
+				EB2315051726BF98004850AE /* EYViewController.mm in Sources */,
 				EB659BA91726D5CA002F34D2 /* GLESImageView.mm in Sources */,
 				EB659BAC1726D5DF002F34D2 /* FPSCalculator.mm in Sources */,
 				EB659BB41726D738002F34D2 /* VideoSource.mm in Sources */,
-				EBF91D3117291373004152F6 /* DetectorNotifier.mm in Sources */,
+				EBF91D3117291373004152F6 /* EYDetectorNotifier.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

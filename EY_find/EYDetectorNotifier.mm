@@ -9,12 +9,12 @@
 #import <objc/runtime.h> // pour la reflexivité en c
 #import <objc/message.h> // pour les messages en c.
 
-#import "DetectorNotifier.h"
+#import "EYDetectorNotifier.h"
 #import "IR_Detector.h"
 #import "IR_AVtoCVImageWrapper.h"
 #import "UIImage+OpenCV.h"
 
-@interface DetectorNotifier(){
+@interface EYDetectorNotifier(){
     IR_Detector* _detector;
 }
 @property(nonatomic, readonly)int currentImageDetected;
@@ -26,7 +26,7 @@ static const char ivar_currentImageDetected[]   = "_currentImageDetected";
 static const char ivar_delegate[]               = "_delegate";
 static const char ivar_cameraView[]             = "_cameraView";
 
-@implementation DetectorNotifier
+@implementation EYDetectorNotifier
 @synthesize delegate                = _delegate,
             shouldDetect            = _shouldDetect,
             currentImageDetected    = _currentImageDetected,
@@ -90,11 +90,14 @@ void ir_imageFound(unsigned idx){
         object_setInstanceVariable(DETECTOR_SINGLETON, ivar_currentImageDetected, (int*)idx);
         
         if(canRespond){
-            // cameraView appartient au controlleur qui manipule les images et le Detector.
-            id cameraView;
-            object_getInstanceVariable(DETECTOR_SINGLETON, ivar_cameraView, (void**)&cameraView);
-            
-            objc_msgSend(delegate, SEL_imageFound, idx, cameraView);
+            // le callBack est renvoyé dans la thread principale. Comme ça le client peut faire
+            // son GUI en toute transparence. Malgrès que tout le calcul s'est fait en tâche de fond.
+            dispatch_async(dispatch_get_main_queue(), ^{
+                // cameraView appartient au controlleur qui manipule les images et le Detector.
+                id cameraView;
+                object_getInstanceVariable(DETECTOR_SINGLETON, ivar_cameraView, (void**)&cameraView);
+                objc_msgSend(delegate, SEL_imageFound, idx, cameraView);
+            });
         }
     }
 }
