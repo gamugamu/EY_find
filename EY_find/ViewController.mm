@@ -73,7 +73,6 @@
 
 void ir_imageFound(unsigned idx){
     printf("ffffound %u\n", idx);
-
 }
 
 #pragma mark - setup

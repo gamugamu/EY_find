@@ -47,17 +47,8 @@
 		EBD86AC61728275C00C0DBC3 /* UIImage+OpenCV.h in Headers */ = {isa = PBXBuildFile; fileRef = EBD86AC11728267700C0DBC3 /* UIImage+OpenCV.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EBD86AC9172829B600C0DBC3 /* referer_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EBD86AC8172829B600C0DBC3 /* referer_2.jpg */; };
 		EBD86ACA17282E1B00C0DBC3 /* libUIImageToOpenCV.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EBD86AB2172825F200C0DBC3 /* libUIImageToOpenCV.a */; };
+		EBF91D3117291373004152F6 /* DetectorNotifier.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF91D3017291373004152F6 /* DetectorNotifier.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		EBD86ACB17282F2B00C0DBC3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EB2314E01726BF98004850AE /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = EB659BC01726DD8F002F34D2;
-			remoteInfo = IR_lib;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		EBD86AB0172825F200C0DBC3 /* CopyFiles */ = {
@@ -121,6 +112,8 @@
 		EBD86AC11728267700C0DBC3 /* UIImage+OpenCV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+OpenCV.h"; sourceTree = "<group>"; };
 		EBD86AC21728267700C0DBC3 /* UIImage+OpenCV.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "UIImage+OpenCV.mm"; sourceTree = "<group>"; };
 		EBD86AC8172829B600C0DBC3 /* referer_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = referer_2.jpg; sourceTree = "<group>"; };
+		EBF91D2F17291373004152F6 /* DetectorNotifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetectorNotifier.h; sourceTree = "<group>"; };
+		EBF91D3017291373004152F6 /* DetectorNotifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetectorNotifier.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -255,6 +248,8 @@
 				EB2314FB1726BF98004850AE /* AppDelegate.mm */,
 				EB2315031726BF98004850AE /* ViewController.h */,
 				EB2315041726BF98004850AE /* ViewController.mm */,
+				EBF91D2F17291373004152F6 /* DetectorNotifier.h */,
+				EBF91D3017291373004152F6 /* DetectorNotifier.m */,
 			);
 			name = controllers;
 			sourceTree = "<group>";
@@ -359,7 +354,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				EBD86ACC17282F2B00C0DBC3 /* PBXTargetDependency */,
 			);
 			name = EY_find;
 			productName = EY_find;
@@ -476,6 +470,7 @@
 				EB659BA91726D5CA002F34D2 /* GLESImageView.mm in Sources */,
 				EB659BAC1726D5DF002F34D2 /* FPSCalculator.mm in Sources */,
 				EB659BB41726D738002F34D2 /* VideoSource.mm in Sources */,
+				EBF91D3117291373004152F6 /* DetectorNotifier.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,14 +494,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		EBD86ACC17282F2B00C0DBC3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = EB659BC01726DD8F002F34D2 /* IR_lib */;
-			targetProxy = EBD86ACB17282F2B00C0DBC3 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		EB2314F41726BF98004850AE /* InfoPlist.strings */ = {
