@@ -158,9 +158,9 @@ static void didFoundReferer(cv::vector<cv::DMatch > &match,
     int cmpIdx          = -1;
     unsigned cmpctr     = 0;
 
-    printf("-------\n");
+   // printf("-------\n");
     for (int i = 0; i < match.size(); i++) {
-        printf("-----R [distance %f], Image: %u Query: %u Train: %u\n", match[i].distance, match[i].imgIdx, match[i].queryIdx, match[i].trainIdx);
+    //    printf("-----R [distance %f], Image: %u Query: %u Train: %u\n", match[i].distance, match[i].imgIdx, match[i].queryIdx, match[i].trainIdx);
         if(idxRef != match[i].imgIdx){
             if(cmpctr < counter){
                 cmpctr = counter;
@@ -194,7 +194,7 @@ static void didFoundReferer(cv::vector<cv::DMatch > &match,
         result = ((cummulationD > cummulAndValidate) &&
                   (idxFound == cmpIdx))? cmpIdx : IR_ImageNotFound;
     }
-    printf("test %u %u - %i\n", (cummulationD >= cummulAndValidate), (idxFound == cmpIdx), result);
+
     *idx        = result;
     idxFound    = cmpIdx;
 }

@@ -11,6 +11,7 @@
 		EB0C7CC3172AAA4100D4DBF8 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB659B9E1726C79F002F34D2 /* CoreVideo.framework */; };
 		EB0C7CC4172AAA5300D4DBF8 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB0C7CC0172AAA1F00D4DBF8 /* CoreMedia.framework */; };
 		EB0C7CC5172AAA5300D4DBF8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB0C7CBE172AAA0B00D4DBF8 /* QuartzCore.framework */; };
+		EB0C7CC7172AB67800D4DBF8 /* blum_0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EB0C7CC6172AB67700D4DBF8 /* blum_0.jpg */; };
 		EB2314EC1726BF98004850AE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB2314EB1726BF98004850AE /* UIKit.framework */; };
 		EB2314EE1726BF98004850AE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB2314ED1726BF98004850AE /* Foundation.framework */; };
 		EB2314F01726BF98004850AE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB2314EF1726BF98004850AE /* CoreGraphics.framework */; };
@@ -73,6 +74,7 @@
 /* Begin PBXFileReference section */
 		EB0C7CBE172AAA0B00D4DBF8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		EB0C7CC0172AAA1F00D4DBF8 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		EB0C7CC6172AB67700D4DBF8 /* blum_0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = blum_0.jpg; sourceTree = "<group>"; };
 		EB2314E81726BF98004850AE /* EY_find.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EY_find.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB2314EB1726BF98004850AE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		EB2314ED1726BF98004850AE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -368,6 +370,7 @@
 				EBF91D4D172970DD004152F6 /* key_1.jpg */,
 				EBF91D4E172970DD004152F6 /* lion_0.jpg */,
 				EBF91D4F172970DD004152F6 /* lion_1.jpg */,
+				EB0C7CC6172AB67700D4DBF8 /* blum_0.jpg */,
 				EBF91D50172970DD004152F6 /* lo_0.jpg */,
 				EBF91D51172970DD004152F6 /* lo_1.jpg */,
 				EBF91D52172970DD004152F6 /* lo_2.jpg */,
@@ -506,6 +509,7 @@
 				EBF91D5B172970DD004152F6 /* lo_1.jpg in Resources */,
 				EBF91D5C172970DD004152F6 /* lo_2.jpg in Resources */,
 				EBF91D5E17298254004152F6 /* car_0.jpg in Resources */,
+				EB0C7CC7172AB67800D4DBF8 /* blum_0.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
