@@ -108,7 +108,7 @@
     _videoSource                = [[VideoSource alloc] init];
     _videoSource.delegate       = self;
 	CALayer *videoPreviewLayer  = [view layer];
-    CALayer *captureLayer       = [_videoSource previewLayer];
+    CALayer *captureLayer       = _videoSource.previewLayer;
 
     [videoPreviewLayer setMasksToBounds:YES];
     [captureLayer setFrame: [view bounds]];
@@ -116,7 +116,7 @@
 }
 
 - (void)setUpDetector_withCameraView:(UIView*)view{
-    CGSize captureFrame             = CGSizeMake(1280, 720);
+    CGSize captureFrame             = [_videoSource captureFrame];
     printf("size %f %f\n", captureFrame.width, captureFrame.height);
     _detectorNotifier               = [[EYDetectorNotifier alloc] initWithCaptureFrame: captureFrame];
     _detectorNotifier.shouldDetect  = YES;

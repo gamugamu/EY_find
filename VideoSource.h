@@ -19,6 +19,7 @@
 @property(nonatomic, assign)id<VideoSourceDelegate> delegate;
 @property (nonatomic, readonly) AVCaptureVideoPreviewLayer *previewLayer;
 - (AVCaptureVideoOrientation) videoOrientation;
+- (CGSize)captureFrame;
 - (bool) hasMultipleCameras;
 - (void) toggleCamera;
 - (void) startRunning;

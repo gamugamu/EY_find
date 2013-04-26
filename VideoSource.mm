@@ -70,6 +70,13 @@
   [session stopRunning];
 }
 
+- (CGSize)captureFrame{
+   if([session.sessionPreset isEqualToString: AVCaptureSessionPreset1280x720])
+        return CGSizeMake(1280, 720);
+    else
+        return CGSizeMake(320, 480);
+}
+
 #pragma mark -
 #pragma mark AVCaptureSession delegate
 - (void)captureOutput:(AVCaptureOutput *)captureOutput 
@@ -142,9 +149,9 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
             [session addInput: captureInput];
         }
 
-        captureDevices      = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
+        captureDevices  = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
                 
-        captureOutput = [[AVCaptureVideoDataOutput alloc] init];
+        captureOutput   = [[AVCaptureVideoDataOutput alloc] init];
         captureOutput.alwaysDiscardsLateVideoFrames = YES;
 
         // Set the video output to store frame in BGRA (It is supposed to be faster)
