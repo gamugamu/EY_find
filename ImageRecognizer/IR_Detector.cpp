@@ -9,9 +9,6 @@
 #include "IR_Detector.h"
 #include "IR_CVHelper.h"
 
-#include <mach/mach.h>
-#include <mach/mach_time.h>
-
 const int IR_ImageNotFound = -1;
 
 // retourne seulement les points de similarités les plus proches.
@@ -31,23 +28,6 @@ static bool sortImgByIdx(const cv::DMatch& d1, const cv::DMatch& d2);
 
 // aide pour calculer la région d'intérêt (ROI) lors du calcul des images.
 cv::Rect computeROI(unsigned width, unsigned height);
-
-double subtractTimes( uint64_t endTime, uint64_t startTime ){
-    uint64_t difference = endTime - startTime;
-    static double conversion = 0.0;
-    
-    if( conversion == 0.0 )
-    {
-        mach_timebase_info_data_t info;
-        kern_return_t err = mach_timebase_info( &info );
-        
-        //Convert the timebase into seconds
-        if( err == 0  )
-            conversion = 1e-9 * (double) info.numer / (double) info.denom;
-    }
-    
-    return conversion * (double) difference;
-}
 
 #pragma mark -------------------------- public ---------------------------------
 #pragma mark -------------------------------------------------------------------
@@ -78,40 +58,30 @@ bool IR_Detector::processFrame(const cv::Mat& inputFrame){
     // on rétrécit la zone de l'image afin de réduire les calculs.
     // Les bords et les côtés ne nous interessent pas.
     getGray(inputFrame, grayImage);
-    //grayImage = grayImage(roi);
-    printf("-----------\n");
+    grayImage = grayImage(roi);
 
-    uint64_t now    = mach_absolute_time();
     detector->detect(grayImage, objectKeypoints);
-    printf("(1)- described --- %lf\n", subtractTimes(mach_absolute_time(), now));
 
     // on récupère la description de l'image cliente.
     cv::Mat descriptors_1;
-    now    = mach_absolute_time();
     extractor->compute(grayImage, objectKeypoints, descriptors_1);
-    printf("(2)- compute --- %lf\n", subtractTimes(mach_absolute_time(), now));
 
     // l'image doit être en 32 bit, sinon l'algorythme plante.
     if(descriptors_1.type() != CV_32F)
         descriptors_1.convertTo(descriptors_1, CV_32F);
     
     // on récupère les couples.
-    now    = mach_absolute_time();
     cv::vector<cv::vector<cv::DMatch> > matches;
     matcher->knnMatch(descriptors_1, matches, 2);
-    printf("(3)- extract --- %lf\n", subtractTimes(mach_absolute_time(), now));
 
-    now    = mach_absolute_time();
     // mais cette detection ne suffit pas, on ne récupère que les bons couples.
     cv::vector< cv::DMatch > good_matches;
     good_matches = neirestNeighboor(matches);
         
     uint idx;
-
     // cette fonction me permet de determiner si oui ou non, on a retrouvé une
     // image. Nous renvoie l'id de l'image, en cas de réussite.
     didFoundReferer(good_matches, &idx, cummulBeforeValidate);
-    printf("(4)- found --- %lf\n", subtractTimes(mach_absolute_time(), now));
 
     if(idx != IR_ImageNotFound)
         // note: je ne teste pas si le pointer de la fonction est à NULL ou pas.
@@ -147,7 +117,7 @@ void IR_Detector::testPonyDetectCreateDescriptor(const cv::Mat& inputFrame){
     cv::resize(grayReferer, grayReferer, smallSize);
     printf("size %u %u\n", grayReferer.size().width, grayReferer.size().height);
     */
-     // 1 detection
+    // 1 detection
     detector->detect(grayReferer, refererKeypoints);
     
     // 2

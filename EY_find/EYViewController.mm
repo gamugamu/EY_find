@@ -34,6 +34,7 @@
     
     if([_detectorNotifier canDetect]){
         cv::Mat image = imageFromAVRepresentation(captureDescription).clone();
+        printf("size %u %u \n", image.size().width, image.size().height);
         // sur un Cortex-A8 600 MHz c'est lent. (iphone 3G)
         // Cortex-A8 800 MHz certainement aussi (iphone 4), mais pas encore testé.
         // En plus le processeur graphique powerVR est pas terrible, ce qui donne
@@ -115,7 +116,9 @@
 }
 
 - (void)setUpDetector_withCameraView:(UIView*)view{
-    _detectorNotifier               = [EYDetectorNotifier new];
+    CGSize captureFrame             = CGSizeMake(1280, 720);
+    printf("size %f %f\n", captureFrame.width, captureFrame.height);
+    _detectorNotifier               = [[EYDetectorNotifier alloc] initWithCaptureFrame: captureFrame];
     _detectorNotifier.shouldDetect  = YES;
     [_detectorNotifier setCameraView: view];
 }

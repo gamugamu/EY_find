@@ -10,5 +10,6 @@
 #import "EYRecognizerDelegate.h"
 
 @interface EYDetectorNotifier : NSObject<EYDetector>
+- (id)initWithCaptureFrame:(CGSize)captureSize;
 @property(nonatomic, assign)id<EYRecognizerDelegate>delegate;
 @end

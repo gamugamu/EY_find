@@ -54,12 +54,16 @@ static const char ivar_cameraView[]             = "_cameraView";
 
 #pragma mark - alloc / dealloc
 
+- (id)initWithCaptureFrame:(CGSize)captureSize{
+    if(self = [super init]){
+        [self setUpAll: captureSize];
+    }
+    return self;
+}
+
 - (id)init{
     if(self = [super init]){
-        [self setUpDefault];
-        [self setUpDetector];
-        // note ça sera un singleton, donc ok.
-        DETECTOR_SINGLETON = self;
+       
     }
     return self;
 }
@@ -71,6 +75,13 @@ static const char ivar_cameraView[]             = "_cameraView";
 
 #pragma mark -------------------------- private --------------------------------
 #pragma mark -------------------------------------------------------------------
+
+- (void)setUpAll:(CGSize)size{
+    [self setUpDefault];
+    [self setUpDetector: size];
+    // note ça sera un singleton, donc ok.
+    DETECTOR_SINGLETON = self;
+}
 
 #pragma mark - IR_DetectorCallBack
 
@@ -109,8 +120,8 @@ void ir_imageFound(unsigned idx){
     [self reset];
 }
 
-- (void)setUpDetector{
-    _detector = new IR_Detector(640, 480, ir_imageFound, true);
+- (void)setUpDetector:(CGSize)size{
+    _detector = new IR_Detector(size.width, size.height, ir_imageFound, true);
     
 #warning test à enlever
     // note: test seulement
