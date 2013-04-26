@@ -8,14 +8,12 @@
 
 #import "EYViewController.h"
 #import "VideoSource.h"
-#import "GLESImageView.h"
 #import "IR_AVtoCVImageWrapper.h"
 #import "EYDetectorNotifier.h"
 #import "EYDetectorNotifier+detector.h"
 
 @interface EYViewController ()<VideoSourceDelegate>{
     VideoSource*            _videoSource;
-    GLESImageView*          _GLView;
     dispatch_queue_t        _detectorQueue;
 }
 @end
@@ -83,7 +81,6 @@
 
 - (void)dealloc{
     [_videoSource       release];
-    [_GLView            release];
     [_detectorNotifier  release];
     dispatch_release(_detectorQueue);
     [super dealloc];
@@ -96,10 +93,8 @@
 
 - (void)setUpAll{
     [self setUpDetectorQueue];
-    //[self setUpOpenGlView];
-    [self setUpMainView_withGLView: nil];
-
-    [self setUpVideoSource];
+    [self setUpMainView];
+    [self setUpVideoSource: self.view];
     // Note: La vue openGL est dessinée dans une autre thread, nottament à cause
     // de AVCapture. Comme le client va disposer d'une vue afin d'afficher des
     // layers, on utilisera donc une view qui servira de container. Comme ça
@@ -108,24 +103,15 @@
     [self setUpDetector_withCameraView: self.view];
 }
 
-- (void)setUpVideoSource{
-    _videoSource            = [[VideoSource alloc] init];
-    _videoSource.delegate   = self;
-    
-    
-	CALayer *videoPreviewLayer = [self.view layer];
-    [videoPreviewLayer setMasksToBounds:YES];
-    
-    CALayer *captureLayer = [_videoSource previewLayer];
-    [captureLayer setFrame: [self.view bounds]];
-    
-    [videoPreviewLayer insertSublayer:captureLayer below:[[videoPreviewLayer sublayers] objectAtIndex:0]];
-}
+- (void)setUpVideoSource:(UIView*)view{
+    _videoSource                = [[VideoSource alloc] init];
+    _videoSource.delegate       = self;
+	CALayer *videoPreviewLayer  = [view layer];
+    CALayer *captureLayer       = [_videoSource previewLayer];
 
-- (void)setUpOpenGlView{
-    CGRect frame    = [UIScreen mainScreen].applicationFrame;
-    frame.origin    = CGPointZero;
-    _GLView         = [[GLESImageView alloc] initWithFrame: frame];
+    [videoPreviewLayer setMasksToBounds:YES];
+    [captureLayer setFrame: [view bounds]];
+    [videoPreviewLayer insertSublayer:captureLayer below:[[videoPreviewLayer sublayers] objectAtIndex:0]];
 }
 
 - (void)setUpDetector_withCameraView:(UIView*)view{
@@ -141,11 +127,10 @@
     dispatch_set_target_queue(_detectorQueue, low);
 }
 
-- (void)setUpMainView_withGLView:(UIView*)GLESView{
+- (void)setUpMainView{
     CGRect frame        = [UIScreen mainScreen].applicationFrame;
     UIView* mainView    = [[UIView alloc] initWithFrame: frame];
     self.view           = mainView;
-    [mainView addSubview: _GLView];
     [mainView release];
 }
 @end
