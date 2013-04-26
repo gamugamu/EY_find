@@ -17,6 +17,7 @@
 
 @interface VideoSource : NSObject<AVCaptureVideoDataOutputSampleBufferDelegate>
 @property(nonatomic, assign)id<VideoSourceDelegate> delegate;
+@property (nonatomic, readonly) AVCaptureVideoPreviewLayer *previewLayer;
 - (AVCaptureVideoOrientation) videoOrientation;
 - (bool) hasMultipleCameras;
 - (void) toggleCamera;

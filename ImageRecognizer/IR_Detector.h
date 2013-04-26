@@ -18,7 +18,7 @@ extern const int IR_ImageNotFound;
 
 class IR_Detector{
     public:
-    IR_Detector(unsigned width, unsigned height, IR_CallBack imageFound);
+    IR_Detector(unsigned width, unsigned height, IR_CallBack imageFound, bool shouldDegrad = false);
     
     // à refactoriser
     virtual bool processFrame(const cv::Mat& inputFrame);
@@ -32,6 +32,8 @@ class IR_Detector{
     bool canProceed();
     
     private:
+    void setup();
+    
     // l'image pour le traitement de la reconnaissance, objectKeypoints
     cv::Mat grayImage;
     std::vector<cv::KeyPoint> objectKeypoints;
@@ -49,7 +51,9 @@ class IR_Detector{
     // callBack lorsqu'une image est retrouvée. Renvoie son id.
     IR_CallBack _imageFound = NULL;
     
+    bool isDegraded;
     bool shouldProcess;
+    const unsigned cummulBeforeValidate;
 };
 
 #endif /* defined(__EY_find__ImageRecognizer__) */

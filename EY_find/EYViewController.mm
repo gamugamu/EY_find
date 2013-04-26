@@ -31,12 +31,11 @@
 - (void)frameCaptured:(frameCaptured*)captureDescription{
     // Note: Nous ne somme pas dans la thread principale. Ceci
     // est du à AVFoundation.
-    cv::Mat image = imageFromAVRepresentation(captureDescription);
-
-    [_GLView drawFrame: image];
+    
+    //[_GLView drawFrame: image];
     
     if([_detectorNotifier canDetect]){
-        cv::Mat outputImage = image.clone();
+        cv::Mat image = imageFromAVRepresentation(captureDescription).clone();
         // sur un Cortex-A8 600 MHz c'est lent. (iphone 3G)
         // Cortex-A8 800 MHz certainement aussi (iphone 4), mais pas encore testé.
         // En plus le processeur graphique powerVR est pas terrible, ce qui donne
@@ -52,9 +51,10 @@
         // se font par priorité dans un simili de parallelisme. Donc _detectorQueue
         // est de priorité LOW, sinon ça va ramer, parce qu'il y a aussi l'affichage
         // de la vue openGL.
-        dispatch_async(_detectorQueue, ^(void){            
-            [_detectorNotifier detectOnImage: outputImage];
-        });
+       // dispatch_async(_detectorQueue, ^(void){
+            [_detectorNotifier detectOnImage: image];
+        
+        //});
     }
 }
 
@@ -96,20 +96,30 @@
 
 - (void)setUpAll{
     [self setUpDetectorQueue];
-    [self setUpOpenGlView];
+    //[self setUpOpenGlView];
+    [self setUpMainView_withGLView: nil];
+
     [self setUpVideoSource];
     // Note: La vue openGL est dessinée dans une autre thread, nottament à cause
     // de AVCapture. Comme le client va disposer d'une vue afin d'afficher des
     // layers, on utilisera donc une view qui servira de container. Comme ça
     // la vue OpenGL et la vue principale peuvent être utilisée sur des threads
     // différentes (côté client forcement sur la thread principale).
-    [self setUpMainView_withGLView: _GLView];
     [self setUpDetector_withCameraView: self.view];
 }
 
 - (void)setUpVideoSource{
     _videoSource            = [[VideoSource alloc] init];
     _videoSource.delegate   = self;
+    
+    
+	CALayer *videoPreviewLayer = [self.view layer];
+    [videoPreviewLayer setMasksToBounds:YES];
+    
+    CALayer *captureLayer = [_videoSource previewLayer];
+    [captureLayer setFrame: [self.view bounds]];
+    
+    [videoPreviewLayer insertSublayer:captureLayer below:[[videoPreviewLayer sublayers] objectAtIndex:0]];
 }
 
 - (void)setUpOpenGlView{
@@ -126,7 +136,7 @@
 
 - (void)setUpDetectorQueue{
     _detectorQueue          = dispatch_queue_create("com.EY_find.IR_Lib.detectorQueue", DISPATCH_QUEUE_CONCURRENT);
-    dispatch_queue_t low    = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW,NULL);
+    dispatch_queue_t low    = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, NULL);
 
     dispatch_set_target_queue(_detectorQueue, low);
 }

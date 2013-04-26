@@ -9,11 +9,12 @@
 #import "VideoSource.h"
 
 @interface VideoSource (){
-  AVCaptureSession * session;
-  NSArray * captureDevices;
-  AVCaptureDeviceInput * captureInput;
-  AVCaptureVideoDataOutput * captureOutput;
-  int currentCameraIndex;
+    AVCaptureSession * session;
+    NSArray * captureDevices;
+    AVCaptureDeviceInput * captureInput;
+    AVCaptureVideoDataOutput * captureOutput;
+    AVCaptureVideoPreviewLayer *_previewLayer;
+    int currentCameraIndex;
 }
 @end
 
@@ -97,26 +98,55 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     CVPixelBufferUnlockBaseAddress(imageBuffer,0);
 }
 
+- (void)setupVideoPreview:(AVCaptureSession*)captureSession{
+    _previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession: captureSession];
+    [_previewLayer setVideoGravity: AVLayerVideoGravityResizeAspectFill];
+}
+
 #pragma mark - alloc / dealloc
+
+- (AVCaptureDevice *)cameraWithPosition:(AVCaptureDevicePosition)position {
+    NSArray *devices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
+    for (AVCaptureDevice *device in devices) {
+        if ([device position] == position) {
+            return device;
+        }
+    }
+    
+    return nil;
+}
+
+- (AVCaptureDevice *)backFacingCamera {
+    return [self cameraWithPosition:AVCaptureDevicePositionBack];
+}
 
 - (id)init{
     if (self = [super init]){
         currentCameraIndex  = 0;
         session             = [[AVCaptureSession alloc] init];
-        [session setSessionPreset:AVCaptureSessionPreset640x480];
-        captureDevices      = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
-        
-        AVCaptureDevice *videoDevice = [captureDevices objectAtIndex:0];
-        
+       
         NSError * error;
-        captureInput = [AVCaptureDeviceInput deviceInputWithDevice:videoDevice error:&error];
+        captureInput = [AVCaptureDeviceInput deviceInputWithDevice: [self backFacingCamera] error:&error];
         
         if (error)
             NSLog(@"Couldn't create video input");
         
+        
+        if ([session canSetSessionPreset: AVCaptureSessionPreset1280x720])
+            [session setSessionPreset: AVCaptureSessionPreset1280x720];
+        
+        if ([session canAddInput: captureInput]) {
+            [session addInput: captureInput];
+        } else{
+            [session setSessionPreset: AVCaptureSessionPresetMedium];
+            [session addInput: captureInput];
+        }
+
+        captureDevices      = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
+                
         captureOutput = [[AVCaptureVideoDataOutput alloc] init];
         captureOutput.alwaysDiscardsLateVideoFrames = YES;
-        
+
         // Set the video output to store frame in BGRA (It is supposed to be faster)
         NSString* key               = (NSString*)kCVPixelBufferPixelFormatTypeKey;
         NSNumber* value             = [NSNumber numberWithUnsignedInt:kCVPixelFormatType_32BGRA];
@@ -125,12 +155,15 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
         
         /*We create a serial queue to handle the processing of our frames*/
         dispatch_queue_t queue;
-        queue = dispatch_queue_create("com.EY_find.cameraQueue", NULL);
-        [captureOutput setSampleBufferDelegate:self queue:queue];
-        dispatch_release(queue);
-        
-        [session addInput:captureInput];
+        queue                       = dispatch_queue_create("com.EY_find.cameraQueue", NULL);
+        dispatch_queue_t hight      = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, NULL);
+        dispatch_set_target_queue(queue, hight);
+
+        [captureOutput setSampleBufferDelegate:self queue:queue];        
         [session addOutput:captureOutput];
+        [self setupVideoPreview: session];
+        
+        dispatch_release(queue);
     }
     
     return self;
@@ -140,6 +173,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     [captureOutput  release];
     [captureDevices release];
     [session        release];
+    [_previewLayer  release];
     [super dealloc];
 }
 @end

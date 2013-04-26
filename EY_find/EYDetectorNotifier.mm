@@ -110,7 +110,7 @@ void ir_imageFound(unsigned idx){
 }
 
 - (void)setUpDetector{
-    _detector = new IR_Detector(640, 480, ir_imageFound);
+    _detector = new IR_Detector(640, 480, ir_imageFound, true);
     
 #warning test à enlever
     // note: test seulement
