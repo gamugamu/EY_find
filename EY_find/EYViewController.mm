@@ -33,12 +33,26 @@
     // est du à AVFoundation.
     cv::Mat image = imageFromAVRepresentation(captureDescription);
 
-    [_GLView drawFrame: image.clone()];
+    [_GLView drawFrame: image];
     
     if([_detectorNotifier canDetect]){
         cv::Mat outputImage = image.clone();
+        // sur un Cortex-A8 600 MHz c'est lent. (iphone 3G)
+        // Cortex-A8 800 MHz certainement aussi (iphone 4), mais pas encore testé.
+        // En plus le processeur graphique powerVR est pas terrible, ce qui donne
+        // une pénalité de plus lorsque l'on utilise openGL (sad).
+        // Mais sur un 2 × Cortex-A9 800 MHz le multi thread fonctionne. Forcement.
+        // Et tout les tutti-frutty au dessus ça fonctionne aussi.
+        // (Pour tout ces cranneurs qui tournent sur le A6 (pseudo ARM Cortex-A15 en
+        // bi coeur + PowerVR * 4, je ne me fait pas de soucis).
         
-        dispatch_async(_detectorQueue, ^(void){
+        // Donc pour ne pas pénaliser le GUI sur le calcul de détéction
+        // (le parallelisme ne fonctionne vraiment physiquement
+        // que si il y a plusieurs processeurs). Dans un seul core, les calculs
+        // se font par priorité dans un simili de parallelisme. Donc _detectorQueue
+        // est de priorité LOW, sinon ça va ramer, parce qu'il y a aussi l'affichage
+        // de la vue openGL.
+        dispatch_async(_detectorQueue, ^(void){            
             [_detectorNotifier detectOnImage: outputImage];
         });
     }
@@ -111,7 +125,10 @@
 }
 
 - (void)setUpDetectorQueue{
-    _detectorQueue = dispatch_queue_create("com.EY_find.IR_Lib.detectorQueue", NULL);  
+    _detectorQueue          = dispatch_queue_create("com.EY_find.IR_Lib.detectorQueue", DISPATCH_QUEUE_CONCURRENT);
+    dispatch_queue_t low    = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW,NULL);
+
+    dispatch_set_target_queue(_detectorQueue, low);
 }
 
 - (void)setUpMainView_withGLView:(UIView*)GLESView{
@@ -119,7 +136,6 @@
     UIView* mainView    = [[UIView alloc] initWithFrame: frame];
     self.view           = mainView;
     [mainView addSubview: _GLView];
-    NSLog(@"getView %@ %@", mainView, _GLView);
     [mainView release];
 }
 @end

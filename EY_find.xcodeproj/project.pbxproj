@@ -662,6 +662,12 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EY_find/EY_find-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					GLESLOG,
+					"$(inherited)",
+					DISPLAYFPS,
+				);
 				INFOPLIST_FILE = "EY_find/EY_find-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
