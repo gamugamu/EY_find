@@ -8,6 +8,7 @@
 
 #include "IR_Detector.h"
 #include "IR_CVHelper.h"
+#include "IR_EncoderDecoder.h"
 
 const int IR_ImageNotFound = -1;
 
@@ -100,6 +101,9 @@ bool IR_Detector::canProceed(){
 #warning à enlever
 
 void IR_Detector::testPonyDetectCreateDescriptor(const cv::Mat& inputFrame){
+    // test compression
+   // testEncode(const_cast<cv::Mat&>(inputFrame));
+    
     cv::Mat grayReferer;
     cv::Mat descriptors_referer;
     printf("---- calcul d'image %u\n", cummulBeforeValidate);
@@ -107,16 +111,7 @@ void IR_Detector::testPonyDetectCreateDescriptor(const cv::Mat& inputFrame){
     std::vector<cv::KeyPoint> refererKeypoints;
     
     getGray(inputFrame, grayReferer);
-    /*
-    cv::Mat mask        = cv::Mat::zeros(grayImage.size(), CV_8UC1);
-    cv::Size size       = grayReferer.size();
-    cv::Size smallSize;
-    smallSize.width     = size.width/2;
-    smallSize.height    = size.height/2;
-    
-    cv::resize(grayReferer, grayReferer, smallSize);
-    printf("size %u %u\n", grayReferer.size().width, grayReferer.size().height);
-    */
+
     // 1 detection
     detector->detect(grayReferer, refererKeypoints);
     
@@ -125,10 +120,10 @@ void IR_Detector::testPonyDetectCreateDescriptor(const cv::Mat& inputFrame){
     
     if(descriptors_referer.type() != CV_32F)
         descriptors_referer.convertTo(descriptors_referer, CV_32F);
-    
+            
     std::vector<cv::Mat> descriptor;
     descriptor.push_back(descriptors_referer);
-    
+
     //train with descriptors from your db
     dbDescriptors.push_back(descriptor);
     

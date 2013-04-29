@@ -12,6 +12,8 @@
 		EB0C7CC4172AAA5300D4DBF8 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB0C7CC0172AAA1F00D4DBF8 /* CoreMedia.framework */; };
 		EB0C7CC5172AAA5300D4DBF8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB0C7CBE172AAA0B00D4DBF8 /* QuartzCore.framework */; };
 		EB0C7CC7172AB67800D4DBF8 /* blum_0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EB0C7CC6172AB67700D4DBF8 /* blum_0.jpg */; };
+		EB0C7CD0172AC46D00D4DBF8 /* IR_EncoderDecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB0C7CCE172AC46D00D4DBF8 /* IR_EncoderDecoder.cpp */; };
+		EB0C7CD1172AC46D00D4DBF8 /* IR_EncoderDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = EB0C7CCF172AC46D00D4DBF8 /* IR_EncoderDecoder.h */; };
 		EB2314EC1726BF98004850AE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB2314EB1726BF98004850AE /* UIKit.framework */; };
 		EB2314EE1726BF98004850AE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB2314ED1726BF98004850AE /* Foundation.framework */; };
 		EB2314F01726BF98004850AE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB2314EF1726BF98004850AE /* CoreGraphics.framework */; };
@@ -59,6 +61,16 @@
 		EBF91D5E17298254004152F6 /* car_0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EBF91D5D17298254004152F6 /* car_0.jpg */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		EB0C7CC8172AC00200D4DBF8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EB2314E01726BF98004850AE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EB659BC01726DD8F002F34D2;
+			remoteInfo = IR_lib;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		EBD86AB0172825F200C0DBC3 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -75,6 +87,8 @@
 		EB0C7CBE172AAA0B00D4DBF8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		EB0C7CC0172AAA1F00D4DBF8 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		EB0C7CC6172AB67700D4DBF8 /* blum_0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = blum_0.jpg; sourceTree = "<group>"; };
+		EB0C7CCE172AC46D00D4DBF8 /* IR_EncoderDecoder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IR_EncoderDecoder.cpp; path = ImageRecognizer/IR_EncoderDecoder.cpp; sourceTree = "<group>"; };
+		EB0C7CCF172AC46D00D4DBF8 /* IR_EncoderDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IR_EncoderDecoder.h; path = ImageRecognizer/IR_EncoderDecoder.h; sourceTree = "<group>"; };
 		EB2314E81726BF98004850AE /* EY_find.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EY_find.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB2314EB1726BF98004850AE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		EB2314ED1726BF98004850AE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -173,6 +187,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EB0C7CCA172AC40A00D4DBF8 /* Detector */ = {
+			isa = PBXGroup;
+			children = (
+				EB659BBC1726DD05002F34D2 /* IR_Detector.h */,
+				EB659BBB1726DD05002F34D2 /* IR_Detector.cpp */,
+			);
+			name = Detector;
+			sourceTree = "<group>";
+		};
+		EB0C7CCB172AC41900D4DBF8 /* Wrapper */ = {
+			isa = PBXGroup;
+			children = (
+				EBD86A781727BDC600C0DBC3 /* IR_AVFrameRep.h */,
+				EBD86A751727BD6800C0DBC3 /* IR_AVtoCVImageWrapper.h */,
+				EBD86A741727BD6800C0DBC3 /* IR_AVtoCVImageWrapper.cpp */,
+			);
+			name = Wrapper;
+			sourceTree = "<group>";
+		};
+		EB0C7CCC172AC43300D4DBF8 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				EBD86AA5172818D200C0DBC3 /* IR_CVHelper.h */,
+				EBD86AA4172818D200C0DBC3 /* IR_CVHelper.cpp */,
+			);
+			name = Helper;
+			sourceTree = "<group>";
+		};
+		EB0C7CCD172AC43C00D4DBF8 /* Encoder/Decoder */ = {
+			isa = PBXGroup;
+			children = (
+				EB0C7CCE172AC46D00D4DBF8 /* IR_EncoderDecoder.cpp */,
+				EB0C7CCF172AC46D00D4DBF8 /* IR_EncoderDecoder.h */,
+			);
+			name = Encoder/Decoder;
+			sourceTree = "<group>";
+		};
 		EB2314DF1726BF98004850AE = {
 			isa = PBXGroup;
 			children = (
@@ -270,13 +321,10 @@
 		EB659BBA1726DC9B002F34D2 /* IR_lib */ = {
 			isa = PBXGroup;
 			children = (
-				EB659BBC1726DD05002F34D2 /* IR_Detector.h */,
-				EB659BBB1726DD05002F34D2 /* IR_Detector.cpp */,
-				EBD86A751727BD6800C0DBC3 /* IR_AVtoCVImageWrapper.h */,
-				EBD86A741727BD6800C0DBC3 /* IR_AVtoCVImageWrapper.cpp */,
-				EBD86A781727BDC600C0DBC3 /* IR_AVFrameRep.h */,
-				EBD86AA5172818D200C0DBC3 /* IR_CVHelper.h */,
-				EBD86AA4172818D200C0DBC3 /* IR_CVHelper.cpp */,
+				EB0C7CCD172AC43C00D4DBF8 /* Encoder/Decoder */,
+				EB0C7CCC172AC43300D4DBF8 /* Helper */,
+				EB0C7CCB172AC41900D4DBF8 /* Wrapper */,
+				EB0C7CCA172AC40A00D4DBF8 /* Detector */,
 				EBD86A7A1727BEF700C0DBC3 /* IR_Lib.pch */,
 				EBD86AA11727FDC300C0DBC3 /* IR_Config.h */,
 				EBD86AAD1728191100C0DBC3 /* framework */,
@@ -391,6 +439,7 @@
 				EBD86AA21727FDC300C0DBC3 /* IR_Config.h in Headers */,
 				EBD86AA7172818D300C0DBC3 /* IR_CVHelper.h in Headers */,
 				EBD86AAA172818FC00C0DBC3 /* cvneon.h in Headers */,
+				EB0C7CD1172AC46D00D4DBF8 /* IR_EncoderDecoder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,6 +465,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				EB0C7CC9172AC00200D4DBF8 /* PBXTargetDependency */,
 			);
 			name = EY_find;
 			productName = EY_find;
@@ -554,6 +604,7 @@
 				EBD86A761727BD6800C0DBC3 /* IR_AVtoCVImageWrapper.cpp in Sources */,
 				EBD86AA6172818D300C0DBC3 /* IR_CVHelper.cpp in Sources */,
 				EBD86AAB172818FC00C0DBC3 /* cvneon.cpp in Sources */,
+				EB0C7CD0172AC46D00D4DBF8 /* IR_EncoderDecoder.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -566,6 +617,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EB0C7CC9172AC00200D4DBF8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EB659BC01726DD8F002F34D2 /* IR_lib */;
+			targetProxy = EB0C7CC8172AC00200D4DBF8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		EB2314F41726BF98004850AE /* InfoPlist.strings */ = {
