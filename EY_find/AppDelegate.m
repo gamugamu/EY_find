@@ -52,7 +52,7 @@
     
     _pop.scanIndexFound = ^(unsigned idx, PopOnDetection* pop){
         pop.productDescription.text = [ProductData labelForProduct: idx];
-        [pop popUpImage: [ProductData imageForIndex: 0]];
+        [pop popUpImage: [ProductData imageForIndex: idx]];
     };
     
     _pop.goPressed = ^(unsigned idx, PopOnDetection* pop){
@@ -63,6 +63,8 @@
 - (void)swapToWebViewController:(NSString*)stringUlr{
     WebView* webView = [[WebView alloc] init];
     [webView loadUrl: stringUlr];
+    webView.modalPresentationStyle = UIModalTransitionStyleCrossDissolve;
+    
     [_viewController presentViewController: webView animated: YES completion: nil];
     [webView release];
 }

@@ -12,20 +12,26 @@
 // bouchons
 + (NSString*)imageForIndex:(unsigned)idx;{
     static NSString* allImage[] = {
-        @"casque.jpg"};
+        @"camera.png",
+        @"stationMeteo.jpg",
+        @"soundBlaster.jpg"};
     return allImage[idx];
 }
 
 + (NSString*)urlForLabel:(unsigned)idx{
     static NSString* allUrl[] = {
-        @"http://www.google.fr"};
+        @"http://easy-shopping.commercedigital.fr/StarterMobile/catalogEntry.html?langId=1&ceId=216212",
+        @"http://easy-shopping.commercedigital.fr/StarterMobile/catalogEntry.html?langId=1&ceId=216208",
+        @"http://easy-shopping.commercedigital.fr/StarterMobile/catalogEntry.html?langId=1&ceId=216200"};
     return allUrl[idx];
 
 }
 
 + (NSString*)labelForProduct:(unsigned)idx{
     static NSString* allLabels[] = {
-        @"Un casque"};
+        @"Kit Reflex Canon - EOS1000D (10MP)+18-55IS (STAB)",
+        @"Station Météo LA CROSSE WM5400 J+1",
+        @"Chaîne mini LG RAD114 MP3 USB"};
     return allLabels[idx];
 }
 @end

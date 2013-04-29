@@ -8,7 +8,9 @@
 
 #import "PopOnDetection.h"
 
-@interface PopOnDetection ()
+@interface PopOnDetection (){
+    unsigned currentIdx;
+}
 @property(nonatomic, retain)UIView* viewDisplayer;
 @end
 
@@ -23,16 +25,14 @@
 
 - (void)imageFound:(unsigned)index intoView:(UIView*)cameRaView{
     if(_scanIndexFound)
-        _scanIndexFound(0, self);
+        _scanIndexFound(index, self);
     
-   // [cameRaView addSubview: self.view];
-   // [self displayIndex: index];
+    currentIdx = index;
 }
 
 - (void)popUpImage:(NSString*)imageName{
     _productView.image  = [UIImage imageNamed: imageName];
     [_viewDisplayer addSubview: self.view];
-    NSLog(@"--> %@ %@ %@", _productView, _viewDisplayer, [UIImage imageNamed: imageName]);
 }
 
 - (IBAction)closeTapped:(UIButton *)sender{
@@ -42,7 +42,7 @@
 
 - (IBAction)goToUrlTapped:(UIButton *)sender{
     if(_goPressed)
-        _goPressed(0, self);
+        _goPressed(currentIdx, self);
 }
 
 #pragma mark - lifeCycle
@@ -100,9 +100,6 @@
 
 - (void)recenterPopOnCenterView:(UIView*)view{
     self.view.center = view.center;
-}
-
-- (void)displayIndex:(unsigned)idx{
 }
 
 @end

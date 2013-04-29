@@ -102,7 +102,7 @@ bool IR_Detector::canProceed(){
 
 void IR_Detector::testPonyDetectCreateDescriptor(const cv::Mat& inputFrame){
     // test compression
-   // testEncode(const_cast<cv::Mat&>(inputFrame));
+    // testEncode(const_cast<cv::Mat&>(inputFrame));
     
     cv::Mat grayReferer;
     cv::Mat descriptors_referer;

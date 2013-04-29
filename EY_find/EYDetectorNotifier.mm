@@ -125,19 +125,15 @@ void ir_imageFound(unsigned idx){
     
 #warning test à enlever
     // note: test seulement
-#define TOTAL 11
+#define TOTAL 7
     NSString* image[TOTAL] = {
-        @"car_0.jpg",
-        @"drill_0.jpg",
-        @"drill_1.jpg",
-        @"key_0.jpg",
+        @"img_0.png",
+        @"img_1.jpg",
+        @"img_2.jpg",
         @"key_1.jpg",
         @"lion_0.jpg",
         @"lion_1.jpg",
-        @"blum_0.jpg",
-        @"lo_0.jpg",
-        @"lo_1.jpg",
-        @"lo_2.jpg"
+        @"blum_0.jpg"
     };
     
     for (int i = 0; i < TOTAL; i++) {
