@@ -53,8 +53,15 @@
 }
 
 - (void)setUpBackButtonInView:(UIView*)view{
-    UIButton* button = [[UIButton alloc] initWithFrame: CGRectMake(0, 0, 20, 20)];
-    [button addTarget: self action:@selector(goBackToParentViewController) forControlEvents: UIControlEventTouchDown];
+    UIButton* button        = [[UIButton alloc] initWithFrame: CGRectMake(0, 0, 50, 50)];
+    button.backgroundColor  = [UIColor redColor];
+    
+    [button addTarget: self
+               action: @selector(goBackToParentViewController)
+     forControlEvents: UIControlEventTouchDown];
+   
+    [view addSubview: button];
+    [button release];
 }
 
 #pragma mark - logic

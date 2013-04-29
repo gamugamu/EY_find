@@ -15,20 +15,24 @@
 @implementation PopOnDetection
 @synthesize eyDetector      = _eyDetector,
             viewDisplayer   = _viewDisplayer,
-            scanIndexFound  = _scanIndexFound;
+            scanIndexFound  = _scanIndexFound,
+            goPressed       = _goPressed;
 
 #pragma mark -------------------------- public ---------------------------------
 #pragma mark -------------------------------------------------------------------
 
 - (void)imageFound:(unsigned)index intoView:(UIView*)cameRaView{
-    [cameRaView addSubview: self.view];
-    [self displayIndex: index];
+    if(_scanIndexFound)
+        _scanIndexFound(0, self);
+    
+   // [cameRaView addSubview: self.view];
+   // [self displayIndex: index];
 }
 
 - (void)popUpImage:(NSString*)imageName{
-    self.view.hidden   = NO;
     _productView.image  = [UIImage imageNamed: imageName];
     [_viewDisplayer addSubview: self.view];
+    NSLog(@"--> %@ %@ %@", _productView, _viewDisplayer, [UIImage imageNamed: imageName]);
 }
 
 - (IBAction)closeTapped:(UIButton *)sender{
@@ -37,8 +41,8 @@
 }
 
 - (IBAction)goToUrlTapped:(UIButton *)sender{
-    if(_scanIndexFound)
-        _scanIndexFound(0);
+    if(_goPressed)
+        _goPressed(0, self);
 }
 
 #pragma mark - lifeCycle
@@ -50,6 +54,7 @@
 - (void)viewDidUnload{
     [self setProductView:nil];
     [self setDisplayer:nil];
+    [self setProductDescription:nil];
     [super viewDidUnload];
 }
 
@@ -64,14 +69,16 @@
         detector.delegate   = self;
         
         [self displayTargetInView: view];
+        [self recenterPopOnCenterView: view];
     }
     return self;
 }
 
 - (void)dealloc{
-    [_eyDetector    release];
-    [_productView   release];
-    [_displayer     release];
+    [_eyDetector            release];
+    [_productView           release];
+    [_displayer             release];
+    [_productDescription    release];
     [super dealloc];
 }
 
@@ -89,6 +96,10 @@
     
     [view addSubview: target];
     [target release];
+}
+
+- (void)recenterPopOnCenterView:(UIView*)view{
+    self.view.center = view.center;
 }
 
 - (void)displayIndex:(unsigned)idx{

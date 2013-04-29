@@ -11,7 +11,8 @@
 
 @interface PopOnDetection : UIViewController<EYRecognizerDelegate>
 @property(nonatomic, retain)id<EYDetector> eyDetector;
-@property(nonatomic, copy)void(^scanIndexFound)(unsigned idx);
+@property(nonatomic, copy)void(^scanIndexFound)(unsigned idx, PopOnDetection* pop);
+@property(nonatomic, copy)void(^goPressed)(unsigned idx, PopOnDetection* pop);
 
 - (id)initWithDetector:(id<EYDetector>)detector andViewToDisplay:(UIView*)view;
 - (void)popUpImage:(NSString*)imageName;
@@ -19,6 +20,7 @@
 - (IBAction)closeTapped:(UIButton *)sender;
 - (IBAction)goToUrlTapped:(UIButton *)sender;
 @property (retain, nonatomic) IBOutlet UIView *displayer;
+@property (retain, nonatomic) IBOutlet UILabel *productDescription;
 @property (retain, nonatomic) IBOutlet UIImageView *productView;
 
 @end

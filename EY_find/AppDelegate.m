@@ -10,9 +10,10 @@
 #import "EYCameraViewController.h"
 #import "PopOnDetection.h"
 #import "WebView.h"
+#import "ProductData.h"
 
 @interface AppDelegate(){
-    PopOnDetection* pop;
+    PopOnDetection* _pop;
 }
 @end
 @implementation AppDelegate
@@ -28,20 +29,15 @@
     [self.window makeKeyAndVisible];
 
     // test
-    pop            = [[PopOnDetection alloc] initWithDetector: _viewController
-                                             andViewToDisplay: _viewController.view];
-
-    [pop popUpImage: @"casque.jpg"];
-    pop.scanIndexFound = ^(unsigned idx){
-        [self swapToWebViewController: idx];
-    };
+    [self setUpPop];
+    
     return YES;
 }
 
 #pragma mark - lifeCycle
 
 - (void)dealloc{
-    [pop                release];
+    [_pop               release];
     [_window            release];
     [_viewController    release];
     [super dealloc];
@@ -50,9 +46,23 @@
 #pragma mark -------------------------- private --------------------------------
 #pragma mark -------------------------------------------------------------------
 
-- (void)swapToWebViewController:(unsigned)idx{
+- (void)setUpPop{
+    _pop = [[PopOnDetection alloc] initWithDetector: _viewController
+                                   andViewToDisplay: _viewController.view];
+    
+    _pop.scanIndexFound = ^(unsigned idx, PopOnDetection* pop){
+        pop.productDescription.text = [ProductData labelForProduct: idx];
+        [pop popUpImage: [ProductData imageForIndex: 0]];
+    };
+    
+    _pop.goPressed = ^(unsigned idx, PopOnDetection* pop){
+        [self swapToWebViewController: [ProductData urlForLabel: idx]];
+    };
+}
+
+- (void)swapToWebViewController:(NSString*)stringUlr{
     WebView* webView = [[WebView alloc] init];
-    [webView loadUrl: @"http://www.google.fr"];
+    [webView loadUrl: stringUlr];
     [_viewController presentViewController: webView animated: YES completion: nil];
     [webView release];
 }

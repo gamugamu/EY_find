@@ -35,6 +35,8 @@
 		EBB82525172E511A0030871D /* right.png in Resources */ = {isa = PBXBuildFile; fileRef = EBB82524172E511A0030871D /* right.png */; };
 		EBB8252E172E55C70030871D /* casque.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EBB8252D172E55C70030871D /* casque.jpg */; };
 		EBB82536172E67650030871D /* WebView.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB82535172E67650030871D /* WebView.m */; };
+		EBB82538172E71660030871D /* go.png in Resources */ = {isa = PBXBuildFile; fileRef = EBB82537172E71660030871D /* go.png */; };
+		EBB8253C172E742C0030871D /* ProductData.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB8253B172E742C0030871D /* ProductData.m */; };
 		EBD86A721727B6DB00C0DBC3 /* IR_Detector.h in Headers */ = {isa = PBXBuildFile; fileRef = EB659BBC1726DD05002F34D2 /* IR_Detector.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EBD86A731727B89100C0DBC3 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB2315121726C3ED004850AE /* opencv2.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		EBD86A761727BD6800C0DBC3 /* IR_AVtoCVImageWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EBD86A741727BD6800C0DBC3 /* IR_AVtoCVImageWrapper.cpp */; };
@@ -118,6 +120,9 @@
 		EBB8252D172E55C70030871D /* casque.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = casque.jpg; sourceTree = "<group>"; };
 		EBB82534172E67650030871D /* WebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebView.h; sourceTree = "<group>"; };
 		EBB82535172E67650030871D /* WebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebView.m; sourceTree = "<group>"; };
+		EBB82537172E71660030871D /* go.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = go.png; sourceTree = "<group>"; };
+		EBB8253A172E742C0030871D /* ProductData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductData.h; sourceTree = "<group>"; };
+		EBB8253B172E742C0030871D /* ProductData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductData.m; sourceTree = "<group>"; };
 		EBD86A741727BD6800C0DBC3 /* IR_AVtoCVImageWrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IR_AVtoCVImageWrapper.cpp; path = ImageRecognizer/IR_AVtoCVImageWrapper.cpp; sourceTree = "<group>"; };
 		EBD86A751727BD6800C0DBC3 /* IR_AVtoCVImageWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IR_AVtoCVImageWrapper.h; path = ImageRecognizer/IR_AVtoCVImageWrapper.h; sourceTree = "<group>"; };
 		EBD86A781727BDC600C0DBC3 /* IR_AVFrameRep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IR_AVFrameRep.h; sourceTree = "<group>"; };
@@ -295,6 +300,7 @@
 		EB659BB01726D709002F34D2 /* models */ = {
 			isa = PBXGroup;
 			children = (
+				EBB82539172E74080030871D /* bouchon_amazon */,
 				EB659BB51726D7A7002F34D2 /* VideoSource */,
 			);
 			name = models;
@@ -346,6 +352,7 @@
 				EBB82524172E511A0030871D /* right.png */,
 				EBB82520172E50C90030871D /* target@2x.png */,
 				EBB8251D172E50940030871D /* popup-closeButton.png */,
+				EBB82537172E71660030871D /* go.png */,
 			);
 			name = display;
 			sourceTree = "<group>";
@@ -366,6 +373,15 @@
 				EBB82535172E67650030871D /* WebView.m */,
 			);
 			name = webView;
+			sourceTree = "<group>";
+		};
+		EBB82539172E74080030871D /* bouchon_amazon */ = {
+			isa = PBXGroup;
+			children = (
+				EBB8253A172E742C0030871D /* ProductData.h */,
+				EBB8253B172E742C0030871D /* ProductData.m */,
+			);
+			name = bouchon_amazon;
 			sourceTree = "<group>";
 		};
 		EBD86AAC1728190600C0DBC3 /* neon */ = {
@@ -598,6 +614,7 @@
 				EBB82523172E50E40030871D /* left.png in Resources */,
 				EBB82525172E511A0030871D /* right.png in Resources */,
 				EBB8252E172E55C70030871D /* casque.jpg in Resources */,
+				EBB82538172E71660030871D /* go.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -632,6 +649,7 @@
 				EBF91D3F17296276004152F6 /* EYCameraViewController.m in Sources */,
 				EBF91D4417296815004152F6 /* PopOnDetection.m in Sources */,
 				EBB82536172E67650030871D /* WebView.m in Sources */,
+				EBB8253C172E742C0030871D /* ProductData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
