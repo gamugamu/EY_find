@@ -34,13 +34,13 @@
 		EBB82523172E50E40030871D /* left.png in Resources */ = {isa = PBXBuildFile; fileRef = EBB82522172E50E40030871D /* left.png */; };
 		EBB82525172E511A0030871D /* right.png in Resources */ = {isa = PBXBuildFile; fileRef = EBB82524172E511A0030871D /* right.png */; };
 		EBB8252E172E55C70030871D /* casque.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EBB8252D172E55C70030871D /* casque.jpg */; };
-		EBB82533172E66CF0030871D /* WebView.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB82532172E66CF0030871D /* WebView.m */; };
+		EBB82536172E67650030871D /* WebView.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB82535172E67650030871D /* WebView.m */; };
 		EBD86A721727B6DB00C0DBC3 /* IR_Detector.h in Headers */ = {isa = PBXBuildFile; fileRef = EB659BBC1726DD05002F34D2 /* IR_Detector.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EBD86A731727B89100C0DBC3 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB2315121726C3ED004850AE /* opencv2.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		EBD86A761727BD6800C0DBC3 /* IR_AVtoCVImageWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EBD86A741727BD6800C0DBC3 /* IR_AVtoCVImageWrapper.cpp */; };
 		EBD86A771727BD6800C0DBC3 /* IR_AVtoCVImageWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = EBD86A751727BD6800C0DBC3 /* IR_AVtoCVImageWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EBD86A791727BDC600C0DBC3 /* IR_AVFrameRep.h in Headers */ = {isa = PBXBuildFile; fileRef = EBD86A781727BDC600C0DBC3 /* IR_AVFrameRep.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EBD86A811727CE5200C0DBC3 /* libIR_lib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB659BC11726DD8F002F34D2 /* libIR_lib.a */; settings = {ATTRIBUTES = (Required, ); }; };
+		EBD86A811727CE5200C0DBC3 /* libIR_lib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB659BC11726DD8F002F34D2 /* libIR_lib.a */; settings = {ATTRIBUTES = (Weak, ); }; };
 		EBD86AA21727FDC300C0DBC3 /* IR_Config.h in Headers */ = {isa = PBXBuildFile; fileRef = EBD86AA11727FDC300C0DBC3 /* IR_Config.h */; };
 		EBD86AA6172818D300C0DBC3 /* IR_CVHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EBD86AA4172818D200C0DBC3 /* IR_CVHelper.cpp */; };
 		EBD86AA7172818D300C0DBC3 /* IR_CVHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = EBD86AA5172818D200C0DBC3 /* IR_CVHelper.h */; };
@@ -49,7 +49,7 @@
 		EBD86AB3172825F200C0DBC3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB2314ED1726BF98004850AE /* Foundation.framework */; };
 		EBD86AC31728267700C0DBC3 /* UIImage+OpenCV.mm in Sources */ = {isa = PBXBuildFile; fileRef = EBD86AC21728267700C0DBC3 /* UIImage+OpenCV.mm */; };
 		EBD86AC61728275C00C0DBC3 /* UIImage+OpenCV.h in Headers */ = {isa = PBXBuildFile; fileRef = EBD86AC11728267700C0DBC3 /* UIImage+OpenCV.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EBD86ACA17282E1B00C0DBC3 /* libUIImageToOpenCV.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EBD86AB2172825F200C0DBC3 /* libUIImageToOpenCV.a */; };
+		EBD86ACA17282E1B00C0DBC3 /* libUIImageToOpenCV.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EBD86AB2172825F200C0DBC3 /* libUIImageToOpenCV.a */; settings = {ATTRIBUTES = (Weak, ); }; };
 		EBF91D3117291373004152F6 /* EYDetectorNotifier.mm in Sources */ = {isa = PBXBuildFile; fileRef = EBF91D3017291373004152F6 /* EYDetectorNotifier.mm */; };
 		EBF91D3F17296276004152F6 /* EYCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF91D3E17296276004152F6 /* EYCameraViewController.m */; };
 		EBF91D4417296815004152F6 /* PopOnDetection.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF91D4217296815004152F6 /* PopOnDetection.m */; };
@@ -116,8 +116,8 @@
 		EBB82522172E50E40030871D /* left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left.png; sourceTree = "<group>"; };
 		EBB82524172E511A0030871D /* right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right.png; sourceTree = "<group>"; };
 		EBB8252D172E55C70030871D /* casque.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = casque.jpg; sourceTree = "<group>"; };
-		EBB82531172E66CF0030871D /* WebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebView.h; sourceTree = "<group>"; };
-		EBB82532172E66CF0030871D /* WebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebView.m; sourceTree = "<group>"; };
+		EBB82534172E67650030871D /* WebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebView.h; sourceTree = "<group>"; };
+		EBB82535172E67650030871D /* WebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebView.m; sourceTree = "<group>"; };
 		EBD86A741727BD6800C0DBC3 /* IR_AVtoCVImageWrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IR_AVtoCVImageWrapper.cpp; path = ImageRecognizer/IR_AVtoCVImageWrapper.cpp; sourceTree = "<group>"; };
 		EBD86A751727BD6800C0DBC3 /* IR_AVtoCVImageWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IR_AVtoCVImageWrapper.h; path = ImageRecognizer/IR_AVtoCVImageWrapper.h; sourceTree = "<group>"; };
 		EBD86A781727BDC600C0DBC3 /* IR_AVFrameRep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IR_AVFrameRep.h; sourceTree = "<group>"; };
@@ -362,8 +362,8 @@
 		EBB82530172E66A40030871D /* webView */ = {
 			isa = PBXGroup;
 			children = (
-				EBB82531172E66CF0030871D /* WebView.h */,
-				EBB82532172E66CF0030871D /* WebView.m */,
+				EBB82534172E67650030871D /* WebView.h */,
+				EBB82535172E67650030871D /* WebView.m */,
 			);
 			name = webView;
 			sourceTree = "<group>";
@@ -631,7 +631,7 @@
 				EBF91D3117291373004152F6 /* EYDetectorNotifier.mm in Sources */,
 				EBF91D3F17296276004152F6 /* EYCameraViewController.m in Sources */,
 				EBF91D4417296815004152F6 /* PopOnDetection.m in Sources */,
-				EBB82533172E66CF0030871D /* WebView.m in Sources */,
+				EBB82536172E67650030871D /* WebView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WebView : UIWebView
-
+@interface WebView : UIViewController
+- (void)loadUrl:(NSString*)stringUrl;
 @end

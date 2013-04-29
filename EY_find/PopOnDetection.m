@@ -14,7 +14,8 @@
 
 @implementation PopOnDetection
 @synthesize eyDetector      = _eyDetector,
-            viewDisplayer   = _viewDisplayer;
+            viewDisplayer   = _viewDisplayer,
+            scanIndexFound  = _scanIndexFound;
 
 #pragma mark -------------------------- public ---------------------------------
 #pragma mark -------------------------------------------------------------------
@@ -36,6 +37,8 @@
 }
 
 - (IBAction)goToUrlTapped:(UIButton *)sender{
+    if(_scanIndexFound)
+        _scanIndexFound(0);
 }
 
 #pragma mark - lifeCycle
@@ -90,5 +93,5 @@
 
 - (void)displayIndex:(unsigned)idx{
 }
-   
+
 @end

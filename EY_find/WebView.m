@@ -8,12 +8,58 @@
 
 #import "WebView.h"
 
+@interface WebView(){
+    UIWebView* _webView;
+}
+@end
+
 @implementation WebView
+
+#pragma mark -------------------------- public ---------------------------------
+#pragma mark -------------------------------------------------------------------
+
+
+#pragma mark public
+
+- (void)loadUrl:(NSString*)stringUrl{
+    NSURL* url = [NSURL URLWithString: stringUrl];
+    NSURLRequest* request = [NSURLRequest requestWithURL: url];
+    [_webView loadRequest: request];
+}
+
+#pragma mark - alloc / dealloc
 
 - (id)init{
     if(self = [super init]){
-        
+        [self setUpAll];
     }
     return self;
+}
+
+#pragma mark -------------------------- private --------------------------------
+#pragma mark -------------------------------------------------------------------
+
+#pragma mark - setUp
+
+- (void)setUpAll{
+    self.view   = [self setUpWebView];
+    _webView    = (UIWebView*)self.view;
+    [self setUpBackButtonInView: _webView];
+}
+
+- (UIView*)setUpWebView{
+    UIWebView* view = [[UIWebView alloc] initWithFrame: CGRectMake(0, 20, 320, 460)];
+    return [view autorelease];
+}
+
+- (void)setUpBackButtonInView:(UIView*)view{
+    UIButton* button = [[UIButton alloc] initWithFrame: CGRectMake(0, 0, 20, 20)];
+    [button addTarget: self action:@selector(goBackToParentViewController) forControlEvents: UIControlEventTouchDown];
+}
+
+#pragma mark - logic
+
+- (void)goBackToParentViewController{
+    [self dismissViewControllerAnimated: YES completion: nil];
 }
 @end
