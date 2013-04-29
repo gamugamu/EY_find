@@ -27,9 +27,11 @@
     [self.window makeKeyAndVisible];
     
     // test
-    pop                         = [[PopOnDetection alloc] initWithNibName: @"PopOnDetection" bundle: nil];
-    _viewController.delegate    = pop;
-    pop.eyDetector              = _viewController;
+    pop            = [[PopOnDetection alloc] initWithDetector: _viewController
+                                             andViewToDisplay: _viewController.view];
+
+    [pop popUpImage: @"casque.jpg"];
+
     return YES;
 }
 

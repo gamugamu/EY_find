@@ -29,14 +29,12 @@
 		EB659BB71726DB23002F34D2 /* sun@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EB659BB61726DB23002F34D2 /* sun@2x.png */; };
 		EB659BB91726DB25002F34D2 /* sun.png in Resources */ = {isa = PBXBuildFile; fileRef = EB659BB81726DB25002F34D2 /* sun.png */; };
 		EB659BC71726DDA7002F34D2 /* IR_Detector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB659BBB1726DD05002F34D2 /* IR_Detector.cpp */; };
-		EBB8251B172E50480030871D /* PopUpProducts.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB82519172E50480030871D /* PopUpProducts.m */; };
-		EBB8251C172E50480030871D /* pageControlPopUp.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBB8251A172E50480030871D /* pageControlPopUp.xib */; };
 		EBB8251E172E50940030871D /* popup-closeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = EBB8251D172E50940030871D /* popup-closeButton.png */; };
-		EBB82521172E50C90030871D /* logo_transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = EBB82520172E50C90030871D /* logo_transparent.png */; };
+		EBB82521172E50C90030871D /* target@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EBB82520172E50C90030871D /* target@2x.png */; };
 		EBB82523172E50E40030871D /* left.png in Resources */ = {isa = PBXBuildFile; fileRef = EBB82522172E50E40030871D /* left.png */; };
 		EBB82525172E511A0030871D /* right.png in Resources */ = {isa = PBXBuildFile; fileRef = EBB82524172E511A0030871D /* right.png */; };
-		EBB8252B172E525A0030871D /* FTImagePageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB82528172E525A0030871D /* FTImagePageControl.m */; };
-		EBB8252C172E525A0030871D /* FTCustomPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB8252A172E525A0030871D /* FTCustomPageControl.m */; };
+		EBB8252E172E55C70030871D /* casque.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EBB8252D172E55C70030871D /* casque.jpg */; };
+		EBB82533172E66CF0030871D /* WebView.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB82532172E66CF0030871D /* WebView.m */; };
 		EBD86A721727B6DB00C0DBC3 /* IR_Detector.h in Headers */ = {isa = PBXBuildFile; fileRef = EB659BBC1726DD05002F34D2 /* IR_Detector.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EBD86A731727B89100C0DBC3 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB2315121726C3ED004850AE /* opencv2.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		EBD86A761727BD6800C0DBC3 /* IR_AVtoCVImageWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EBD86A741727BD6800C0DBC3 /* IR_AVtoCVImageWrapper.cpp */; };
@@ -68,16 +66,6 @@
 		EBF91D5C172970DD004152F6 /* lo_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EBF91D52172970DD004152F6 /* lo_2.jpg */; };
 		EBF91D5E17298254004152F6 /* car_0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EBF91D5D17298254004152F6 /* car_0.jpg */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		EB0C7CC8172AC00200D4DBF8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EB2314E01726BF98004850AE /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = EB659BC01726DD8F002F34D2;
-			remoteInfo = IR_lib;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		EBD86AB0172825F200C0DBC3 /* CopyFiles */ = {
@@ -123,17 +111,13 @@
 		EB659BBB1726DD05002F34D2 /* IR_Detector.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = IR_Detector.cpp; path = ImageRecognizer/IR_Detector.cpp; sourceTree = "<group>"; };
 		EB659BBC1726DD05002F34D2 /* IR_Detector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IR_Detector.h; path = ImageRecognizer/IR_Detector.h; sourceTree = "<group>"; };
 		EB659BC11726DD8F002F34D2 /* libIR_lib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libIR_lib.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		EBB82518172E50480030871D /* PopUpProducts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopUpProducts.h; sourceTree = "<group>"; };
-		EBB82519172E50480030871D /* PopUpProducts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopUpProducts.m; sourceTree = "<group>"; };
-		EBB8251A172E50480030871D /* pageControlPopUp.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = pageControlPopUp.xib; sourceTree = "<group>"; };
 		EBB8251D172E50940030871D /* popup-closeButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popup-closeButton.png"; sourceTree = "<group>"; };
-		EBB82520172E50C90030871D /* logo_transparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_transparent.png; sourceTree = "<group>"; };
+		EBB82520172E50C90030871D /* target@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "target@2x.png"; sourceTree = "<group>"; };
 		EBB82522172E50E40030871D /* left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left.png; sourceTree = "<group>"; };
 		EBB82524172E511A0030871D /* right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right.png; sourceTree = "<group>"; };
-		EBB82527172E525A0030871D /* FTImagePageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTImagePageControl.h; sourceTree = "<group>"; };
-		EBB82528172E525A0030871D /* FTImagePageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTImagePageControl.m; sourceTree = "<group>"; };
-		EBB82529172E525A0030871D /* FTCustomPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTCustomPageControl.h; sourceTree = "<group>"; };
-		EBB8252A172E525A0030871D /* FTCustomPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTCustomPageControl.m; sourceTree = "<group>"; };
+		EBB8252D172E55C70030871D /* casque.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = casque.jpg; sourceTree = "<group>"; };
+		EBB82531172E66CF0030871D /* WebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebView.h; sourceTree = "<group>"; };
+		EBB82532172E66CF0030871D /* WebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebView.m; sourceTree = "<group>"; };
 		EBD86A741727BD6800C0DBC3 /* IR_AVtoCVImageWrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IR_AVtoCVImageWrapper.cpp; path = ImageRecognizer/IR_AVtoCVImageWrapper.cpp; sourceTree = "<group>"; };
 		EBD86A751727BD6800C0DBC3 /* IR_AVtoCVImageWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IR_AVtoCVImageWrapper.h; path = ImageRecognizer/IR_AVtoCVImageWrapper.h; sourceTree = "<group>"; };
 		EBD86A781727BDC600C0DBC3 /* IR_AVFrameRep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IR_AVFrameRep.h; sourceTree = "<group>"; };
@@ -247,7 +231,6 @@
 			isa = PBXGroup;
 			children = (
 				EB659BBA1726DC9B002F34D2 /* IR_lib */,
-				EBB82526172E52440030871D /* FTImagePageControl */,
 				EBD86AB4172825F200C0DBC3 /* UIImageToOpenCV */,
 				EB2314F11726BF98004850AE /* EY_find */,
 				EB2314EA1726BF98004850AE /* Frameworks */,
@@ -283,8 +266,6 @@
 		EB2314F11726BF98004850AE /* EY_find */ = {
 			isa = PBXGroup;
 			children = (
-				EBB82517172E4FB00030871D /* display */,
-				EBF91D40172967F0004152F6 /* controller */,
 				EB659BB11726D717002F34D2 /* controllers */,
 				EB659BB01726D709002F34D2 /* models */,
 				EB2314F21726BF98004850AE /* Supporting Files */,
@@ -323,7 +304,9 @@
 		EB659BB11726D717002F34D2 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
-				EBF91D3C1729618D004152F6 /* facadeCamera */,
+				EBB82530172E66A40030871D /* webView */,
+				EBF91D40172967F0004152F6 /* pop */,
+				EBF91D3C1729618D004152F6 /* camera */,
 				EBF91D3617295CCD004152F6 /* detectorWrapper */,
 				EB2314FA1726BF98004850AE /* AppDelegate.h */,
 				EB2314FB1726BF98004850AE /* AppDelegate.m */,
@@ -355,36 +338,34 @@
 			name = IR_lib;
 			sourceTree = "<group>";
 		};
-		EBB82517172E4FB00030871D /* display */ = {
-			isa = PBXGroup;
-			children = (
-				EBB82518172E50480030871D /* PopUpProducts.h */,
-				EBB82519172E50480030871D /* PopUpProducts.m */,
-				EBB8251A172E50480030871D /* pageControlPopUp.xib */,
-			);
-			name = display;
-			sourceTree = "<group>";
-		};
 		EBB8251F172E50960030871D /* display */ = {
 			isa = PBXGroup;
 			children = (
+				EBB8252D172E55C70030871D /* casque.jpg */,
 				EBB82522172E50E40030871D /* left.png */,
 				EBB82524172E511A0030871D /* right.png */,
-				EBB82520172E50C90030871D /* logo_transparent.png */,
+				EBB82520172E50C90030871D /* target@2x.png */,
 				EBB8251D172E50940030871D /* popup-closeButton.png */,
 			);
 			name = display;
 			sourceTree = "<group>";
 		};
-		EBB82526172E52440030871D /* FTImagePageControl */ = {
+		EBB8252F172E623B0030871D /* facade */ = {
 			isa = PBXGroup;
 			children = (
-				EBB82527172E525A0030871D /* FTImagePageControl.h */,
-				EBB82528172E525A0030871D /* FTImagePageControl.m */,
-				EBB82529172E525A0030871D /* FTCustomPageControl.h */,
-				EBB8252A172E525A0030871D /* FTCustomPageControl.m */,
+				EBF91D3D17296276004152F6 /* EYCameraViewController.h */,
+				EBF91D3E17296276004152F6 /* EYCameraViewController.m */,
 			);
-			name = FTImagePageControl;
+			name = facade;
+			sourceTree = "<group>";
+		};
+		EBB82530172E66A40030871D /* webView */ = {
+			isa = PBXGroup;
+			children = (
+				EBB82531172E66CF0030871D /* WebView.h */,
+				EBB82532172E66CF0030871D /* WebView.m */,
+			);
+			name = webView;
 			sourceTree = "<group>";
 		};
 		EBD86AAC1728190600C0DBC3 /* neon */ = {
@@ -422,13 +403,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		EBF91D3517295CC0004152F6 /* cameraController */ = {
+		EBF91D3517295CC0004152F6 /* subClass */ = {
 			isa = PBXGroup;
 			children = (
 				EB2315031726BF98004850AE /* EYViewController.h */,
 				EB2315041726BF98004850AE /* EYViewController.mm */,
 			);
-			name = cameraController;
+			name = subClass;
 			sourceTree = "<group>";
 		};
 		EBF91D3617295CCD004152F6 /* detectorWrapper */ = {
@@ -442,24 +423,23 @@
 			name = detectorWrapper;
 			sourceTree = "<group>";
 		};
-		EBF91D3C1729618D004152F6 /* facadeCamera */ = {
+		EBF91D3C1729618D004152F6 /* camera */ = {
 			isa = PBXGroup;
 			children = (
-				EBF91D3D17296276004152F6 /* EYCameraViewController.h */,
-				EBF91D3E17296276004152F6 /* EYCameraViewController.m */,
-				EBF91D3517295CC0004152F6 /* cameraController */,
+				EBB8252F172E623B0030871D /* facade */,
+				EBF91D3517295CC0004152F6 /* subClass */,
 			);
-			name = facadeCamera;
+			name = camera;
 			sourceTree = "<group>";
 		};
-		EBF91D40172967F0004152F6 /* controller */ = {
+		EBF91D40172967F0004152F6 /* pop */ = {
 			isa = PBXGroup;
 			children = (
 				EBF91D4117296815004152F6 /* PopOnDetection.h */,
 				EBF91D4217296815004152F6 /* PopOnDetection.m */,
 				EBF91D4317296815004152F6 /* PopOnDetection.xib */,
 			);
-			name = controller;
+			name = pop;
 			sourceTree = "<group>";
 		};
 		EBF91D48172970D2004152F6 /* New Group */ = {
@@ -519,7 +499,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				EB0C7CC9172AC00200D4DBF8 /* PBXTargetDependency */,
 			);
 			name = EY_find;
 			productName = EY_find;
@@ -614,11 +593,11 @@
 				EBF91D5C172970DD004152F6 /* lo_2.jpg in Resources */,
 				EBF91D5E17298254004152F6 /* car_0.jpg in Resources */,
 				EB0C7CC7172AB67800D4DBF8 /* blum_0.jpg in Resources */,
-				EBB8251C172E50480030871D /* pageControlPopUp.xib in Resources */,
 				EBB8251E172E50940030871D /* popup-closeButton.png in Resources */,
-				EBB82521172E50C90030871D /* logo_transparent.png in Resources */,
+				EBB82521172E50C90030871D /* target@2x.png in Resources */,
 				EBB82523172E50E40030871D /* left.png in Resources */,
 				EBB82525172E511A0030871D /* right.png in Resources */,
+				EBB8252E172E55C70030871D /* casque.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -652,9 +631,7 @@
 				EBF91D3117291373004152F6 /* EYDetectorNotifier.mm in Sources */,
 				EBF91D3F17296276004152F6 /* EYCameraViewController.m in Sources */,
 				EBF91D4417296815004152F6 /* PopOnDetection.m in Sources */,
-				EBB8251B172E50480030871D /* PopUpProducts.m in Sources */,
-				EBB8252B172E525A0030871D /* FTImagePageControl.m in Sources */,
-				EBB8252C172E525A0030871D /* FTCustomPageControl.m in Sources */,
+				EBB82533172E66CF0030871D /* WebView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -679,14 +656,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		EB0C7CC9172AC00200D4DBF8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = EB659BC01726DD8F002F34D2 /* IR_lib */;
-			targetProxy = EB0C7CC8172AC00200D4DBF8 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		EB2314F41726BF98004850AE /* InfoPlist.strings */ = {

@@ -95,7 +95,6 @@
     [_detectorNotifier setCameraView: view];
 }
 
-
 - (void)setUpMainView{
     CGRect frame        = [UIScreen mainScreen].applicationFrame;
     UIView* mainView    = [[UIView alloc] initWithFrame: frame];
