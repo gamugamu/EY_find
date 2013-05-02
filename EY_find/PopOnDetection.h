@@ -11,7 +11,9 @@
 
 @interface PopOnDetection : UIViewController<EYRecognizerDelegate>
 @property(nonatomic, retain)id<EYDetector> eyDetector;
+// callBack lorsqu'une image a été retrouvé
 @property(nonatomic, copy)void(^scanIndexFound)(unsigned idx, PopOnDetection* pop);
+// callBack lorsque le bouton a été pressé.
 @property(nonatomic, copy)void(^goPressed)(unsigned idx, PopOnDetection* pop);
 
 - (id)initWithDetector:(id<EYDetector>)detector andViewToDisplay:(UIView*)view;
@@ -22,5 +24,4 @@
 @property (retain, nonatomic) IBOutlet UIView *displayer;
 @property (retain, nonatomic) IBOutlet UILabel *productDescription;
 @property (retain, nonatomic) IBOutlet UIImageView *productView;
-
 @end

@@ -8,7 +8,7 @@
 
 #import "WebView.h"
 
-@interface WebView(){
+@interface WebView()<UIWebViewDelegate>{
     UIWebView* _webView;
 }
 @end
@@ -27,6 +27,18 @@
     [_webView loadRequest: request];
 }
 
+#pragma mark - uiwebViewDelegate
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView{
+    NSLog(@"zoomm scale %f", webView.scrollView.zoomScale);
+    webView.scrollView.zoomScale = .5f;
+    //[webView scalesPageToFit];
+    webView.scrollView.minimumZoomScale = .3f;
+    [webView.scrollView setZoomScale: .5f animated: YES];
+    NSLog(@" - zoomm scale %f", webView.scrollView.zoomScale);
+
+}
+
 #pragma mark - alloc / dealloc
 
 - (id)init{
@@ -42,8 +54,9 @@
 #pragma mark - setUp
 
 - (void)setUpAll{
-    self.view   = [self setUpWebView];
-    _webView    = (UIWebView*)self.view;
+    self.view           = [self setUpWebView];
+    _webView            = (UIWebView*)self.view;
+    _webView.delegate   = self;
     [self setUpBackButtonInView: _webView];
 }
 
@@ -54,7 +67,6 @@
 
 - (void)setUpBackButtonInView:(UIView*)view{
     UIButton* button        = [[UIButton alloc] initWithFrame: CGRectMake(0, 0, 50, 50)];
-    button.backgroundColor  = [UIColor redColor];
     
     [button addTarget: self
                action: @selector(goBackToParentViewController)

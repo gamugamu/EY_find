@@ -29,7 +29,7 @@
 // elargit l' ISOIDXDIFF, plus on accepte de correspondances.
 // Ca n'influe pas trop sur le résultat de sortie.
 
-#define KRATIO          1.2f    
+#define KRATIO          1.3f    
 // KRatio défini le ROI dans l'image (Region of interest). 1 pour l'image totale
 // 2 pour la moitié, etc... C'est une optimisation très importante
 // car c'est inutile de calculer les bords des images, et plus la

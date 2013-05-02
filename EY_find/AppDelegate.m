@@ -30,7 +30,7 @@
 
     // test
     [self setUpPop];
-    
+    [self swapToWebViewController: [ProductData urlForLabel: 0]];
     return YES;
 }
 
