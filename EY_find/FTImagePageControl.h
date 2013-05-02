@@ -23,7 +23,7 @@
 - (IBAction)leftPressed:(UIButton *)sender;
 /* ----- */
 
-@property(retain, nonatomic) IBOutlet UIView* view;								// contient tout les autres vues.
+@property(retain, nonatomic) IBOutlet UIView* view;								// contient tout les autres vues. (scroll + FTCustomPageContrôle)
 @property(nonatomic, readonly)NSUInteger currentPage;							// la page actuelle
 @property(nonatomic, assign)id <FTImagePageControlDelegate> delegate;
 @property(nonatomic, assign)BOOL allowAutoScrolling;

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "EYRecognizerDelegate.h"
 
+@class FTImagePageControl;
 @interface PopOnDetection : UIViewController<EYRecognizerDelegate>
 @property(nonatomic, retain)id<EYDetector> eyDetector;
 // callBack lorsqu'une image a été retrouvé
@@ -21,6 +22,7 @@
 // GUI logic
 - (IBAction)closeTapped:(UIButton *)sender;
 - (IBAction)goToUrlTapped:(UIButton *)sender;
+@property (retain, nonatomic) IBOutlet FTImagePageControl *pageController;
 @property (retain, nonatomic) IBOutlet UIView *displayer;
 @property (retain, nonatomic) IBOutlet UILabel *productDescription;
 @property (retain, nonatomic) IBOutlet UIImageView *productView;

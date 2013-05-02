@@ -245,7 +245,6 @@ typedef enum{
 	return self;
 }
 
-
 - (void)dealloc {
 	[_timer			release];
 	[_scrollImages	release];
@@ -261,6 +260,7 @@ typedef enum{
 #pragma mark - setUp
 
 - (void)setUpScrollImage{
+    NSLog(@"get --Scroll %@", _scrollImages);
 	_scrollImages.pagingEnabled						= YES;
 	_scrollImages.scrollEnabled						= YES;
 	_scrollImages.delegate							= self;
@@ -274,6 +274,7 @@ typedef enum{
 - (void)newPageIsDisplaying:(NSUInteger)newPage{
 	rightNext.hidden	= pageControl.numberOfPages < 1 || newPage == pageControl.numberOfPages - 1;
 	leftNext.hidden		= !newPage;
+    NSLog(@"get current page %u", newPage);
 	[delegate newImageIsDisplaying: newPage];
 }
 

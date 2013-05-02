@@ -28,9 +28,9 @@
     self.window.rootViewController  = self.viewController;
     [self.window makeKeyAndVisible];
 
-    // test
     [self setUpPop];
-    [self swapToWebViewController: [ProductData urlForLabel: 0]];
+    [_pop popUpImage: @"camera.png"];
+
     return YES;
 }
 

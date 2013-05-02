@@ -7,6 +7,7 @@
 //
 
 #import "PopOnDetection.h"
+#import "FTImagePageControl.h"
 
 @interface PopOnDetection (){
     unsigned currentIdx;
@@ -48,6 +49,15 @@
 #pragma mark - lifeCycle
 
 - (void)viewDidLoad{
+    // test
+    UIImageView* imageView	= [[[UIImageView alloc] initWithImage: [UIImage imageNamed: @"camera.png"]] autorelease];
+    NSLog(@"---> result %@", _pageController);
+    [_pageController pushImageView: imageView];
+    UIImageView* imageView2	= [[[UIImageView alloc] initWithImage: [UIImage imageNamed: @"stationMeteo.jpg"]] autorelease];
+    NSLog(@"---> result %@", _pageController);
+    [_pageController pushImageView: imageView2];
+
+    // end test
     [super viewDidLoad];
 }
 
@@ -55,6 +65,7 @@
     [self setProductView:nil];
     [self setDisplayer:nil];
     [self setProductDescription:nil];
+    [self setPageController:nil];
     [super viewDidUnload];
 }
 
@@ -79,6 +90,7 @@
     [_productView           release];
     [_displayer             release];
     [_productDescription    release];
+    [_pageController        release];
     [super dealloc];
 }
 
